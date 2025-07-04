@@ -1,4 +1,5 @@
 class Routes {
   static String initial = '/';
-  static String contactUs = '/contsctUs';
+  static String contactUs = '/contactUs';
+  static String about = '/about';
 }
