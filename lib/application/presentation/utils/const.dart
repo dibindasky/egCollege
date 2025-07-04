@@ -64,3 +64,7 @@ List<BoxShadow> boxShadow4 = [
   const BoxShadow(
       spreadRadius: 2, blurRadius: 5, offset: Offset(0, 1), color: kGrey)
 ];
+
+
+String eduGuardianLogo = 'assets/logo/companylogonewfinal.png';
+String eduGuardianLogoWithText = 'assets/logo/eduGuardian_logo.png';
