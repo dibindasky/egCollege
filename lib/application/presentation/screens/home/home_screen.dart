@@ -1,3 +1,4 @@
+import 'package:edu_college/application/presentation/screens/home/widgets/footer.dart';
 import 'package:flutter/material.dart';
 
 class ScreenHome extends StatelessWidget {
@@ -5,6 +6,6 @@ class ScreenHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return const Scaffold(body: Column(children: [CompanyFooterSection()]));
   }
 }

@@ -1,5 +1,6 @@
 import 'package:edu_college/application/presentation/routes/route_title.dart';
 import 'package:edu_college/application/presentation/routes/routes.dart';
+import 'package:edu_college/application/presentation/screens/contact_us/contsct_us.dart';
 import 'package:edu_college/application/presentation/screens/home/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -16,6 +17,12 @@ class GoRouterConfig {
         builder: (context, state) {
           changeWebTitle(context, 'eduGardian - Home');
           return const ScreenHome();
+        }),
+    GoRoute(
+        path: Routes.contactUs,
+        builder: (context, state) {
+          changeWebTitle(context, 'eduGardian - Contact Us');
+          return const ContactFormScreen();
         }),
   ];
   static _errorScreen() => Scaffold(
