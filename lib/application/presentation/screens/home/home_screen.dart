@@ -48,9 +48,9 @@ class ScreenHome extends StatelessWidget {
                   ],
                 ),
               ),
-              
+
             ),
-            CompanyFooterSection()
+            const CompanyFooterSection()
           ])
         ],
       ),
