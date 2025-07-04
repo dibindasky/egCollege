@@ -1,0 +1,25 @@
+import 'package:edu_college/application/presentation/routes/route_title.dart';
+import 'package:edu_college/application/presentation/routes/routes.dart';
+import 'package:edu_college/application/presentation/screens/home/home_screen.dart';
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+
+class GoRouterConfig {
+  static final router = GoRouter(
+      initialLocation: '/',
+      routes: generalRoutes,
+      errorBuilder: (context, state) => _errorScreen());
+
+  static final List<RouteBase> generalRoutes = [
+    GoRoute(
+        path: Routes.initial,
+        builder: (context, state) {
+          changeWebTitle(context, 'eduGardian - Home');
+          return const ScreenHome();
+        }),
+  ];
+  static _errorScreen() => Scaffold(
+        appBar: AppBar(title: const Text('Error')),
+        body: const Center(child: Text('Page not found')),
+      );
+}
