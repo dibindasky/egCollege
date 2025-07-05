@@ -1,4 +1,5 @@
 import 'package:edu_college/application/controller/home/home_controller.dart';
+import 'package:edu_college/application/presentation/screens/home/widgets/app_bar.dart';
 import 'package:edu_college/application/presentation/screens/home/widgets/career_support_and_placements_section.dart';
 import 'package:edu_college/application/presentation/screens/home/widgets/empovering_journey_section.dart';
 import 'package:edu_college/application/presentation/screens/home/widgets/enrollment_admission_section.dart';
@@ -23,26 +24,28 @@ class ScreenHome extends StatelessWidget {
     return Scaffold(
       body: CustomScrollView(
         slivers: [
-          CustomSliverAppbar(
-            title: '',
-            logoWithText: true,
-            children: List.generate(
-              controller.homeTitles.length,
-              (index) => Padding(
-                padding: const EdgeInsets.only(right: 10),
-                child: Text(
-                  controller.selectedHomeTitle.value,
-                  style: textStyle1.copyWith(
-                    color: controller.selectedHomeTitle.value ==
-                            controller.homeTitles[index]
-                        ? kPurple
-                        : kBlack,
-                  ),
-                ),
-              ),
-            ),
-          ),
+          // CustomSliverAppbar(
+          //   title: '',
+          //   logoWithText: true,
+          //   children: List.generate(
+          //     controller.homeTitles.length,
+          //     (index) => Padding(
+          //       padding: const EdgeInsets.only(right: 10),
+          //       child: Text(
+          //         controller.selectedHomeTitle.value,
+          //         style: textStyle1.copyWith(
+          //           color: controller.selectedHomeTitle.value ==
+          //                   controller.homeTitles[index]
+          //               ? kPurple
+          //               : kBlack,
+          //         ),
+          //       ),
+          //     ),
+          //   ),
+          // ),
+
           SliverList.list(children: const [
+            AppHeader(),
             HomeIntoSection(),
             WhyChooseUsSection(),
             StatictsCountsSection(),

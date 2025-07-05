@@ -31,13 +31,13 @@ class GoRouterConfig {
         path: Routes.about,
         builder: (context, state) {
           changeWebTitle(context, 'eduGuardian - About');
-          return const ELearningLandingPage();
+          return const AboutScreen();
         }),
     GoRoute(
         path: Routes.courses,
         builder: (context, state) {
           changeWebTitle(context, 'eduGardian - Courses');
-          return const ProgramsScreen();
+          return const CoursesScreen();
         }),
     GoRoute(
         path: Routes.courseDetail,

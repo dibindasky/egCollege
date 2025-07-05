@@ -2,8 +2,8 @@ import 'package:edu_college/application/presentation/utils/colors.dart';
 import 'package:edu_college/application/presentation/utils/const.dart';
 import 'package:flutter/material.dart';
 
-class ELearningLandingPage extends StatelessWidget {
-  const ELearningLandingPage({super.key});
+class AboutScreen extends StatelessWidget {
+  const AboutScreen({super.key});
 
   @override
   Widget build(BuildContext context) => Scaffold(

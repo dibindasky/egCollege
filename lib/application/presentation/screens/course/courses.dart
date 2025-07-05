@@ -2,8 +2,8 @@ import 'package:edu_college/application/presentation/screens/course/all_courses/
 import 'package:edu_college/application/presentation/utils/const.dart';
 import 'package:flutter/material.dart';
 
-class ProgramsScreen extends StatelessWidget {
-  const ProgramsScreen({super.key});
+class CoursesScreen extends StatelessWidget {
+  const CoursesScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
