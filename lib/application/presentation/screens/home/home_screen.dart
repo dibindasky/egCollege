@@ -1,9 +1,12 @@
 import 'package:edu_college/application/controller/home/home_controller.dart';
 import 'package:edu_college/application/presentation/screens/home/widgets/career_support_and_placements_section.dart';
 import 'package:edu_college/application/presentation/screens/home/widgets/empovering_journey_section.dart';
+import 'package:edu_college/application/presentation/screens/home/widgets/enrollment_admission_section.dart';
 import 'package:edu_college/application/presentation/screens/home/widgets/footer.dart';
 import 'package:edu_college/application/presentation/screens/home/widgets/home_intro_section.dart';
+import 'package:edu_college/application/presentation/screens/home/widgets/our_programs_sections.dart';
 import 'package:edu_college/application/presentation/screens/home/widgets/statictict_count_section.dart';
+import 'package:edu_college/application/presentation/screens/home/widgets/student_feedback_section.dart';
 import 'package:edu_college/application/presentation/screens/home/widgets/why_choose_us_section.dart';
 import 'package:edu_college/application/presentation/utils/colors.dart';
 import 'package:edu_college/application/presentation/utils/const.dart';
@@ -45,6 +48,9 @@ class ScreenHome extends StatelessWidget {
             StatictsCountsSection(),
             CareerSupportAndPlacementSection(),
             EmpoveringJourneySection(),
+            EnrollmentAdmissionSection(),
+            OurProgramsSection(),
+            StudentFeedbackSection(),
             CompanyFooterSection(),
           ])
         ],
