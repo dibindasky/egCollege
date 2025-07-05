@@ -2,6 +2,8 @@ import 'package:edu_college/application/presentation/routes/route_title.dart';
 import 'package:edu_college/application/presentation/routes/routes.dart';
 import 'package:edu_college/application/presentation/screens/about/about.dart';
 import 'package:edu_college/application/presentation/screens/contact_us/contsct_us.dart';
+import 'package:edu_college/application/presentation/screens/course/course_detail.dart';
+import 'package:edu_college/application/presentation/screens/course/courses.dart';
 import 'package:edu_college/application/presentation/screens/home/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -30,6 +32,20 @@ class GoRouterConfig {
         builder: (context, state) {
           changeWebTitle(context, 'eduGuardian - About');
           return const ELearningLandingPage();
+        }),
+    GoRoute(
+        path: Routes.courses,
+        builder: (context, state) {
+          changeWebTitle(context, 'eduGardian - Courses');
+          return const ProgramsScreen();
+        }),
+    GoRoute(
+        path: Routes.courseDetail,
+        builder: (context, state) {
+          final course = state.extra as Map<String, dynamic>? ?? {};
+          changeWebTitle(context, 'eduGardian - Course Detail');
+          return CourseDetailScreen(
+              id: state.pathParameters['id'] ?? '', course: course['course']);
         }),
   ];
   static _errorScreen() => Scaffold(
