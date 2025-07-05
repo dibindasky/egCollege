@@ -1,5 +1,10 @@
 import 'package:edu_college/application/controller/home/home_controller.dart';
+import 'package:edu_college/application/presentation/screens/home/widgets/career_support_and_placements_section.dart';
+import 'package:edu_college/application/presentation/screens/home/widgets/empovering_journey_section.dart';
 import 'package:edu_college/application/presentation/screens/home/widgets/footer.dart';
+import 'package:edu_college/application/presentation/screens/home/widgets/home_intro_section.dart';
+import 'package:edu_college/application/presentation/screens/home/widgets/statictict_count_section.dart';
+import 'package:edu_college/application/presentation/screens/home/widgets/why_choose_us_section.dart';
 import 'package:edu_college/application/presentation/utils/colors.dart';
 import 'package:edu_college/application/presentation/utils/const.dart';
 import 'package:edu_college/application/presentation/widgets/appbar/custom_sliver_appbar.dart';
@@ -34,23 +39,13 @@ class ScreenHome extends StatelessWidget {
               ),
             ),
           ),
-          SliverList.list(children: [
-            Container(
-              height: 600,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [
-                    kGrey.withOpacity(0.1),
-                    kGrey.withOpacity(0.4),
-                    kPurple.withOpacity(0.2),
-                    kGrey.withOpacity(0.2)
-                  ],
-                ),
-              ),
-
-            ),
-            const CompanyFooterSection()
+          SliverList.list(children: const [
+            HomeIntoSection(),
+            WhyChooseUsSection(),
+            StatictsCountsSection(),
+            CareerSupportAndPlacementSection(),
+            EmpoveringJourneySection(),
+            CompanyFooterSection(),
           ])
         ],
       ),
