@@ -26,28 +26,28 @@ final kRadius10 = BorderRadius.circular(10);
 final kRadius15 = BorderRadius.circular(15);
 final kRadius50 = BorderRadius.circular(50);
 
+const animationDuration = Duration(milliseconds: 500);
+const animationDurationLong = Duration(milliseconds: 800);
+const animationDurationFast = Duration(milliseconds: 300);
+
 TextStyle textMainHead = const TextStyle(
-  fontWeight: FontWeight.w500,
+  fontWeight: FontWeight.bold,
   fontSize: 40,
-  height: 2.1,
 );
 
 TextStyle textHeadStyle1 = const TextStyle(
   fontWeight: FontWeight.w500,
   fontSize: 25,
-  height: 2.1,
 );
 
 TextStyle textStyle1 = const TextStyle(
   fontWeight: FontWeight.w500,
   fontSize: 17,
-  height: 2.1,
 );
 
 TextStyle textThinStyle1 = const TextStyle(
   fontWeight: FontWeight.w400,
   fontSize: 15,
-  height: 2.1,
 );
 
 List<BoxShadow> boxShadow1 = const [
@@ -65,6 +65,9 @@ List<BoxShadow> boxShadow4 = [
       spreadRadius: 2, blurRadius: 5, offset: Offset(0, 1), color: kGrey)
 ];
 
-
+// logos
 String eduGuardianLogo = 'assets/logo/companylogonewfinal.png';
 String eduGuardianLogoWithText = 'assets/logo/eduGuardian_logo.png';
+
+// home images
+String graduvatedStudentImg = 'assets/images/graduvated_student.png';
