@@ -88,6 +88,10 @@ class _AppHeaderState extends State<AppHeader> {
             child: _buildNavItem('About')),
         const SizedBox(width: 40),
         GestureDetector(
+            onTap: () => context.go(Routes.trainer),
+            child: _buildNavItem('Trainer')),
+        const SizedBox(width: 40),
+        GestureDetector(
             onTap: () => context.go(Routes.courses),
             child: _buildNavItem('Courses')),
         const SizedBox(width: 40),
@@ -97,26 +101,20 @@ class _AppHeaderState extends State<AppHeader> {
   }
 
   Widget _buildNavItem(String text, {bool hasDropdown = false}) {
-    return Row(
-      children: [
-        Text(
-          text,
-          style: const TextStyle(
-            color: Colors.white,
-            fontSize: 16,
-            fontWeight: FontWeight.w500,
-          ),
+    return Row(children: [
+      Text(
+        text,
+        style: const TextStyle(
+          color: Colors.white,
+          fontSize: 16,
+          fontWeight: FontWeight.w500,
         ),
-        if (hasDropdown) ...[
-          const SizedBox(width: 6),
-          const Icon(
-            Icons.keyboard_arrow_down,
-            color: Colors.white,
-            size: 20,
-          ),
-        ],
-      ],
-    );
+      ),
+      if (hasDropdown) ...[
+        const SizedBox(width: 6),
+        const Icon(Icons.keyboard_arrow_down, color: Colors.white, size: 20)
+      ]
+    ]);
   }
 
   Widget _buildContactButton() {
