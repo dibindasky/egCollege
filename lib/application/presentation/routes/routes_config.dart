@@ -16,19 +16,19 @@ class GoRouterConfig {
     GoRoute(
         path: Routes.initial,
         builder: (context, state) {
-          changeWebTitle(context, 'eduGardian - Home');
-          return const ELearningLandingPage();
+          changeWebTitle(context, 'eduGuardian - Home');
+          return const ScreenHome();
         }),
     GoRoute(
         path: Routes.contactUs,
         builder: (context, state) {
-          changeWebTitle(context, 'eduGardian - Contact Us');
+          changeWebTitle(context, 'eduGuardian - Contact Us');
           return const ContactFormScreen();
         }),
     GoRoute(
         path: Routes.about,
         builder: (context, state) {
-          changeWebTitle(context, 'eduGardian - About');
+          changeWebTitle(context, 'eduGuardian - About');
           return const ELearningLandingPage();
         }),
   ];
