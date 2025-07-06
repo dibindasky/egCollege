@@ -13,17 +13,17 @@ class EmpoveringJourneySection extends StatelessWidget {
       'Government-Approved Training Provider',
       'Customized Training Solutions',
       'Expert Trainers with Industry Experience',
-      'Career-Focused Programs',
-      'Placement Assistance',
-      'Flexible Learning Options'
+      'Career-Driven Learning for Real-World Success',
+      'Dedicated Placement Support',
+      'Flexible Learning That Fits Your Lifestyle'
     ];
     final listContent = [
       '''EduGuardian is licensed and approved in Dubai, delivering certified programs recognized across industries and government bodies.''',
-      '''EduGuardian is licensed and approved in Dubai, delivering certified programs recognized across industries and government bodies.''',
-      '''Learn from certified instructors who bring real-world expertise and global insights to every session.''',
-      '''From certifications to diploma programs, we equip learners with practical skills for job readiness, career transitions, and promotions.''',
-      '''Our placement guidance connects learners with internships and job opportunities through CV reviews, interview prep, and industry links.''',
-      '''Choose from onsite, live online, or hybrid classes — designed to suit your schedule and learning style.'''
+      '''At eduGuardian, we understand that every learner and organization has unique goals. That’s why we offer customized training programs tailored to your specific needs.''',
+      '''Learn from Experts with Real-World Experience Our trainers are not just educators — they’re industry professionals with years of hands-on experience in their respective fields. At eduGuardian, you’ll be guided by mentors who bring practical insights, up-to-date knowledge, and real-world expertise to every session.''',
+      '''We offer programs that blend theory with practical skills, ensuring you’re ready for the demands of your chosen industry. Join us and turn your ambitions into achievements.''',
+      '''We’re committed to helping you land the right job. Our placement assistance program connects you with top employers, offers interview preparation, and provides career guidance to ensure your smooth transition from learning to earning.''',
+      '''Choose the learning mode that works best for you — whether it’s fully online, on-site, blended, or hybrid. Our flexible programs make it easy to balance your education with work, and other commitments.'''
     ];
 
     final colors = [kPurple, kGreen, kRed, kYellow, kIndigo, kBlue];
@@ -40,7 +40,7 @@ class EmpoveringJourneySection extends StatelessWidget {
             children: [
               kHeight40,
               Text(
-                'Empowering Your Journey\nwith Excellence in Education',
+                '''From Classroom to Career\nWe've Got You Covered''',
                 style: textMainHead,
                 textAlign: TextAlign.center,
               ),
