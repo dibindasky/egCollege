@@ -56,7 +56,7 @@ class Fee extends StatelessWidget {
                                         selectedRange: courseController
                                             .feeRanges[index]['label']);
                                   },
-                                  activeColor: kPurple))
+                                  activeColor: kGreen))
                             ]))),
                 kHeight5,
                 kHeight20

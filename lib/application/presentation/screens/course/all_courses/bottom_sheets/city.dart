@@ -68,7 +68,7 @@ class City extends StatelessWidget {
                                           whiChFilter: 'CITY',
                                         );
                                       },
-                                      activeColor: kPurple,
+                                      activeColor: kGreen,
                                     ))
                               ]));
                     }),

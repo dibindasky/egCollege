@@ -154,7 +154,7 @@ class _StaticetsCountTile extends StatelessWidget {
   Widget _buildUIEnhanceingCircle({
     double radius = 120,
     double innerRadius = 100,
-    Color backgroundColor = kPurple,
+    Color backgroundColor = kGreen,
     Color foregroundColor = kWhite,
     double? bottom,
     double? right,

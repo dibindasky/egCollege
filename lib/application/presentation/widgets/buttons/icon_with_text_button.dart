@@ -13,7 +13,8 @@ class AnimatedArrowTextButton extends StatefulWidget {
   });
 
   @override
-  State<AnimatedArrowTextButton> createState() => _AnimatedArrowTextButtonState();
+  State<AnimatedArrowTextButton> createState() =>
+      _AnimatedArrowTextButtonState();
 }
 
 class _AnimatedArrowTextButtonState extends State<AnimatedArrowTextButton> {
@@ -27,8 +28,8 @@ class _AnimatedArrowTextButtonState extends State<AnimatedArrowTextButton> {
       child: AnimatedContainer(
         duration: animationDurationFast,
         decoration: BoxDecoration(
-          color: _isHovered ? kPurple : Colors.transparent,
-          border: Border.all(color: kPurple, width: 2),
+          color: _isHovered ? kGreen : Colors.transparent,
+          border: Border.all(color: kGreen, width: 2),
           borderRadius: BorderRadius.circular(8),
         ),
         child: InkWell(
@@ -43,12 +44,12 @@ class _AnimatedArrowTextButtonState extends State<AnimatedArrowTextButton> {
                 Text(
                   widget.text,
                   style: textStyle1.copyWith(
-                    color: _isHovered ? kWhite : kPurple,
+                    color: _isHovered ? kWhite : kGreen,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 const SizedBox(width: 8),
-                Icon(Icons.arrow_forward, color: _isHovered ? kWhite : kPurple)
+                Icon(Icons.arrow_forward, color: _isHovered ? kWhite : kGreen)
               ],
             ),
           ),

@@ -60,7 +60,7 @@ class _AppHeaderState extends State<AppHeader> {
             width: 150,
             height: 80,
             decoration: BoxDecoration(
-              color: Colors.white.withOpacity(0.2),
+              color: Colors.white,
               borderRadius: BorderRadius.circular(15),
             ),
             child: Image.asset(eduGuardianLogoWithText, fit: BoxFit.contain)),
@@ -78,42 +78,25 @@ class _AppHeaderState extends State<AppHeader> {
     );
   }
 
-  Widget _buildDesktopNavigation() {
-    return Row(
-      children: [
-        // _buildNavItem('Tecnología'),
-        // const SizedBox(width: 40),
+  Widget _buildDesktopNavigation() => Row(children: [
         GestureDetector(
             onTap: () => context.go(Routes.about),
             child: _buildNavItem('About')),
         const SizedBox(width: 40),
         GestureDetector(
-            onTap: () => context.go(Routes.trainer),
-            child: _buildNavItem('Trainer')),
-        const SizedBox(width: 40),
-        GestureDetector(
             onTap: () => context.go(Routes.courses),
             child: _buildNavItem('Courses')),
         const SizedBox(width: 40),
-        _buildContactButton(),
-      ],
-    );
-  }
+        _buildContactButton()
+      ]);
 
-  Widget _buildNavItem(String text, {bool hasDropdown = false}) {
+  Widget _buildNavItem(String text) {
     return Row(children: [
       Text(
         text,
         style: const TextStyle(
-          color: Colors.white,
-          fontSize: 16,
-          fontWeight: FontWeight.w500,
-        ),
-      ),
-      if (hasDropdown) ...[
-        const SizedBox(width: 6),
-        const Icon(Icons.keyboard_arrow_down, color: Colors.white, size: 20)
-      ]
+            color: Colors.white, fontSize: 16, fontWeight: FontWeight.w500),
+      )
     ]);
   }
 
@@ -163,68 +146,54 @@ class MobileMenuOverlay extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AnimatedContainer(
-      duration: const Duration(milliseconds: 300),
-      height: isOpen ? MediaQuery.of(context).size.height : 0,
-      child: Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              Color(0xFF8A63D2),
-              Color(0xFF6B46C1),
-            ],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-          ),
-        ),
-        child: SafeArea(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // Header with close button
-              Padding(
-                padding: const EdgeInsets.all(20),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const Text(
-                      'Menu',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: onClose,
-                      child: const Icon(
-                        Icons.close,
-                        color: Colors.white,
-                        size: 28,
-                      ),
-                    ),
-                  ],
-                ),
+        duration: const Duration(milliseconds: 300),
+        height: isOpen ? MediaQuery.of(context).size.height : 0,
+        child: Container(
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  Color(0xFF8A63D2),
+                  Color(0xFF6B46C1),
+                ],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
               ),
-
-              // Menu Items
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: Column(
+            ),
+            child: SafeArea(
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      _buildMobileNavItem('About', hasDropdown: true),
-                      _buildMobileNavItem('Courses', hasDropdown: true),
-                      const SizedBox(height: 30),
-                      _buildMobileContactButton(context),
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
+                  // Header with close button
+                  Padding(
+                      padding: const EdgeInsets.all(20),
+                      child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            const Text(
+                              'Menu',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 24,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            GestureDetector(
+                                onTap: onClose,
+                                child: const Icon(Icons.close,
+                                    color: Colors.white, size: 28))
+                          ])),
+
+                  // Menu Items
+                  Expanded(
+                      child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 20),
+                          child: Column(children: [
+                            _buildMobileNavItem('About', hasDropdown: true),
+                            _buildMobileNavItem('Courses', hasDropdown: true),
+                            const SizedBox(height: 30),
+                            _buildMobileContactButton(context)
+                          ])))
+                ]))));
   }
 
   Widget _buildMobileNavItem(String text, {bool hasDropdown = false}) {

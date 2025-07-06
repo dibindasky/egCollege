@@ -1,5 +1,8 @@
 import 'dart:io';
 
+import 'package:edu_college/application/presentation/screens/about/universityof_bolton.dart';
+import 'package:edu_college/application/presentation/screens/home/widgets/app_bar.dart';
+import 'package:edu_college/application/presentation/screens/home/widgets/footer.dart';
 import 'package:edu_college/application/presentation/utils/colors.dart';
 import 'package:edu_college/application/presentation/utils/const.dart';
 import 'package:edu_college/application/presentation/widgets/background_image_hover.dart';
@@ -12,196 +15,182 @@ class AboutScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Scaffold(
           body: SingleChildScrollView(
-              child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: Column(children: [
-          // Header/Navigation
+              child: Column(
+        children: [
+          const AboutEduguardian(),
+          const UniversityOfBolton(),
+          Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Column(children: [
+                const AdventureLandingPage(), // Hero Section
+                // _buildHeroSection(),
+                // Partner Logos
+                _buildPartnerLogos(),
+                // Welcome Section
+                //_buildWelcomeSection(),
 
-          // Hero Section
-          _buildHeroSection(),
-          // Partner Logos
-          _buildPartnerLogos(),
-          // Welcome Section
-          _buildWelcomeSection(),
-          // Categories Section
-          _buildCategoriesSection(),
-          // Popular Courses
-          _buildPopularCoursesSection(),
-          // Features Section
-          _buildFeaturesSection(),
-          // Testimonials
-          _buildTestimonialsSection()
-        ]),
+                // Features Section
+                //  _buildFeaturesSection()
+              ])),
+          const CompanyFooterSection()
+        ],
       )));
 
-  Widget _buildHeroSection() => Container(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 60),
-      child: LayoutBuilder(builder: (context, constraints) {
-        bool isDesktop = constraints.maxWidth > 768;
+  // Widget _buildHeroSection() => Container(
+  //     padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 60),
+  //     child: LayoutBuilder(builder: (context, constraints) {
+  //       bool isDesktop = constraints.maxWidth > 768;
+  //       return isDesktop
+  //           ? _buildDesktopHero(context)
+  //           : _buildMobileHero(context);
+  //     }));
 
-        return isDesktop
-            ? _buildDesktopHero(context)
-            : _buildMobileHero(context);
-      }));
+  // Widget _buildDesktopHero(BuildContext context) => Row(
+  //       children: [
+  //         // Left Content
+  //         Expanded(
+  //             flex: 1,
+  //             child: Column(
+  //                 crossAxisAlignment: CrossAxisAlignment.start,
+  //                 children: [
+  //                   kHeight20,
+  //                   const Text('You learn\nbetter when we\nare together',
+  //                       style: TextStyle(
+  //                           fontSize: 48,
+  //                           fontWeight: FontWeight.bold,
+  //                           color: Color(0xFF1F2937),
+  //                           height: 1.2)),
+  //                   kHeight30,
+  //                   const Text(
+  //                     'Build skills with our courses and mentor from world-class companies.',
+  //                     style: TextStyle(
+  //                       fontSize: 18,
+  //                       color: Color(0xFF6B7280),
+  //                       height: 1.6,
+  //                     ),
+  //                   ),
+  //                   kHeight30,
+  //                   ElevatedButton(
+  //                       onPressed: () {
+  //                         showDialog(
+  //                             context: context,
+  //                             builder: (context) => const ImageUploadDialog());
+  //                       },
+  //                       style: ElevatedButton.styleFrom(
+  //                         backgroundColor: kPurple,
+  //                         foregroundColor: kWhite,
+  //                         padding: const EdgeInsets.symmetric(
+  //                             horizontal: 32, vertical: 16),
+  //                         shape: RoundedRectangleBorder(
+  //                           borderRadius: BorderRadius.circular(8),
+  //                         ),
+  //                       ),
+  //                       child: const Text('Start Learning',
+  //                           style: TextStyle(
+  //                               fontSize: 16, fontWeight: FontWeight.w600)))
+  //                 ])),
+  //         const SizedBox(width: 60),
+  //         // Right Image
+  //         Expanded(
+  //             flex: 1,
+  //             child: Container(
+  //                 height: 400,
+  //                 decoration: BoxDecoration(
+  //                   color: const Color(0xFFF3F4F6),
+  //                   borderRadius: BorderRadius.circular(20),
+  //                 ),
+  //                 child: Stack(children: [
+  //                   // Placeholder for hero image
+  //                   BackgroundImage(
+  //                       image: aboutUsImage1,
+  //                       isHovered: false,
+  //                       isNetWorkImage: false),
+  //                   // Floating elements
+  //                   Positioned(
+  //                       top: 30,
+  //                       right: 30,
+  //                       child: Container(
+  //                           width: 60,
+  //                           height: 60,
+  //                           decoration: BoxDecoration(
+  //                             color: kPurple,
+  //                             borderRadius: BorderRadius.circular(30),
+  //                           ),
+  //                           child: const Icon(Icons.play_arrow, color: kWhite)))
+  //                 ])))
+  //       ],
+  //     );
 
-  Widget _buildDesktopHero(BuildContext context) => Row(
-        children: [
-          // Left Content
-          Expanded(
-              flex: 1,
-              child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 12, vertical: 6),
-                        decoration: BoxDecoration(
-                          color: const Color(0xFFEFF6FF),
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: const Text('🎓 #1 Online Learning Platform',
-                            style: TextStyle(
-                                fontSize: 14,
-                                color: kPurple,
-                                fontWeight: FontWeight.w500))),
-                    kHeight20,
-                    const Text('You learn\nbetter when we\nare together',
-                        style: TextStyle(
-                            fontSize: 48,
-                            fontWeight: FontWeight.bold,
-                            color: Color(0xFF1F2937),
-                            height: 1.2)),
-                    kHeight30,
-                    const Text(
-                      'Build skills with our courses and mentor from world-class companies.',
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: Color(0xFF6B7280),
-                        height: 1.6,
-                      ),
-                    ),
-                    kHeight30,
-                    ElevatedButton(
-                        onPressed: () {
-                          showDialog(
-                              context: context,
-                              builder: (context) => const ImageUploadDialog());
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: kPurple,
-                          foregroundColor: kWhite,
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 32, vertical: 16),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                        ),
-                        child: const Text('Start Learning',
-                            style: TextStyle(
-                                fontSize: 16, fontWeight: FontWeight.w600)))
-                  ])),
-          const SizedBox(width: 60),
-          // Right Image
-          Expanded(
-              flex: 1,
-              child: Container(
-                  height: 400,
-                  decoration: BoxDecoration(
-                    color: const Color(0xFFF3F4F6),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: Stack(children: [
-                    // Placeholder for hero image
-                    BackgroundImage(
-                        image: aboutUsImage1,
-                        isHovered: false,
-                        isNetWorkImage: false),
-                    // Floating elements
-                    Positioned(
-                        top: 30,
-                        right: 30,
-                        child: Container(
-                            width: 60,
-                            height: 60,
-                            decoration: BoxDecoration(
-                              color: kPurple,
-                              borderRadius: BorderRadius.circular(30),
-                            ),
-                            child: const Icon(Icons.play_arrow, color: kWhite)))
-                  ])))
-        ],
-      );
-
-  Widget _buildMobileHero(BuildContext context) {
-    return Column(children: [
-      Container(
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-        decoration: BoxDecoration(
-          color: const Color(0xFFEFF6FF),
-          borderRadius: BorderRadius.circular(20),
-        ),
-        child: const Text(
-          '🎓 #1 Online Learning Platform',
-          style: TextStyle(
-            fontSize: 14,
-            color: kPurple,
-            fontWeight: FontWeight.w500,
-          ),
-        ),
-      ),
-      kHeight20,
-      const Text(
-        'You learn\nbetter when we\nare together',
-        textAlign: TextAlign.center,
-        style: TextStyle(
-          fontSize: 32,
-          fontWeight: FontWeight.bold,
-          color: Color(0xFF1F2937),
-          height: 1.2,
-        ),
-      ),
-      kHeight15,
-      const Text(
-        'Build skills with our courses and mentor from world-class companies.',
-        textAlign: TextAlign.center,
-        style: TextStyle(
-          fontSize: 16,
-          color: Color(0xFF6B7280),
-          height: 1.6,
-        ),
-      ),
-      kHeight30,
-      Container(
-        height: 250,
-        decoration: BoxDecoration(
-          color: const Color(0xFFF3F4F6),
-          borderRadius: BorderRadius.circular(20),
-        ),
-        child: const Center(
-          child: Icon(
-            Icons.people,
-            size: 80,
-            color: kPurple,
-          ),
-        ),
-      ),
-      kHeight20,
-      ElevatedButton(
-          onPressed: () {
-            showDialog(
-                context: context,
-                builder: (context) => const ImageUploadDialog());
-          },
-          style: ElevatedButton.styleFrom(
-              backgroundColor: kPurple,
-              foregroundColor: kWhite,
-              padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8))),
-          child: const Text('Start Learning',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600)))
-    ]);
-  }
+  // Widget _buildMobileHero(BuildContext context) {
+  //   return Column(children: [
+  //     // Container(
+  //     //   padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+  //     //   decoration: BoxDecoration(
+  //     //     color: const Color(0xFFEFF6FF),
+  //     //     borderRadius: BorderRadius.circular(20),
+  //     //   ),
+  //     //   child: const Text(
+  //     //     '🎓 #1 Online Learning Platform',
+  //     //     style: TextStyle(
+  //     //       fontSize: 14,
+  //     //       color: kPurple,
+  //     //       fontWeight: FontWeight.w500,
+  //     //     ),
+  //     //   ),
+  //     // ),
+  //     // kHeight20,
+  //     const Text(
+  //       'You learn\nbetter when we\nare together',
+  //       textAlign: TextAlign.center,
+  //       style: TextStyle(
+  //         fontSize: 32,
+  //         fontWeight: FontWeight.bold,
+  //         color: Color(0xFF1F2937),
+  //         height: 1.2,
+  //       ),
+  //     ),
+  //     kHeight15,
+  //     const Text(
+  //       'Build skills with our courses and mentor from world-class companies.',
+  //       textAlign: TextAlign.center,
+  //       style: TextStyle(
+  //         fontSize: 16,
+  //         color: Color(0xFF6B7280),
+  //         height: 1.6,
+  //       ),
+  //     ),
+  //     kHeight30,
+  //     Container(
+  //       height: 250,
+  //       decoration: BoxDecoration(
+  //         color: const Color(0xFFF3F4F6),
+  //         borderRadius: BorderRadius.circular(20),
+  //       ),
+  //       child: const Center(
+  //         child: Icon(
+  //           Icons.people,
+  //           size: 80,
+  //           color: kPurple,
+  //         ),
+  //       ),
+  //     ),
+  //     kHeight20,
+  //     ElevatedButton(
+  //         onPressed: () {
+  //           showDialog(
+  //               context: context,
+  //               builder: (context) => const ImageUploadDialog());
+  //         },
+  //         style: ElevatedButton.styleFrom(
+  //             backgroundColor: kPurple,
+  //             foregroundColor: kWhite,
+  //             padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+  //             shape: RoundedRectangleBorder(
+  //                 borderRadius: BorderRadius.circular(8))),
+  //         child: const Text('Start Learning',
+  //             style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600)))
+  //   ]);
+  // }
 
   Widget _buildPartnerLogos() {
     return Container(
@@ -257,6 +246,7 @@ class AboutScreen extends StatelessWidget {
           return isDesktop
               ? Row(children: [
                   Expanded(
+                      flex: 2,
                       child: Container(
                           height: 300,
                           decoration: BoxDecoration(
@@ -281,38 +271,39 @@ class AboutScreen extends StatelessWidget {
                                     child: const Icon(Icons.analytics,
                                         color: kWhite)))
                           ]))),
-                  kWidth30,
+                  kWidth50,
                   Expanded(
+                      flex: 3,
                       child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                        const Text(
-                          'Welcome to eduGuardian\ne-Learning Centre',
-                          style: TextStyle(
-                              fontSize: 36,
-                              fontWeight: FontWeight.bold,
-                              color: Color(0xFF1F2937),
-                              height: 1.2),
-                        ),
-                        kHeight30,
-                        // const Text(
-                        //   'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-                        //   style: TextStyle(
-                        //     fontSize: 16,
-                        //     color: Color(0xFF6B7280),
-                        //     height: 1.6,
-                        //   ),
-                        // ),
-                        kHeight20,
-                        TextButton(
-                            onPressed: () {},
-                            child: const Text('Learn More →',
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  color: kPurple,
-                                  fontWeight: FontWeight.w600,
-                                )))
-                      ]))
+                            const Text(
+                              'Welcome to eduGuardian\ne-Learning Centre',
+                              style: TextStyle(
+                                  fontSize: 36,
+                                  fontWeight: FontWeight.bold,
+                                  color: Color(0xFF1F2937),
+                                  height: 1.2),
+                            ),
+                            kHeight30,
+                            // const Text(
+                            //   'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                            //   style: TextStyle(
+                            //     fontSize: 16,
+                            //     color: Color(0xFF6B7280),
+                            //     height: 1.6,
+                            //   ),
+                            // ),
+                            kHeight20,
+                            TextButton(
+                                onPressed: () {},
+                                child: const Text('Learn More →',
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      color: kGreen,
+                                      fontWeight: FontWeight.w600,
+                                    )))
+                          ]))
                 ])
               : Column(children: [
                   Container(
@@ -325,92 +316,23 @@ class AboutScreen extends StatelessWidget {
                           child:
                               Icon(Icons.computer, size: 60, color: kWhite))),
                   kHeight30,
-                  const Text(
-                    'Welcome to eduGuardian\ne-Learning Centre',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 28,
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xFF1F2937),
-                      height: 1.2,
-                    ),
-                  ),
-                  kHeight15,
-                  // const Text(
-                  //   'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-                  //   textAlign: TextAlign.center,
-                  //   style: TextStyle(
-                  //     fontSize: 16,
-                  //     color: Color(0xFF6B7280),
-                  //     height: 1.6,
-                  //   ),
-                  // ),
+                  const Text('Welcome to eduGuardian\ne-Learning Centre',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          fontSize: 28,
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xFF1F2937),
+                          height: 1.2)),
                   kHeight20,
                   TextButton(
                       onPressed: () {},
                       child: const Text('Learn More →',
                           style: TextStyle(
                               fontSize: 16,
-                              color: kPurple,
+                              color: kGreen,
                               fontWeight: FontWeight.w600)))
                 ]);
         }));
-  }
-
-  Widget _buildCategoriesSection() {
-    return Container(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 60),
-        child: Column(children: [
-          const Text(
-            'Our Top Categories',
-            style: TextStyle(
-              fontSize: 32,
-              fontWeight: FontWeight.bold,
-              color: Color(0xFF1F2937),
-            ),
-          ),
-          kHeight40,
-          LayoutBuilder(builder: (context, constraints) {
-            bool isDesktop = constraints.maxWidth > 768;
-
-            return isDesktop
-                ? Row(
-                    children: [
-                      Expanded(
-                          child: _buildCategoryCard('Design', Icons.palette,
-                              const Color(0xFF8B5CF6))),
-                      const SizedBox(width: 20),
-                      Expanded(
-                          child: _buildCategoryCard('Development', Icons.code,
-                              const Color(0xFF06B6D4))),
-                      const SizedBox(width: 20),
-                      Expanded(
-                          child: _buildCategoryCard('Marketing',
-                              Icons.trending_up, const Color(0xFF10B981))),
-                      const SizedBox(width: 20),
-                      Expanded(
-                          child: _buildCategoryCard('Business',
-                              Icons.business_center, const Color(0xFFF59E0B))),
-                    ],
-                  )
-                : GridView.count(
-                    crossAxisCount: 2,
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    crossAxisSpacing: 16,
-                    mainAxisSpacing: 16,
-                    children: [
-                        _buildCategoryCard(
-                            'Design', Icons.palette, const Color(0xFF8B5CF6)),
-                        _buildCategoryCard(
-                            'Development', Icons.code, const Color(0xFF06B6D4)),
-                        _buildCategoryCard('Marketing', Icons.trending_up,
-                            const Color(0xFF10B981)),
-                        _buildCategoryCard('Business', Icons.business_center,
-                            const Color(0xFFF59E0B))
-                      ]);
-          })
-        ]));
   }
 
   Widget _buildCategoryCard(String title, IconData icon, Color color) {
@@ -426,10 +348,10 @@ class AboutScreen extends StatelessWidget {
             width: 60,
             height: 60,
             decoration: BoxDecoration(
-              color: kPurple.withOpacity(0.1),
+              color: kGreen.withOpacity(0.1),
               borderRadius: BorderRadius.circular(30),
             ),
-            child: Icon(icon, color: kPurple, size: 30),
+            child: Icon(icon, color: kGreen, size: 30),
           ),
           kHeight15,
           Text(title,
@@ -437,127 +359,6 @@ class AboutScreen extends StatelessWidget {
                   fontSize: 18,
                   fontWeight: FontWeight.w600,
                   color: Color(0xFF1F2937)))
-        ]));
-  }
-
-  Widget _buildPopularCoursesSection() {
-    return Container(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 60),
-        child: Column(children: [
-          Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-            const Text(
-              'Most Popular Course',
-              style: TextStyle(
-                fontSize: 32,
-                fontWeight: FontWeight.bold,
-                color: Color(0xFF1F2937),
-              ),
-            ),
-            TextButton(
-                onPressed: () {},
-                child: const Text('View All →',
-                    style: TextStyle(
-                        fontSize: 16,
-                        color: Color(0xFF4F46E5),
-                        fontWeight: FontWeight.w600)))
-          ]),
-          kHeight40,
-          LayoutBuilder(builder: (context, constraints) {
-            bool isDesktop = constraints.maxWidth > 768;
-
-            return isDesktop
-                ? Row(
-                    children: [
-                      Expanded(
-                          child: _buildCourseCard(
-                              'UI/UX Design', 'John Doe', 4.8, 120)),
-                      const SizedBox(width: 20),
-                      Expanded(
-                          child: _buildCourseCard(
-                              'Web Development', 'Jane Smith', 4.9, 98)),
-                      const SizedBox(width: 20),
-                      Expanded(
-                          child: _buildCourseCard(
-                              'Digital Marketing', 'Bob Johnson', 4.7, 85)),
-                    ],
-                  )
-                : Column(children: [
-                    _buildCourseCard('UI/UX Design', 'John Doe', 4.8, 120),
-                    kHeight15,
-                    _buildCourseCard('Web Development', 'Jane Smith', 4.9, 98),
-                    kHeight15,
-                    _buildCourseCard(
-                        'Digital Marketing', 'Bob Johnson', 4.7, 85)
-                  ]);
-          })
-        ]));
-  }
-
-  Widget _buildCourseCard(
-      String title, String instructor, double rating, int students) {
-    return Container(
-        decoration: BoxDecoration(
-            color: kWhite,
-            borderRadius: BorderRadius.circular(12),
-            boxShadow: [
-              BoxShadow(
-                  color: Colors.black.withOpacity(0.05),
-                  blurRadius: 10,
-                  offset: const Offset(0, 4))
-            ]),
-        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Container(
-              height: 180,
-              decoration: const BoxDecoration(
-                color: Color(0xFFF3F4F6),
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(12),
-                  topRight: Radius.circular(12),
-                ),
-              ),
-              child: const Center(
-                  child: Icon(Icons.play_circle_fill,
-                      size: 60, color: Color(0xFF9CA3AF)))),
-          Padding(
-              padding: const EdgeInsets.all(16),
-              child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      title,
-                      style: const TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w600,
-                        color: Color(0xFF1F2937),
-                      ),
-                    ),
-                    const SizedBox(height: 8),
-                    Text(
-                      'by $instructor',
-                      style: const TextStyle(
-                        fontSize: 14,
-                        color: Color(0xFF6B7280),
-                      ),
-                    ),
-                    const SizedBox(height: 12),
-                    Row(children: [
-                      const Icon(Icons.star,
-                          color: Color(0xFFF59E0B), size: 16),
-                      const SizedBox(width: 4),
-                      Text(
-                        '$rating',
-                        style: const TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500,
-                          color: Color(0xFF1F2937),
-                        ),
-                      ),
-                      const SizedBox(width: 12),
-                      Text('($students)',
-                          style: const TextStyle(
-                              fontSize: 14, color: Color(0xFF6B7280)))
-                    ])
-                  ]))
         ]));
   }
 
@@ -599,7 +400,7 @@ class AboutScreen extends StatelessWidget {
                       child: Container(
                           height: 400,
                           decoration: BoxDecoration(
-                            color: kPurple,
+                            color: kGreen,
                             borderRadius: BorderRadius.circular(20),
                           ),
                           child: const Center(
@@ -621,7 +422,7 @@ class AboutScreen extends StatelessWidget {
                   Container(
                     height: 250,
                     decoration: BoxDecoration(
-                      color: kPurple,
+                      color: kGreen,
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: const Center(
@@ -651,7 +452,7 @@ class AboutScreen extends StatelessWidget {
         width: 24,
         height: 24,
         decoration: BoxDecoration(
-          color: kPurple,
+          color: kGreen,
           borderRadius: BorderRadius.circular(12),
         ),
         child: const Icon(Icons.check, color: kWhite, size: 16),
@@ -674,87 +475,6 @@ class AboutScreen extends StatelessWidget {
                 fontSize: 14, color: Color(0xFF6B7280), height: 1.4))
       ]))
     ]);
-  }
-
-  Widget _buildTestimonialsSection() {
-    return Container(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 60),
-        child: Column(children: [
-          const Text('Our Trusted Students',
-              style: TextStyle(
-                  fontSize: 32,
-                  fontWeight: FontWeight.bold,
-                  color: Color(0xFF1F2937))),
-          kHeight15,
-          const Text('What our students say about us',
-              style: TextStyle(fontSize: 16, color: Color(0xFF6B7280))),
-          kHeight40,
-          LayoutBuilder(builder: (context, constraints) {
-            bool isDesktop = constraints.maxWidth > 768;
-            return isDesktop
-                ? Row(children: [
-                    Expanded(
-                        child: Container(
-                            padding: const EdgeInsets.all(24),
-                            decoration: BoxDecoration(
-                                color: kWhite,
-                                borderRadius: BorderRadius.circular(12),
-                                boxShadow: [
-                                  BoxShadow(
-                                      color: Colors.black.withOpacity(0.05),
-                                      blurRadius: 10,
-                                      offset: const Offset(0, 4))
-                                ]),
-                            child: Column(children: [
-                              const Text(
-                                  '"This platform has completely transformed my learning experience. The courses are well-structured and the instructors are amazing!"',
-                                  style: TextStyle(
-                                      fontSize: 16,
-                                      color: Color(0xFF1F2937),
-                                      height: 1.6)),
-                              kHeight30,
-                              ListView.builder(
-                                  shrinkWrap: true,
-                                  itemCount: students.length,
-                                  itemBuilder: (context, index) {
-                                    final student = students[index];
-                                    return Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            vertical: 10),
-                                        child: Row(children: [
-                                          const CircleAvatar(
-                                            radius: 25,
-                                            backgroundColor: kPurple,
-                                            child: Icon(Icons.person,
-                                                color: kWhite),
-                                          ),
-                                          const SizedBox(width: 12),
-                                          Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  student['name'] ?? '',
-                                                  style: const TextStyle(
-                                                    fontSize: 16,
-                                                    fontWeight: FontWeight.w600,
-                                                    color: Color(0xFF1F2937),
-                                                  ),
-                                                ),
-                                                Text(
-                                                    student['profession'] ?? '',
-                                                    style: const TextStyle(
-                                                        fontSize: 14,
-                                                        color:
-                                                            Color(0xFF6B7280)))
-                                              ])
-                                        ]));
-                                  })
-                            ])))
-                  ])
-                : kEmpty;
-          })
-        ]));
   }
 }
 
@@ -844,32 +564,31 @@ class _ImageUploadDialogState extends State<ImageUploadDialog> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // Header
-            Row(
-              children: [
-                Container(
-                  width: 40,
-                  height: 40,
-                  decoration: BoxDecoration(
-                    color: Colors.grey.shade200,
-                    shape: BoxShape.circle,
-                  ),
-                  child: const Icon(
-                    Icons.person_add,
-                    color: Colors.grey,
-                    size: 20,
-                  ),
+            Row(children: [
+              Container(
+                width: 40,
+                height: 40,
+                decoration: BoxDecoration(
+                  color: Colors.grey.shade200,
+                  shape: BoxShape.circle,
                 ),
-                const SizedBox(width: 16),
-                const Text(
-                  'New User',
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black87,
-                  ),
+                child: const Icon(
+                  Icons.person_add,
+                  color: Colors.grey,
+                  size: 20,
                 ),
-                const Spacer(),
-                Container(
+              ),
+              const SizedBox(width: 16),
+              const Text(
+                'New User',
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black87,
+                ),
+              ),
+              const Spacer(),
+              Container(
                   width: 32,
                   height: 32,
                   decoration: BoxDecoration(
@@ -877,17 +596,11 @@ class _ImageUploadDialogState extends State<ImageUploadDialog> {
                     borderRadius: BorderRadius.circular(6),
                   ),
                   child: IconButton(
-                    padding: EdgeInsets.zero,
-                    onPressed: () => Navigator.of(context).pop(),
-                    icon: const Icon(
-                      Icons.close,
-                      size: 18,
-                      color: Colors.grey,
-                    ),
-                  ),
-                ),
-              ],
-            ),
+                      padding: EdgeInsets.zero,
+                      onPressed: () => Navigator.of(context).pop(),
+                      icon: const Icon(Icons.close,
+                          size: 18, color: Colors.grey)))
+            ]),
 
             const SizedBox(height: 32),
 
@@ -1094,4 +807,442 @@ Future<File?> showImageUploadDialog(BuildContext context) async {
       return const ImageUploadDialog();
     },
   );
+}
+
+class AboutEduguardian extends StatelessWidget {
+  const AboutEduguardian({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Column(
+      children: [
+        AppHeader(),
+        // Add some top spacing
+        SizedBox(height: 60),
+        // Main branding section
+        BrandingSection(),
+        // Add some bottom spacing
+        SizedBox(height: 60),
+      ],
+    );
+  }
+}
+
+class BrandingSection extends StatelessWidget {
+  const BrandingSection({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: double.infinity,
+      child: Stack(
+        children: [
+          // Curved background
+          CustomPaint(
+            size: const Size(double.infinity, 600),
+            painter: CurvedBackgroundPainter(),
+          ),
+          // Content
+          Center(
+            child: Column(
+              children: [
+                // Title
+                const Text(
+                  "eduGuardian",
+                  style: TextStyle(
+                    fontSize: 56,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                    letterSpacing: -1,
+                  ),
+                ),
+                kHeight40,
+                // Decorative line
+                Container(
+                  width: 120,
+                  height: 3,
+                  decoration: BoxDecoration(
+                    color: Colors.grey[400],
+                    borderRadius: BorderRadius.circular(2),
+                  ),
+                ),
+                const SizedBox(height: 40),
+                // Description
+                ConstrainedBox(
+                  constraints: const BoxConstraints(maxWidth: 600),
+                  child: Text(
+                    "eduGuardian is a leading education platform offering career-focused academic programs and internationally recognized qualifications. We provide students with the opportunity to complete their diploma and degree studies with us in the UAE and in Singapore, through flexible and industry-relevant learning options. Our programs are designed to meet the needs of today’s learners — combining academic excellence, real-world skills, and progression routes to higher education. From academic studies to full degree completion, eduGuardian supports your entire journey with personalized guidance, modern classrooms, and a strong focus on your career success. Begin your future with eduGuardian — your gateway to quality education and global opportunities.",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.grey[600],
+                      height: 1.6,
+                      letterSpacing: 0.3,
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 50),
+                // Buttons
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class CustomButton extends StatelessWidget {
+  final String text;
+  final bool isOutlined;
+  final VoidCallback onPressed;
+  final bool fullWidth;
+
+  const CustomButton({
+    super.key,
+    required this.text,
+    required this.isOutlined,
+    required this.onPressed,
+    this.fullWidth = false,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+        width: fullWidth ? double.infinity : 180,
+        height: 55,
+        child: ElevatedButton(
+            onPressed: onPressed,
+            style: ElevatedButton.styleFrom(
+              backgroundColor:
+                  isOutlined ? Colors.transparent : const Color(0xFF4A5FE7),
+              foregroundColor: isOutlined ? Colors.black : Colors.white,
+              elevation: isOutlined ? 0 : 3,
+              side: isOutlined
+                  ? BorderSide(
+                      color: Colors.grey[400]!,
+                      width: 1.5,
+                    )
+                  : null,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(30),
+              ),
+              shadowColor: isOutlined
+                  ? Colors.transparent
+                  : Colors.black.withOpacity(0.1),
+            ),
+            child: Text(text,
+                style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                    letterSpacing: 0.5))));
+  }
+}
+
+class CurvedBackgroundPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint()
+      ..color = const Color(0xFFF5F5F5)
+      ..style = PaintingStyle.fill;
+
+    final path = Path();
+
+    // Start from top left
+    path.moveTo(0, 0);
+
+    // Top edge with slight curve
+    path.quadraticBezierTo(
+      size.width * 0.5,
+      40,
+      size.width,
+      0,
+    );
+
+    // Right edge
+    path.lineTo(size.width, size.height * 0.85);
+
+    // Bottom curve
+    path.quadraticBezierTo(
+      size.width * 0.7,
+      size.height * 0.95,
+      size.width * 0.3,
+      size.height * 0.85,
+    );
+
+    path.quadraticBezierTo(
+      size.width * 0.1,
+      size.height * 0.8,
+      0,
+      size.height * 0.75,
+    );
+
+    // Left edge back to start
+    path.lineTo(0, 0);
+
+    canvas.drawPath(path, paint);
+
+    // Add subtle decorative circles
+    final circlePaint = Paint()
+      ..color = Colors.white.withOpacity(0.3)
+      ..style = PaintingStyle.fill;
+
+    // Large circle on the left
+    canvas.drawCircle(
+      Offset(-50, size.height * 0.3),
+      120,
+      circlePaint,
+    );
+
+    // Medium circle on the right
+    canvas.drawCircle(
+      Offset(size.width + 30, size.height * 0.6),
+      80,
+      circlePaint,
+    );
+
+    // Small circle at bottom
+    canvas.drawCircle(
+      Offset(size.width * 0.8, size.height * 0.9),
+      50,
+      circlePaint,
+    );
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) {
+    return false;
+  }
+}
+
+class AdventureLandingPage extends StatelessWidget {
+  const AdventureLandingPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        height: 700,
+        decoration: const BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [Color(0xFFE8F4F8), Color(0xFFF0F8FF)])),
+        child: Stack(children: [
+          // Background layers with botanical elements
+          Positioned(
+              right: 0,
+              top: 30,
+              child: Image.asset('assets/images/classImage1.jpeg')),
+          Positioned(
+              right: 0,
+              bottom: 30,
+              child: SizedBox(
+                width: 400,
+                height: 300,
+                child: Image.asset('assets/images/classImage2.jpeg'),
+              )),
+
+          // Middle gradient layer
+          Positioned(
+              right: 500,
+              bottom: 30,
+              child: SizedBox(
+                  width: 400,
+                  height: 300,
+                  child: Image.asset('assets/images/classImage3.jpeg'))),
+
+          // Front gradient layer
+          Positioned(
+              right: 500,
+              top: 30,
+              child: SizedBox(
+                  width: 400,
+                  height: 300,
+                  child: Image.asset('assets/images/classImage4.jpeg'))),
+
+          // Main content
+          Positioned(
+              left: 40,
+              top: 100,
+              child: Container(
+                  width: 400,
+                  padding: const EdgeInsets.all(40),
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(20),
+                      boxShadow: [
+                        BoxShadow(
+                            color: Colors.black.withOpacity(0.1),
+                            blurRadius: 20,
+                            offset: const Offset(0, 10))
+                      ]),
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        kHeight60,
+                        // Logo/Icon
+                        Container(
+                          width: 40,
+                          height: 40,
+                          decoration: BoxDecoration(
+                            color: kGreen,
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: const Icon(
+                            Icons.explore,
+                            color: Colors.white,
+                            size: 24,
+                          ),
+                        ),
+
+                        const SizedBox(height: 30),
+
+                        // Main heading
+                        const Text(
+                          'Classroom Images',
+                          style: TextStyle(
+                            fontSize: 28,
+                            fontWeight: FontWeight.w300,
+                            color: Color(0xFF2E7D32),
+                            letterSpacing: 1.2,
+                          ),
+                        ),
+                        const Text(
+                          'ADVENTURES',
+                          style: TextStyle(
+                            fontSize: 32,
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xFF2E7D32),
+                            letterSpacing: 1.2,
+                          ),
+                        ),
+
+                        kHeight40,
+
+                        // // Description
+                        const Text(
+                          'Join Our Quest',
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.black87,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+
+                        // const SizedBox(height: 10),
+
+                        // Text(
+                        //   'Discover breathtaking destinations, create unforgettable memories, and embrace the journey that awaits you.',
+                        //   style: TextStyle(
+                        //     fontSize: 14,
+                        //     color: Colors.grey[600],
+                        //     height: 1.5,
+                        //   ),
+                        // ),
+
+                        // const SizedBox(height: 30),
+
+                        // // CTA Button
+                        // ElevatedButton(
+                        //   onPressed: () {
+                        //     // Handle button press
+                        //   },
+                        //   style: ElevatedButton.styleFrom(
+                        //     backgroundColor: kGreen,
+                        //     foregroundColor: Colors.white,
+                        //     padding: const EdgeInsets.symmetric(
+                        //       horizontal: 30,
+                        //       vertical: 15,
+                        //     ),
+                        //     shape: RoundedRectangleBorder(
+                        //       borderRadius: BorderRadius.circular(25),
+                        //     ),
+                        //     elevation: 3,
+                        //   ),
+                        //   child: const Text(
+                        //     'START YOUR JOURNEY',
+                        //     style: TextStyle(
+                        //       fontSize: 14,
+                        //       fontWeight: FontWeight.w600,
+                        //       letterSpacing: 0.5,
+                        //     ),
+                        //   ),
+                        // ),
+
+                        kHeight40,
+
+                        // Social proof dots
+                        Row(
+                            children: List.generate(
+                                5,
+                                (index) => Container(
+                                    width: 8,
+                                    height: 8,
+                                    margin: const EdgeInsets.only(right: 8),
+                                    decoration: BoxDecoration(
+                                      color:
+                                          index < 3 ? kGreen : Colors.grey[300],
+                                      shape: BoxShape.circle,
+                                    )))),
+                        kHeight60
+                      ])))
+        ]));
+  }
+}
+
+class BotanicalPainter extends CustomPainter {
+  final List<Color> colors;
+  final int leafCount;
+
+  BotanicalPainter({required this.colors, required this.leafCount});
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint()
+      ..style = PaintingStyle.fill
+      ..strokeWidth = 2;
+
+    // Draw various botanical elements
+    for (int i = 0; i < leafCount; i++) {
+      final centerX = (size.width * 0.2) + (i * size.width * 0.1);
+      final centerY = (size.height * 0.2) + (i * size.height * 0.08);
+
+      // Rotate each leaf
+      canvas.save();
+      canvas.translate(centerX, centerY);
+      canvas.rotate((i * 0.5) + (i * 0.3));
+
+      // Draw leaf shape
+      paint.color = colors[i % colors.length].withOpacity(0.7);
+      final leafPath = Path();
+      leafPath.moveTo(0, 0);
+      leafPath.quadraticBezierTo(15, -10, 30, 0);
+      leafPath.quadraticBezierTo(15, 10, 0, 0);
+      canvas.drawPath(leafPath, paint);
+
+      // Draw stem
+      paint.color = colors[(i + 1) % colors.length].withOpacity(0.5);
+      canvas.drawLine(
+        const Offset(0, 0),
+        const Offset(-10, 15),
+        paint..strokeWidth = 2,
+      );
+
+      canvas.restore();
+    }
+
+    // Draw floating particles
+    for (int i = 0; i < 20; i++) {
+      final x = (size.width * 0.1) + (i * size.width * 0.04);
+      final y = (size.height * 0.1) + (i * size.height * 0.05);
+
+      paint.color = colors[i % colors.length].withOpacity(0.3);
+      canvas.drawCircle(Offset(x, y), 2 + (i % 3), paint);
+    }
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }

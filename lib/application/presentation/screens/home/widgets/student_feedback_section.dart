@@ -3,7 +3,7 @@ import 'package:edu_college/application/presentation/utils/const.dart';
 import 'package:flutter/material.dart';
 
 class StudentFeedbackSection extends StatelessWidget {
-  const StudentFeedbackSection({Key? key}) : super(key: key);
+  const StudentFeedbackSection({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +41,7 @@ class StudentFeedbackSection extends StatelessWidget {
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
           decoration: BoxDecoration(
-            color: kPurple.withOpacity(0.2),
+            color: kGreen.withOpacity(0.2),
             borderRadius: kRadius50,
           ),
           child: Text(
@@ -49,7 +49,7 @@ class StudentFeedbackSection extends StatelessWidget {
             style: TextStyle(
               fontSize: isMobile ? 12 : 14,
               fontWeight: FontWeight.w600,
-              color: kPurple,
+              color: kGreen,
               letterSpacing: 0.5,
             ),
           ),
@@ -67,7 +67,7 @@ class StudentFeedbackSection extends StatelessWidget {
               TextSpan(
                 text: "Feedback",
                 style: TextStyle(
-                  color: kPurple,
+                  color: kGreen,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -212,12 +212,12 @@ class StudentFeedbackSection extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
-                  color: kPurple.withOpacity(0.1),
+                  color: kGreen.withOpacity(0.1),
                   borderRadius: kRadius10,
                 ),
                 child: const Icon(
                   Icons.format_quote,
-                  color: kPurple,
+                  color: kGreen,
                   size: 24,
                 ),
               ),
@@ -245,7 +245,7 @@ class StudentFeedbackSection extends StatelessWidget {
             child: Text(
               '',
               style: textThinStyle1.copyWith(
-                color: kPurple,
+                color: kGreen,
                 fontWeight: FontWeight.w600,
                 fontSize: 13,
               ),
