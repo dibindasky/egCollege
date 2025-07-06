@@ -30,7 +30,7 @@ class HomeIntroSection extends StatelessWidget {
           child: isDesktop
               ? Row(
                   children: [
-                    _contentSection(),
+                    Expanded(child: _contentSection()),
                     Expanded(child: _animationSection()),
                   ],
                 )
@@ -54,39 +54,37 @@ class HomeIntroSection extends StatelessWidget {
     );
   }
 
-  Expanded _contentSection({bool isDesktop = true}) {
-    return Expanded(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          // if (!isDesktop) kHeight50,
-          Row(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Image.asset(eduGuardianLogo),
-              kWidth10,
-              Text(
-                'Welcome to\neduGuardian',
-                style: textStyle1.copyWith(color: kWhite),
-              )
-            ],
+  Widget _contentSection({bool isDesktop = true}) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        // if (!isDesktop) kHeight50,
+        Row(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Image.asset(eduGuardianLogo),
+            kWidth10,
+            Text(
+              'Welcome to\neduGuardian',
+              style: textStyle1.copyWith(color: kWhite),
+            )
+          ],
+        ),
+        kHeight50,
+        Text(
+          'Achieving\nExcellence Together',
+          style: textMainHead.copyWith(fontSize: 36, color: kWhite),
+        ),
+        ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 500),
+          child: Text(
+            'We will be with you throughout your entire educational journey — from admission, travel, hostel, and accommodation, to training and landing a job.',
+            style: textThinStyle1.copyWith(color: kWhite),
           ),
-          kHeight50,
-          Text(
-            'Achieving\nExlence Together',
-            style: textMainHead.copyWith(fontSize: 36, color: kWhite),
-          ),
-          ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 500),
-            child: Text(
-              'We will be with you throughout your entire educational journey — from admission, travel, hostel, and accommodation, to training and landing a job.',
-              style: textThinStyle1.copyWith(color: kWhite),
-            ),
-          )
-        ],
-      ),
+        )
+      ],
     );
   }
 
