@@ -44,7 +44,7 @@ class _BuildImageSection extends StatelessWidget {
       infinite: true,
       duration: const Duration(seconds: 20),
       child: Image.asset(
-        graduvatedStudentImg,
+        studentWithGlobe,
       ),
     );
   }

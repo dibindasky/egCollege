@@ -71,6 +71,11 @@ String eduGuardianLogoWithText = 'assets/logo/eduGuardian_logo.png';
 
 // home images
 String graduvatedStudentImg = 'assets/images/graduvated_student.png';
+String studentsCheering = 'assets/images/students.png';
+String studentWithGlobe = 'assets/images/student_globe.png';
+String studentLearning = 'assets/images/student_learning.png';
+String studentDiscussing = 'assets/images/students_discucssion.png';
+String studentGraduvated = 'assets/images/student_graduvated.png';
 
 const String token =
     'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MzU2ZDE5ZGY0MWE3MzhmOGRiYTI1YyIsImVtYWlsIjoiZmViaW5iYWJ5ODc5QGdtYWlsLmNvbSIsImZ1bGxOYW1lIjoiRmViaW4iLCJyb2xlIjoidXNlciIsImlhdCI6MTc0ODMzMTgwMX0.SX93iYi8uWAE6Q-dQBNMB6XNVnmRbi-daNidQRbaBkw';

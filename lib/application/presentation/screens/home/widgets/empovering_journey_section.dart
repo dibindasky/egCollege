@@ -78,7 +78,8 @@ class EmpoveringJourneySection extends StatelessWidget {
                                 child: _GridTileEmpoveingJourney(
                                   listHeading: listHeading[index],
                                   listContent: listContent[index],
-                                  color: colors[index],
+                                  // color: colors[index],
+                                  color: kPurple,
                                 ),
                               ),
                             );
