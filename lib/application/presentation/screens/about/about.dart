@@ -1,6 +1,10 @@
+import 'dart:io';
+
 import 'package:edu_college/application/presentation/utils/colors.dart';
 import 'package:edu_college/application/presentation/utils/const.dart';
+import 'package:edu_college/application/presentation/widgets/background_image_hover.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 class AboutScreen extends StatelessWidget {
   const AboutScreen({super.key});
@@ -8,37 +12,39 @@ class AboutScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Scaffold(
           body: SingleChildScrollView(
-              child: Column(children: [
-        // Header/Navigation
+              child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: Column(children: [
+          // Header/Navigation
 
-        // Hero Section
-        _buildHeroSection(),
-        // Partner Logos
-        _buildPartnerLogos(),
-        // Welcome Section
-        _buildWelcomeSection(),
-        // Categories Section
-        _buildCategoriesSection(),
-        // Popular Courses
-        _buildPopularCoursesSection(),
-        // Features Section
-        _buildFeaturesSection(),
-        // Testimonials
-        _buildTestimonialsSection()
-      ])));
+          // Hero Section
+          _buildHeroSection(),
+          // Partner Logos
+          _buildPartnerLogos(),
+          // Welcome Section
+          _buildWelcomeSection(),
+          // Categories Section
+          _buildCategoriesSection(),
+          // Popular Courses
+          _buildPopularCoursesSection(),
+          // Features Section
+          _buildFeaturesSection(),
+          // Testimonials
+          _buildTestimonialsSection()
+        ]),
+      )));
 
   Widget _buildHeroSection() => Container(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 60),
-        child: LayoutBuilder(
-          builder: (context, constraints) {
-            bool isDesktop = constraints.maxWidth > 768;
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 60),
+      child: LayoutBuilder(builder: (context, constraints) {
+        bool isDesktop = constraints.maxWidth > 768;
 
-            return isDesktop ? _buildDesktopHero() : _buildMobileHero();
-          },
-        ),
-      );
+        return isDesktop
+            ? _buildDesktopHero(context)
+            : _buildMobileHero(context);
+      }));
 
-  Widget _buildDesktopHero() => Row(
+  Widget _buildDesktopHero(BuildContext context) => Row(
         children: [
           // Left Content
           Expanded(
@@ -56,7 +62,7 @@ class AboutScreen extends StatelessWidget {
                         child: const Text('🎓 #1 Online Learning Platform',
                             style: TextStyle(
                                 fontSize: 14,
-                                color: Color(0xFF1E40AF),
+                                color: kPurple,
                                 fontWeight: FontWeight.w500))),
                     kHeight20,
                     const Text('You learn\nbetter when we\nare together',
@@ -76,9 +82,13 @@ class AboutScreen extends StatelessWidget {
                     ),
                     kHeight30,
                     ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          showDialog(
+                              context: context,
+                              builder: (context) => const ImageUploadDialog());
+                        },
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color(0xFF059669),
+                          backgroundColor: kPurple,
                           foregroundColor: kWhite,
                           padding: const EdgeInsets.symmetric(
                               horizontal: 32, vertical: 16),
@@ -102,16 +112,10 @@ class AboutScreen extends StatelessWidget {
                   ),
                   child: Stack(children: [
                     // Placeholder for hero image
-                    Center(
-                        child: Container(
-                            width: 200,
-                            height: 200,
-                            decoration: BoxDecoration(
-                              color: const Color(0xFFE5E7EB),
-                              borderRadius: BorderRadius.circular(100),
-                            ),
-                            child: const Icon(Icons.people,
-                                size: 80, color: Color(0xFF9CA3AF)))),
+                    BackgroundImage(
+                        image: aboutUsImage1,
+                        isHovered: false,
+                        isNetWorkImage: false),
                     // Floating elements
                     Positioned(
                         top: 30,
@@ -120,7 +124,7 @@ class AboutScreen extends StatelessWidget {
                             width: 60,
                             height: 60,
                             decoration: BoxDecoration(
-                              color: const Color(0xFF4F46E5),
+                              color: kPurple,
                               borderRadius: BorderRadius.circular(30),
                             ),
                             child: const Icon(Icons.play_arrow, color: kWhite)))
@@ -128,7 +132,7 @@ class AboutScreen extends StatelessWidget {
         ],
       );
 
-  Widget _buildMobileHero() {
+  Widget _buildMobileHero(BuildContext context) {
     return Column(children: [
       Container(
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
@@ -140,7 +144,7 @@ class AboutScreen extends StatelessWidget {
           '🎓 #1 Online Learning Platform',
           style: TextStyle(
             fontSize: 14,
-            color: Color(0xFF1E40AF),
+            color: kPurple,
             fontWeight: FontWeight.w500,
           ),
         ),
@@ -177,15 +181,19 @@ class AboutScreen extends StatelessWidget {
           child: Icon(
             Icons.people,
             size: 80,
-            color: Color(0xFF9CA3AF),
+            color: kPurple,
           ),
         ),
       ),
       kHeight20,
       ElevatedButton(
-          onPressed: () {},
+          onPressed: () {
+            showDialog(
+                context: context,
+                builder: (context) => const ImageUploadDialog());
+          },
           style: ElevatedButton.styleFrom(
-              backgroundColor: const Color(0xFF059669),
+              backgroundColor: kPurple,
               foregroundColor: kWhite,
               padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
               shape: RoundedRectangleBorder(
@@ -256,13 +264,10 @@ class AboutScreen extends StatelessWidget {
                             borderRadius: BorderRadius.circular(20),
                           ),
                           child: Stack(children: [
-                            const Center(
-                              child: Icon(
-                                Icons.computer,
-                                size: 80,
-                                color: kWhite,
-                              ),
-                            ),
+                            BackgroundImage(
+                                image: aboutUsImage2,
+                                isHovered: false,
+                                isNetWorkImage: false),
                             Positioned(
                                 top: 20,
                                 right: 20,
@@ -282,7 +287,7 @@ class AboutScreen extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                         const Text(
-                          'Welcome to Besnik\ne-Learning Centre',
+                          'Welcome to eduGuardian\ne-Learning Centre',
                           style: TextStyle(
                               fontSize: 36,
                               fontWeight: FontWeight.bold,
@@ -304,7 +309,7 @@ class AboutScreen extends StatelessWidget {
                             child: const Text('Learn More →',
                                 style: TextStyle(
                                   fontSize: 16,
-                                  color: Color(0xFF4F46E5),
+                                  color: kPurple,
                                   fontWeight: FontWeight.w600,
                                 )))
                       ]))
@@ -321,7 +326,7 @@ class AboutScreen extends StatelessWidget {
                               Icon(Icons.computer, size: 60, color: kWhite))),
                   kHeight30,
                   const Text(
-                    'Welcome to Besnik\ne-Learning Centre',
+                    'Welcome to eduGuardian\ne-Learning Centre',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 28,
@@ -346,7 +351,7 @@ class AboutScreen extends StatelessWidget {
                       child: const Text('Learn More →',
                           style: TextStyle(
                               fontSize: 16,
-                              color: Color(0xFF4F46E5),
+                              color: kPurple,
                               fontWeight: FontWeight.w600)))
                 ]);
         }));
@@ -421,10 +426,10 @@ class AboutScreen extends StatelessWidget {
             width: 60,
             height: 60,
             decoration: BoxDecoration(
-              color: color.withOpacity(0.1),
+              color: kPurple.withOpacity(0.1),
               borderRadius: BorderRadius.circular(30),
             ),
-            child: Icon(icon, color: color, size: 30),
+            child: Icon(icon, color: kPurple, size: 30),
           ),
           kHeight15,
           Text(title,
@@ -594,7 +599,7 @@ class AboutScreen extends StatelessWidget {
                       child: Container(
                           height: 400,
                           decoration: BoxDecoration(
-                            color: const Color(0xFFF59E0B),
+                            color: kPurple,
                             borderRadius: BorderRadius.circular(20),
                           ),
                           child: const Center(
@@ -603,7 +608,7 @@ class AboutScreen extends StatelessWidget {
                 ])
               : Column(children: [
                   const Text(
-                    'Welcome to Besnik\ne-Learning Centre',
+                    'Welcome to eduGuardian\ne-Learning Centre',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 28,
@@ -616,7 +621,7 @@ class AboutScreen extends StatelessWidget {
                   Container(
                     height: 250,
                     decoration: BoxDecoration(
-                      color: const Color(0xFFF59E0B),
+                      color: kPurple,
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: const Center(
@@ -646,7 +651,7 @@ class AboutScreen extends StatelessWidget {
         width: 24,
         height: 24,
         decoration: BoxDecoration(
-          color: const Color(0xFF10B981),
+          color: kPurple,
           borderRadius: BorderRadius.circular(12),
         ),
         child: const Icon(Icons.check, color: kWhite, size: 16),
@@ -713,32 +718,37 @@ class AboutScreen extends StatelessWidget {
                                   itemCount: students.length,
                                   itemBuilder: (context, index) {
                                     final student = students[index];
-                                    return Row(children: [
-                                      const CircleAvatar(
-                                        radius: 25,
-                                        backgroundColor: Color(0xFF4F46E5),
-                                        child:
-                                            Icon(Icons.person, color: kWhite),
-                                      ),
-                                      const SizedBox(width: 12),
-                                      Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              student['name'] ?? '',
-                                              style: const TextStyle(
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.w600,
-                                                color: Color(0xFF1F2937),
-                                              ),
-                                            ),
-                                            Text(student['profession'] ?? '',
-                                                style: const TextStyle(
-                                                    fontSize: 14,
-                                                    color: Color(0xFF6B7280)))
-                                          ])
-                                    ]);
+                                    return Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: 10),
+                                        child: Row(children: [
+                                          const CircleAvatar(
+                                            radius: 25,
+                                            backgroundColor: kPurple,
+                                            child: Icon(Icons.person,
+                                                color: kWhite),
+                                          ),
+                                          const SizedBox(width: 12),
+                                          Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  student['name'] ?? '',
+                                                  style: const TextStyle(
+                                                    fontSize: 16,
+                                                    fontWeight: FontWeight.w600,
+                                                    color: Color(0xFF1F2937),
+                                                  ),
+                                                ),
+                                                Text(
+                                                    student['profession'] ?? '',
+                                                    style: const TextStyle(
+                                                        fontSize: 14,
+                                                        color:
+                                                            Color(0xFF6B7280)))
+                                              ])
+                                        ]));
                                   })
                             ])))
                   ])
@@ -760,3 +770,328 @@ final List<Map<String, String>> students = [
   {'name': 'Ava Thomas', 'profession': 'Human Resources'},
   {'name': 'Benjamin Jackson', 'profession': 'UX/UI Designer'},
 ];
+
+class ImageUploadDialog extends StatefulWidget {
+  const ImageUploadDialog({super.key});
+
+  @override
+  State<ImageUploadDialog> createState() => _ImageUploadDialogState();
+}
+
+class _ImageUploadDialogState extends State<ImageUploadDialog> {
+  File? _selectedImage;
+  final ImagePicker _picker = ImagePicker();
+
+  Future<void> _pickImage() async {
+    try {
+      final XFile? image = await _picker.pickImage(
+        source: ImageSource.gallery,
+        maxWidth: 1920,
+        maxHeight: 1080,
+        imageQuality: 85,
+      );
+
+      if (image != null) {
+        final file = File(image.path);
+        final fileSize = await file.length();
+
+        // Check if file size is less than 1MB (1048576 bytes)
+        if (fileSize > 1048576) {
+          if (mounted) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text('Image size must be less than 1MB'),
+                backgroundColor: Colors.red,
+              ),
+            );
+          }
+          return;
+        }
+
+        setState(() {
+          _selectedImage = file;
+        });
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Error picking image: $e'),
+            backgroundColor: Colors.red,
+          ),
+        );
+      }
+    }
+  }
+
+  void _clearImage() {
+    setState(() {
+      _selectedImage = null;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Dialog(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16),
+      ),
+      child: Container(
+        width: 400,
+        padding: const EdgeInsets.all(24),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Header
+            Row(
+              children: [
+                Container(
+                  width: 40,
+                  height: 40,
+                  decoration: BoxDecoration(
+                    color: Colors.grey.shade200,
+                    shape: BoxShape.circle,
+                  ),
+                  child: const Icon(
+                    Icons.person_add,
+                    color: Colors.grey,
+                    size: 20,
+                  ),
+                ),
+                const SizedBox(width: 16),
+                const Text(
+                  'New User',
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black87,
+                  ),
+                ),
+                const Spacer(),
+                Container(
+                  width: 32,
+                  height: 32,
+                  decoration: BoxDecoration(
+                    color: Colors.grey.shade300,
+                    borderRadius: BorderRadius.circular(6),
+                  ),
+                  child: IconButton(
+                    padding: EdgeInsets.zero,
+                    onPressed: () => Navigator.of(context).pop(),
+                    icon: const Icon(
+                      Icons.close,
+                      size: 18,
+                      color: Colors.grey,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+
+            const SizedBox(height: 32),
+
+            // Upload Section
+            const Text(
+              'Upload an image',
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w500,
+                color: Colors.black87,
+              ),
+            ),
+
+            const SizedBox(height: 16),
+
+            // File Selection Area
+            Container(
+              width: double.infinity,
+              height: 120,
+              decoration: BoxDecoration(
+                color: Colors.grey.shade50,
+                borderRadius: BorderRadius.circular(8),
+                border: Border.all(color: Colors.grey.shade300),
+              ),
+              child: _selectedImage != null
+                  ? Stack(
+                      children: [
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(8),
+                          child: Image.file(
+                            _selectedImage!,
+                            width: double.infinity,
+                            height: 120,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                        Positioned(
+                          top: 8,
+                          right: 8,
+                          child: GestureDetector(
+                            onTap: _clearImage,
+                            child: Container(
+                              width: 24,
+                              height: 24,
+                              decoration: const BoxDecoration(
+                                color: Colors.red,
+                                shape: BoxShape.circle,
+                              ),
+                              child: const Icon(
+                                Icons.close,
+                                color: Colors.white,
+                                size: 16,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    )
+                  : Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        ElevatedButton(
+                          onPressed: _pickImage,
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.white,
+                            foregroundColor: Colors.black87,
+                            elevation: 0,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8),
+                              side: BorderSide(color: Colors.grey.shade300),
+                            ),
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 24,
+                              vertical: 12,
+                            ),
+                          ),
+                          child: const Text(
+                            'Choose File',
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 8),
+                        Text(
+                          'No file chosen',
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: Colors.grey.shade600,
+                          ),
+                        ),
+                      ],
+                    ),
+            ),
+
+            const SizedBox(height: 12),
+
+            // File size limit text
+            Text(
+              '* Maximum upload 1mb',
+              style: TextStyle(
+                fontSize: 12,
+                color: Colors.grey.shade600,
+              ),
+            ),
+
+            const SizedBox(height: 32),
+
+            // Action Buttons
+            Row(
+              children: [
+                // Clear Button
+                Expanded(
+                  child: OutlinedButton(
+                    onPressed: _clearImage,
+                    style: OutlinedButton.styleFrom(
+                      foregroundColor: Colors.red,
+                      side: const BorderSide(color: Colors.red),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      padding: const EdgeInsets.symmetric(vertical: 12),
+                    ),
+                    child: const Text(
+                      'Clear',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+                ),
+
+                const SizedBox(width: 12),
+
+                // Cancel Button
+                Expanded(
+                  child: OutlinedButton(
+                    onPressed: () => Navigator.of(context).pop(),
+                    style: OutlinedButton.styleFrom(
+                      foregroundColor: Colors.black87,
+                      side: BorderSide(color: Colors.grey.shade300),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      padding: const EdgeInsets.symmetric(vertical: 12),
+                    ),
+                    child: const Text(
+                      'Cancel',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+                ),
+
+                const SizedBox(width: 12),
+
+                // Confirm Button
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: () {
+                      if (_selectedImage != null) {
+                        Navigator.of(context).pop(_selectedImage);
+                      } else {
+                        Navigator.of(context).pop();
+                      }
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.blue,
+                      foregroundColor: Colors.white,
+                      elevation: 0,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      padding: const EdgeInsets.symmetric(vertical: 12),
+                    ),
+                    child: const Text(
+                      'Confirm',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+// Usage example - Call this function to show the dialog
+Future<File?> showImageUploadDialog(BuildContext context) async {
+  return await showDialog<File?>(
+    context: context,
+    barrierDismissible: false,
+    builder: (BuildContext context) {
+      return const ImageUploadDialog();
+    },
+  );
+}
