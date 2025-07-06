@@ -21,7 +21,7 @@ class CourseListBuilder extends StatelessWidget {
       if (courseController.isloading.value) {
         return const SizedBox(
             height: 400,
-            child: Center(child: CircularProgressIndicator(color: kPurple)));
+            child: Center(child: CircularProgressIndicator(color: kGreen)));
       }
       if (courses.isEmpty) {
         return SizedBox(

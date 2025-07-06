@@ -26,7 +26,7 @@ class EmpoveringJourneySection extends StatelessWidget {
       '''Choose from onsite, live online, or hybrid classes — designed to suit your schedule and learning style.'''
     ];
 
-    final colors = [kPurple, kGreen, kRed, kYellow, kIndigo, kBlue];
+    final colors = [kGreen, kGreen, kRed, kYellow, kIndigo, kBlue];
 
     return LayoutBuilder(
       builder: (context, constraints) {
@@ -79,7 +79,7 @@ class EmpoveringJourneySection extends StatelessWidget {
                                   listHeading: listHeading[index],
                                   listContent: listContent[index],
                                   // color: colors[index],
-                                  color: kPurple,
+                                  color: kGreen,
                                 ),
                               ),
                             );

@@ -90,7 +90,7 @@ class _CourseTabsState extends State<CourseTabs> {
                                         : null,
                                     borderColor: index ==
                                             courseController.selectedTab.value
-                                        ? kPurple
+                                        ? kGreen
                                         : kGrey,
                                     rightMargin: 5,
                                     text: tabs[index],
