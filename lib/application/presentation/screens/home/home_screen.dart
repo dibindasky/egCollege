@@ -57,7 +57,7 @@ class _ScreenHomeState extends State<ScreenHome> {
             controller: _scrollController,
             slivers: [
               // Show the CustomSliverAppbar only after scrolling down
-              if (_isScrolled)
+              if (_isScrolled && MediaQuery.of(context).size.width > 800)
                 CustomSliverAppbar(
                   title: '',
                   logoWithText: true,
@@ -95,7 +95,7 @@ class _ScreenHomeState extends State<ScreenHome> {
                 ),
               SliverList.list(children: const [
                 AppHeader(),
-                HomeIntoSection(),
+                HomeIntroSection(),
                 WhyChooseUsSection(),
                 StatictsCountsSection(),
                 CareerSupportAndPlacementSection(),
@@ -118,14 +118,14 @@ class _ScreenHomeState extends State<ScreenHome> {
       Text(
         text,
         style: const TextStyle(
-          color:kPurple,
+          color: kWhite,
           fontSize: 16,
           fontWeight: FontWeight.w500,
         ),
       ),
       if (hasDropdown) ...[
         const SizedBox(width: 6),
-        const Icon(Icons.keyboard_arrow_down, color:kPurple, size: 20)
+        const Icon(Icons.keyboard_arrow_down, color: kWhite, size: 20)
       ]
     ]);
   }
@@ -136,16 +136,16 @@ class _ScreenHomeState extends State<ScreenHome> {
         child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
             decoration: BoxDecoration(
-              color: kPurple.withOpacity(0.15),
+              color: kWhite.withOpacity(0.15),
               borderRadius: BorderRadius.circular(25),
               border: Border.all(
-                color: kPurple,
+                color: kWhite,
                 width: 1.5,
               ),
             ),
             child: const Text('Contact Us',
                 style: TextStyle(
-                    color: kPurple,
+                    color: kWhite,
                     fontSize: 16,
                     fontWeight: FontWeight.w600))));
   }

@@ -27,7 +27,7 @@ class CustomSliverAppbar extends StatelessWidget {
     return SliverAppBar(
       expandedHeight: expandedHeight,
       pinned: true,
-      backgroundColor: knill,
+      backgroundColor: kPurple.withOpacity(0.5),
       elevation: 5,
       flexibleSpace: ClipRect(
         child: BackdropFilter(
