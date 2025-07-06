@@ -36,7 +36,7 @@ class CustomSliverAppbar extends StatelessWidget {
             padding: padding,
             child: Row(
               crossAxisAlignment: crossAxisAlignment,
-              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 kWidth20,
                 Image.asset(

@@ -13,8 +13,9 @@ class StudentFeedbackSection extends StatelessWidget {
       child: LayoutBuilder(
         builder: (context, constraints) {
           bool isMobile = constraints.maxWidth < 768;
-          bool isTablet = constraints.maxWidth >= 768 && constraints.maxWidth < 1024;
-          
+          bool isTablet =
+              constraints.maxWidth >= 768 && constraints.maxWidth < 1024;
+
           return Padding(
             padding: EdgeInsets.symmetric(
               horizontal: isMobile ? 20 : (isTablet ? 40 : 80),
@@ -40,7 +41,7 @@ class StudentFeedbackSection extends StatelessWidget {
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
           decoration: BoxDecoration(
-            color: const Color(0xFF7DD3FC).withOpacity(0.2),
+            color: kPurple.withOpacity(0.2),
             borderRadius: kRadius50,
           ),
           child: Text(
@@ -48,7 +49,7 @@ class StudentFeedbackSection extends StatelessWidget {
             style: TextStyle(
               fontSize: isMobile ? 12 : 14,
               fontWeight: FontWeight.w600,
-              color: const Color(0xFF0369A1),
+              color: kPurple,
               letterSpacing: 0.5,
             ),
           ),
@@ -61,12 +62,12 @@ class StudentFeedbackSection extends StatelessWidget {
               color: kIndigo,
               fontSize: isMobile ? 32 : 48,
             ),
-            children: [
-              const TextSpan(text: "Student's "),
+            children: const [
+              TextSpan(text: "Student's "),
               TextSpan(
                 text: "Feedback",
                 style: TextStyle(
-                  color: const Color(0xFF06B6D4),
+                  color: kPurple,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -80,49 +81,55 @@ class StudentFeedbackSection extends StatelessWidget {
   Widget _buildFeedbackCards(double screenWidth) {
     bool isMobile = screenWidth < 768;
     bool isTablet = screenWidth >= 768 && screenWidth < 1024;
-    
+
     List<FeedbackData> feedbacks = [
       FeedbackData(
         name: "Lilash Vamadevan",
         course: "Student @ Project Management",
-        imageUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
-        feedback: "I recently completed my PMP training here, A huge shoutout to Mr. Sajid, the coordinator, for his outstanding support throughout the enrollment process. His prompt responses, clear guidance, and warm demeanour made everything seamless. Kudos to Mr.",
+        imageUrl:
+            "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
+        feedback:
+            "I recently completed my PMP training here, A huge shoutout to Mr. Sajid, the coordinator, for his outstanding support throughout the enrollment process. His prompt responses, clear guidance, and warm demeanour made everything seamless. Kudos to Mr.",
       ),
       FeedbackData(
         name: "Sajjad Hossen",
         course: "Student @ CSWIP",
-        imageUrl: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
-        feedback: "I am grateful to be part of such an incredible Institute and want to thank the team for their hard work and dedication. Your efforts have made a significant impact, and it shows. Each team member has been invaluable in their collaboration, support, and",
+        imageUrl:
+            "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
+        feedback:
+            "I am grateful to be part of such an incredible Institute and want to thank the team for their hard work and dedication. Your efforts have made a significant impact, and it shows. Each team member has been invaluable in their collaboration, support, and",
       ),
       FeedbackData(
         name: "Anas Shaikh",
         course: "Student @ Digital Marketing",
-        imageUrl: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
-        feedback: "EduGuardian....! They help you in achieving your dreams and making them come true...! I took a Digital marketing course from EduGuardian Dubai, they provided application-level training catering to the most updated trends in the digital space. I was impressed",
+        imageUrl:
+            "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
+        feedback:
+            "EduGuardian....! They help you in achieving your dreams and making them come true...! I took a Digital marketing course from EduGuardian Dubai, they provided application-level training catering to the most updated trends in the digital space. I was impressed",
       ),
     ];
 
     if (isMobile) {
       return Column(
-        children: feedbacks.map((feedback) => 
-          Padding(
-            padding: const EdgeInsets.only(bottom: 20),
-            child: _buildFeedbackCard(feedback),
-          )
-        ).toList(),
+        children: feedbacks
+            .map((feedback) => Padding(
+                  padding: const EdgeInsets.only(bottom: 20),
+                  child: _buildFeedbackCard(feedback),
+                ))
+            .toList(),
       );
     }
-    
+
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: feedbacks.map((feedback) => 
-        Expanded(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: _buildFeedbackCard(feedback),
-          ),
-        )
-      ).toList(),
+      children: feedbacks
+          .map((feedback) => Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: _buildFeedbackCard(feedback),
+                ),
+              ))
+          .toList(),
     );
   }
 
@@ -168,7 +175,7 @@ class StudentFeedbackSection extends StatelessWidget {
                     errorBuilder: (context, error, stackTrace) {
                       return Container(
                         color: kGrey.withOpacity(0.3),
-                        child: Icon(
+                        child: const Icon(
                           Icons.person,
                           color: kGrey,
                           size: 30,
@@ -205,12 +212,12 @@ class StudentFeedbackSection extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
-                  color: const Color(0xFF7DD3FC).withOpacity(0.1),
+                  color: kPurple.withOpacity(0.1),
                   borderRadius: kRadius10,
                 ),
-                child: Icon(
+                child: const Icon(
                   Icons.format_quote,
-                  color: const Color(0xFF06B6D4),
+                  color: kPurple,
                   size: 24,
                 ),
               ),
@@ -236,9 +243,9 @@ class StudentFeedbackSection extends StatelessWidget {
               print('Read more clicked for ${feedback.name}');
             },
             child: Text(
-              'Read More',
+              '',
               style: textThinStyle1.copyWith(
-                color: const Color(0xFF06B6D4),
+                color: kPurple,
                 fontWeight: FontWeight.w600,
                 fontSize: 13,
               ),

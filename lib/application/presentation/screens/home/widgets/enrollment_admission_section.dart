@@ -35,7 +35,7 @@ class EnrollmentAdmissionSection extends StatelessWidget {
             EnrollmentAdmissionCard(
               description: descriptions.first,
               title: listTitle.first,
-              picture: '',
+              picture: studentsCheering,
               showIcons: true,
             ),
             kHeight30,
@@ -46,13 +46,13 @@ class EnrollmentAdmissionSection extends StatelessWidget {
                   children: [
                     EnrollmentAdmissionCard(
                       description: descriptions[1],
-                      picture: '',
+                      picture: studentDiscussing,
                       title: listTitle[1],
                     ),
                     kHeight30,
                     EnrollmentAdmissionCard(
                       description: descriptions[2],
-                      picture: '',
+                      picture: studentGraduvated,
                       title: listTitle[2],
                     )
                   ],
@@ -64,7 +64,7 @@ class EnrollmentAdmissionSection extends StatelessWidget {
                   Expanded(
                     child: EnrollmentAdmissionCard(
                       description: descriptions[1],
-                      picture: '',
+                      picture: studentDiscussing,
                       title: listTitle[1],
                     ),
                   ),
@@ -72,7 +72,7 @@ class EnrollmentAdmissionSection extends StatelessWidget {
                   Expanded(
                     child: EnrollmentAdmissionCard(
                       description: descriptions[2],
-                      picture: '',
+                      picture: studentGraduvated,
                       title: listTitle[2],
                     ),
                   )
@@ -185,22 +185,27 @@ class EnrollmentAdmissionCard extends StatelessWidget {
                 ),
               ],
             ),
-            child: Image.network(
-              'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-              fit: BoxFit.cover,
-              errorBuilder: (context, error, stackTrace) {
-                return Container(
-                  color: kGrey.withOpacity(0.3),
-                  child: const Center(
-                    child: Icon(
-                      Icons.person,
-                      size: 100,
-                      color: kGrey,
-                    ),
+            child: picture.isNotEmpty
+                ? Image.asset(
+                    picture,
+                    fit: BoxFit.cover,
+                  )
+                : Image.network(
+                    'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
+                    fit: BoxFit.cover,
+                    errorBuilder: (context, error, stackTrace) {
+                      return Container(
+                        color: kGrey.withOpacity(0.3),
+                        child: const Center(
+                          child: Icon(
+                            Icons.person,
+                            size: 100,
+                            color: kGrey,
+                          ),
+                        ),
+                      );
+                    },
                   ),
-                );
-              },
-            ),
           ),
         ),
       ),

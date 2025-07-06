@@ -1,6 +1,8 @@
+import 'package:edu_college/application/presentation/routes/routes.dart';
 import 'package:edu_college/application/presentation/utils/colors.dart';
 import 'package:edu_college/application/presentation/utils/const.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class OurProgramsSection extends StatelessWidget {
   const OurProgramsSection({Key? key}) : super(key: key);
@@ -24,9 +26,9 @@ class OurProgramsSection extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                _buildHeader(isMobile),
+                _buildHeader(isMobile, context),
                 kHeight50,
-                _buildProgramsGrid(constraints.maxWidth),
+                _buildProgramsGrid(constraints.maxWidth,context),
               ],
             ),
           );
@@ -35,7 +37,7 @@ class OurProgramsSection extends StatelessWidget {
     );
   }
 
-  Widget _buildHeader(bool isMobile) {
+  Widget _buildHeader(bool isMobile, BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -47,16 +49,15 @@ class OurProgramsSection extends StatelessWidget {
             fontSize: isMobile ? 32 : 40,
           ),
         ),
-        if (!isMobile) _buildBrowseButton(),
+        if (!isMobile) _buildBrowseButton(context),
       ],
     );
   }
 
-  Widget _buildBrowseButton() {
+  Widget _buildBrowseButton(BuildContext context) {
     return InkWell(
       onTap: () {
-        // Handle browse programs action
-        print('Browse Vibe Education Programs clicked');
+        context.go(Routes.courses);
       },
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
@@ -70,14 +71,14 @@ class OurProgramsSection extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              'Browse Vibe Education Programs',
+              'Browse EduGuardian Programs',
               style: textStyle1.copyWith(
                 color: kIndigo,
                 fontWeight: FontWeight.w600,
               ),
             ),
             kWidth10,
-            Icon(
+            const Icon(
               Icons.arrow_forward,
               color: kIndigo,
               size: 20,
@@ -88,7 +89,7 @@ class OurProgramsSection extends StatelessWidget {
     );
   }
 
-  Widget _buildProgramsGrid(double screenWidth) {
+  Widget _buildProgramsGrid(double screenWidth,BuildContext context) {
     bool isMobile = screenWidth < 768;
     bool isTablet = screenWidth >= 768 && screenWidth < 1024;
 
@@ -113,7 +114,7 @@ class OurProgramsSection extends StatelessWidget {
             kPurple,
           ),
           kHeight30,
-          _buildBrowseButton(),
+          _buildBrowseButton(context),
         ],
       );
     }
@@ -125,7 +126,7 @@ class OurProgramsSection extends StatelessWidget {
           child: _buildProgramCard(
             'UK Diploma',
             'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-            kBlue,
+            kPurple,
           ),
         ),
         kWidth20,
@@ -134,7 +135,7 @@ class OurProgramsSection extends StatelessWidget {
           child: _buildProgramCard(
             'Training & Career',
             'https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-            kGreen,
+            kPurple,
           ),
         ),
         kWidth20,
@@ -185,7 +186,7 @@ class OurProgramsSection extends StatelessWidget {
                     errorBuilder: (context, error, stackTrace) {
                       return Container(
                         color: kGrey.withOpacity(0.3),
-                        child: Center(
+                        child: const Center(
                           child: Icon(
                             Icons.image,
                             size: 50,
