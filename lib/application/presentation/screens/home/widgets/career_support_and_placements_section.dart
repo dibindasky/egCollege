@@ -65,9 +65,9 @@ class _GuidanceInfDetail extends StatelessWidget {
           text: TextSpan(
             style: textMainHead.copyWith(color: kBlack),
             children: [
-              const TextSpan(text: 'Launch Your Career with '),
+              const TextSpan(text: 'Shape Your Future with '),
               TextSpan(
-                text: 'Placement Guidance',
+                text: 'Internship & Job Guidance',
                 style: textMainHead.copyWith(
                     color: kPurple, fontWeight: FontWeight.bold),
               ),
@@ -76,47 +76,80 @@ class _GuidanceInfDetail extends StatelessWidget {
         ),
         kHeight10,
         Text(
-          'EduGuardian supports students beyond the classroom with career-oriented placement guidance. Our team provides resume building, interview coaching, and access to top internship and job opportunities across the UAE.',
+          '''At eduGuardian, your success doesn't stop at the classroom. We offer career-focused support to help you gain real-world experience and transition confidently into the workforce.''',
           style: textThinStyle1.copyWith(
             color: kGrey,
           ),
         ),
         kHeight10,
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Column(
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  '83%',
-                  style: textMainHead,
-                ),
-                Text(
-                  'Students Placed',
-                  style: textStyle1,
+                const Text('💼', style: TextStyle(fontSize: 20)),
+                kWidth10,
+                Expanded(
+                  child: Text(
+                    'Our support includes:',
+                    style: textStyle1.copyWith(color: kBlack, fontWeight: FontWeight.bold),
+                  ),
                 ),
               ],
             ),
-            Container(
-              margin: const EdgeInsets.symmetric(horizontal: 20),
-              height: 50,
-              width: 1,
-              color: kBlack,
+            kHeight10,
+            Padding(
+              padding: const EdgeInsets.only(left: 30),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('• Professional CV & resume preparation', style: textThinStyle1),
+                  const SizedBox(height: 6),
+                  Text('• Interview coaching & personal branding', style: textThinStyle1),
+                  const SizedBox(height: 6),
+                  Text('• Access to 100+ active internship and job partners across the UAE & Singapore', style: textThinStyle1),
+                ],
+              ),
             ),
-            Column(
-              children: [
-                Text(
-                  '100+',
-                  style: textMainHead,
-                ),
-                Text(
-                  'Internship partners',
-                  style: textStyle1,
-                ),
-              ],
-            )
           ],
         ),
+        // kHeight10,
+        // Row(
+        //   mainAxisAlignment: MainAxisAlignment.center,
+        //   children: [
+        //     Column(
+        //       children: [
+        //         Text(
+        //           '83%',
+        //           style: textMainHead,
+        //         ),
+        //         Text(
+        //           'Students Placed',
+        //           style: textStyle1,
+        //         ),
+        //       ],
+        //     ),
+        //     Container(
+        //       margin: const EdgeInsets.symmetric(horizontal: 20),
+        //       height: 50,
+        //       width: 1,
+        //       color: kBlack,
+        //     ),
+        //     Column(
+        //       children: [
+        //         Text(
+        //           '100+',
+        //           style: textMainHead,
+        //         ),
+        //         Text(
+        //           'Internship partners',
+        //           style: textStyle1,
+        //         ),
+        //       ],
+        //     )
+        //   ],
+        // ),
         kHeight20,
       ],
     );

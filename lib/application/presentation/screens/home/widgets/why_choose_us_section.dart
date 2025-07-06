@@ -77,7 +77,7 @@ class _BuildCarrierInfoSection extends StatelessWidget {
             children: [
               const TextSpan(text: 'Build Your '),
               TextSpan(
-                text: 'Career',
+                text: 'Global Career',
                 style: textMainHead.copyWith(
                     color: kPurple, fontWeight: FontWeight.bold),
               ),
@@ -88,23 +88,23 @@ class _BuildCarrierInfoSection extends StatelessWidget {
         kHeight10,
         const _InfoContainer(
           icon: Icons.emoji_people_sharp,
-          title: 'Student-first approach',
+          title: 'Student Support at eduGuardian',
           description:
-              '''At EduGuardian, everything revolves around our students. From day one, a dedicated Student Experience Manager is assigned to support your journey, making sure your voice is heard and your goals are met.''',
+              '''At eduGuardian, we’re committed to ensuring every student feels confident, supported, and fully prepared throughout their academic journey. Whether you're studying in the UAE or Singapore, our team is here to assist you from enrollment to graduation.''',
         ),
         kHeight20,
         const _InfoContainer(
           icon: Icons.business_center,
-          title: 'Career-Driven Internships & Placement',
+          title: 'Boost Your Career with eduGuardian!',
           description:
-              '''We don’t just teach — we connect you to real-world career opportunities. With over 83% of our UK diploma students landing paid internships within 3 months, our placement support speaks for itself.''',
+              '''Gain real-world experience through paid internship and part time job opportunities and get exclusive access to our career guidance support—including CV building, interview prep, and job search assistance. Your degree is just the beginning—let us help you launch your global career!''',
         ),
         kHeight20,
         const _InfoContainer(
           icon: Icons.language_sharp,
-          title: 'Globally Recognized. Truly Affordable.',
+          title: 'UK Degree. Local Access. Global Value.',
           description:
-              '''Earn UK-accredited diplomas and certifications in Dubai at a price that makes sense. All programs are approved by both the UK and Dubai’s KHDA, giving you trusted, global recognition without breaking the bank.''',
+              '''Earn a UK-accredited qualification in Dubai or Singapore at an affordable price. All programs are approved by recognized UK awarding body and Dubai’s KHDA, giving you trusted, globally recognized degrees—without the international cost. Now offering University of Bolton degrees right here in the UAE.''',
         ),
       ],
     );

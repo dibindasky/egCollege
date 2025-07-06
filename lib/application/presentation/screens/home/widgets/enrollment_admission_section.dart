@@ -8,14 +8,14 @@ class EnrollmentAdmissionSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final listTitle = [
-      'Enrollment and Admission',
+      'Step Into Your Future with a UK Degree',
+      'Seamless University Progression',
       'University Progression & Further Education',
-      'Academic Studies and Diploma Completion'
     ];
     final descriptions = [
-      '''Begin by selecting your desired diploma program, completing the application process, and fulfilling all admission requirements to secure your place at Vibe Education Dubai.''',
-      '''After completing a Level 4 and Level 5 diploma program, students may be eligible to progress to the final year of a bachelor’s degree through a top-up program at universities that recognize qualifications awarded by bodies such as OTHM (UK). Progression is subject to the specific university’s acceptance of the qualification.''',
-      '''Engage in comprehensive coursework, participate in practical learning experiences, and successfully complete assessments to earn your UK qualification diploma.'''
+      '''Start your academic and professional journey with flexible diploma and degree programs in the UAE and Singapore, culminating in a UK degree. Our career-driven courses and placement assistance ensure you’re ready for success. Your future begins here — enroll today!''',
+      '''At eduGuardian, we make university progression effortless and flexible. Complete your degree right here in the UAE with the University of Bolton, WINC. benefiting from recognized UK qualifications. We also provide smooth credit transfer options, allowing you to carry forward your previous academic achievements without hassle. With dedicated support and flexible pathways, eduGuardian helps you stay on track to reach your educational and career goals.''',
+      '''At eduGuardian, we guide you every step of the way — from starting your academic studies to successfully completing your diploma and degree programs. Our flexible learning options, expert faculty, and comprehensive support services ensure you have everything you need to achieve your educational and career goals. Whether you choose to study in the UAE, Singapore, or online, eduGuardian is committed to empowering your journey and unlocking your full potential.'''
     ];
     return LayoutBuilder(builder: (context, constraints) {
       bool isMobile = constraints.maxWidth < 768;
