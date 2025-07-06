@@ -58,7 +58,7 @@ class _ScreenHomeState extends State<ScreenHome> {
             controller: _scrollController,
             slivers: [
               // Show the CustomSliverAppbar only after scrolling down
-              if (_isScrolled)
+              if (_isScrolled && MediaQuery.of(context).size.width > 800)
                 CustomSliverAppbar(
                   title: '',
                   logoWithText: true,
@@ -92,7 +92,7 @@ class _ScreenHomeState extends State<ScreenHome> {
                 ),
               SliverList.list(children: const [
                 AppHeader(),
-                HomeIntoSection(),
+                HomeIntroSection(),
                 WhyChooseUsSection(),
                 StatictsCountsSection(),
                 CareerSupportAndPlacementSection(),

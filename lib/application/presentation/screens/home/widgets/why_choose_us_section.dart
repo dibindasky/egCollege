@@ -104,7 +104,7 @@ class _BuildCarrierInfoSection extends StatelessWidget {
           icon: Icons.language_sharp,
           title: 'UK Degree. Local Access. Global Value.',
           description:
-              '''Earn a UK-accredited qualification in Dubai or Singapore at an affordable price. All programs are approved by recognized UK awarding body and Dubai’s KHDA, giving you trusted, globally recognized degrees—without the international cost. Now offering University of Bolton degrees right here in the UAE.''',
+              '''Earn a UK-accredited qualification in Dubai or Singapore at an affordable price. All programs are approved by recognized UK awarding body, giving you trusted, globally recognized degrees—without the international cost. Now offering University of Bolton degrees right here in the UAE.''',
         ),
       ],
     );
