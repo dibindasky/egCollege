@@ -8,11 +8,11 @@ class CoursesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: const Color(0xFFE8F4F0),
+        //backgroundColor: const Color(0xFFE8F4F0),
         body: SafeArea(
             child: SingleChildScrollView(
                 child: Padding(
-                    padding: const EdgeInsets.all(20.0),
+                    padding: const EdgeInsets.all(40.0),
                     child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -31,10 +31,6 @@ class CoursesScreen extends StatelessWidget {
                                   fontSize: 16,
                                   color: Colors.black54,
                                   fontWeight: FontWeight.w400)),
-                          const SizedBox(height: 40),
-
-                          // Search and Filter Section
-                          _buildSearchAndFilter(),
                           const SizedBox(height: 30),
                           const CourseListBuilder()
                         ])))));
@@ -48,53 +44,18 @@ class CoursesScreen extends StatelessWidget {
         kWidth10,
         const Icon(Icons.chevron_right, size: 16, color: Colors.black54),
         kWidth10,
-        const Text('All Programs',
+        const Text('All Courses',
             style: TextStyle(color: Colors.black54, fontSize: 14))
       ]);
 
-  Widget _buildHeader() => Row(children: [
-        const Text('All Programs',
+  Widget _buildHeader() => const Row(children: [
+        Text('Courses',
             style: TextStyle(
                 fontSize: 48,
                 fontWeight: FontWeight.bold,
                 color: Colors.black87)),
-        const SizedBox(width: 16),
-        Container(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-            decoration: BoxDecoration(
-              color: const Color(0xFFE8D5F2),
-              borderRadius: BorderRadius.circular(25),
-            ),
-            child: const Row(mainAxisSize: MainAxisSize.min, children: [
-              Text(
-                '🎉',
-                style: TextStyle(fontSize: 16),
-              ),
-              SizedBox(width: 8),
-              Text('47 new programs added!',
-                  style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.black87))
-            ]))
+        SizedBox(width: 16)
       ]);
-
-  Widget _buildSearchAndFilter() =>
-      LayoutBuilder(builder: (context, constraints) {
-        return const Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Showing All of 47 results',
-                style: TextStyle(
-                  fontSize: 16,
-                  color: Colors.black87,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-              SizedBox(height: 16)
-            ]);
-      });
 }
 
 class ProgramCard {

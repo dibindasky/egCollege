@@ -1,7 +1,6 @@
 import 'package:edu_college/application/presentation/routes/route_title.dart';
 import 'package:edu_college/application/presentation/routes/routes.dart';
 import 'package:edu_college/application/presentation/screens/about/about.dart';
-import 'package:edu_college/application/presentation/screens/become_trainer/trainer.dart';
 import 'package:edu_college/application/presentation/screens/contact_us/contsct_us.dart';
 import 'package:edu_college/application/presentation/screens/course/course_detail.dart';
 import 'package:edu_college/application/presentation/screens/course/courses.dart';
@@ -47,13 +46,7 @@ class GoRouterConfig {
           changeWebTitle(context, 'eduGardian - Course Detail');
           return CourseDetailScreen(
               id: state.pathParameters['id'] ?? '', course: course['course']);
-        }),
-    GoRoute(
-        path: Routes.trainer,
-        builder: (context, state) {
-          changeWebTitle(context, 'eduGardian - Trainer');
-          return const BecomeTrainerScreen();
-        }),
+        })
   ];
   static _errorScreen() => Scaffold(
         appBar: AppBar(title: const Text('Error')),

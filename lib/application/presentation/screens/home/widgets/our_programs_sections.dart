@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class OurProgramsSection extends StatelessWidget {
-  const OurProgramsSection({Key? key}) : super(key: key);
+  const OurProgramsSection({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +28,7 @@ class OurProgramsSection extends StatelessWidget {
               children: [
                 _buildHeader(isMobile, context),
                 kHeight50,
-                _buildProgramsGrid(constraints.maxWidth,context),
+                _buildProgramsGrid(constraints.maxWidth, context),
               ],
             ),
           );
@@ -89,7 +89,7 @@ class OurProgramsSection extends StatelessWidget {
     );
   }
 
-  Widget _buildProgramsGrid(double screenWidth,BuildContext context) {
+  Widget _buildProgramsGrid(double screenWidth, BuildContext context) {
     bool isMobile = screenWidth < 768;
     bool isTablet = screenWidth >= 768 && screenWidth < 1024;
 
@@ -111,7 +111,7 @@ class OurProgramsSection extends StatelessWidget {
           _buildProgramCard(
             'Corporate Training',
             'https://images.unsplash.com/photo-1556761175-b413da4baf72?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-            kPurple,
+            kGreen,
           ),
           kHeight30,
           _buildBrowseButton(context),
@@ -126,7 +126,7 @@ class OurProgramsSection extends StatelessWidget {
           child: _buildProgramCard(
             'UK Diploma',
             'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-            kPurple,
+            kGreen,
           ),
         ),
         kWidth20,
@@ -135,7 +135,7 @@ class OurProgramsSection extends StatelessWidget {
           child: _buildProgramCard(
             'Training & Career',
             'https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-            kPurple,
+            kGreen,
           ),
         ),
         kWidth20,
@@ -144,7 +144,7 @@ class OurProgramsSection extends StatelessWidget {
           child: _buildProgramCard(
             'Corporate Training',
             'https://images.unsplash.com/photo-1556761175-b413da4baf72?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-            kPurple,
+            kGreen,
           ),
         ),
       ],

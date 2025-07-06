@@ -60,14 +60,14 @@ class _BuildCarrierInfoSection extends StatelessWidget {
       children: [
         Container(
           decoration: BoxDecoration(
-              color: kPurple.withOpacity(0.2), borderRadius: kRadius50),
+              color: kGreen.withOpacity(0.2), borderRadius: kRadius50),
           padding: const EdgeInsets.symmetric(
             horizontal: 20,
             vertical: 10,
           ),
           child: Text(
             'WHY CHOOSE US',
-            style: textThinStyle1.copyWith(color: kPurple),
+            style: textThinStyle1.copyWith(color: kGreen),
           ),
         ),
         kHeight10,
@@ -79,7 +79,7 @@ class _BuildCarrierInfoSection extends StatelessWidget {
               TextSpan(
                 text: 'Global Career',
                 style: textMainHead.copyWith(
-                    color: kPurple, fontWeight: FontWeight.bold),
+                    color: kGreen, fontWeight: FontWeight.bold),
               ),
               const TextSpan(text: '\nLife'),
             ],
@@ -145,7 +145,7 @@ class _InfoContainerState extends State<_InfoContainer> {
           children: [
             Icon(
               widget.icon,
-              color: kPurple,
+              color: kGreen,
             ),
             kWidth10,
             Expanded(

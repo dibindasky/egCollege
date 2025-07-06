@@ -27,7 +27,7 @@ class HomeIntoSection extends StatelessWidget {
                   colors: [
                     kGrey.withOpacity(0.1),
                     kGrey.withOpacity(0.4),
-                    kPurple.withOpacity(0.2),
+                    kGreen.withOpacity(0.2),
                     kGrey.withOpacity(0.2)
                   ],
                 ),
@@ -70,7 +70,7 @@ class HomeIntoSection extends StatelessWidget {
                 shape: BoxShape.circle,
                 gradient: LinearGradient(colors: [
                   kWhite.withOpacity(0.1),
-                  kPurple.withOpacity(0.1),
+                  kGreen.withOpacity(0.1),
                 ])),
           ),
         ),
@@ -90,7 +90,7 @@ class HomeIntoSection extends StatelessWidget {
                   borderRadius: kRadius10,
                   gradient: LinearGradient(colors: [
                     kWhite.withOpacity(0.1),
-                    kPurple.withOpacity(0.1),
+                    kGreen.withOpacity(0.1),
                   ])),
             ),
           ),
@@ -117,7 +117,7 @@ class _HomeWelcomeSection extends StatelessWidget {
                 TextSpan(
                   text: 'EduGuardian',
                   style: textMainHead.copyWith(
-                      color: kPurple, fontWeight: FontWeight.bold),
+                      color: kGreen, fontWeight: FontWeight.bold),
                 ),
               ],
             ),
@@ -169,7 +169,7 @@ class _HomeIntoSectionAnimations extends StatelessWidget {
                     decoration: BoxDecoration(
                         borderRadius: kRadius10,
                         gradient: const LinearGradient(
-                            colors: [kPurple, kBlack, kPurple])),
+                            colors: [kGreen, kBlack, kGreen])),
                   ),
                 ),
               ),

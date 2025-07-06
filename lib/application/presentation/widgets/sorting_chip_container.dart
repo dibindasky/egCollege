@@ -38,7 +38,7 @@ class SortingChipContainer extends StatelessWidget {
               child: Text(text,
                   style: style ??
                       textThinStyle1.copyWith(
-                          color: kPurple,
+                          color: kGreen,
                           fontSize: 12,
                           fontWeight: FontWeight.w700)))));
 }

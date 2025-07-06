@@ -6,6 +6,7 @@ import 'package:edu_college/application/presentation/screens/home/widgets/empove
 import 'package:edu_college/application/presentation/screens/home/widgets/enrollment_admission_section.dart';
 import 'package:edu_college/application/presentation/screens/home/widgets/footer.dart';
 import 'package:edu_college/application/presentation/screens/home/widgets/home_intro_section.dart';
+import 'package:edu_college/application/presentation/screens/home/widgets/what_learn.dart';
 import 'package:edu_college/application/presentation/screens/home/widgets/our_programs_sections.dart';
 import 'package:edu_college/application/presentation/screens/home/widgets/statictict_count_section.dart';
 import 'package:edu_college/application/presentation/screens/home/widgets/student_feedback_section.dart';
@@ -62,14 +63,10 @@ class _ScreenHomeState extends State<ScreenHome> {
                   title: '',
                   logoWithText: true,
                   children: [
-                    Spacer(),
+                    const Spacer(),
                     GestureDetector(
                         onTap: () => context.go(Routes.about),
                         child: _buildNavItem('About')),
-                    const SizedBox(width: 40),
-                    GestureDetector(
-                        onTap: () => context.go(Routes.trainer),
-                        child: _buildNavItem('Trainer')),
                     const SizedBox(width: 40),
                     GestureDetector(
                         onTap: () => context.go(Routes.courses),
@@ -102,6 +99,7 @@ class _ScreenHomeState extends State<ScreenHome> {
                 EmpoveringJourneySection(),
                 EnrollmentAdmissionSection(),
                 OurProgramsSection(),
+                LearningSection(),
                 StudentFeedbackSection(),
                 CompanyFooterSection(),
               ])
@@ -118,14 +116,14 @@ class _ScreenHomeState extends State<ScreenHome> {
       Text(
         text,
         style: const TextStyle(
-          color:kPurple,
+          color: kGreen,
           fontSize: 16,
           fontWeight: FontWeight.w500,
         ),
       ),
       if (hasDropdown) ...[
         const SizedBox(width: 6),
-        const Icon(Icons.keyboard_arrow_down, color:kPurple, size: 20)
+        const Icon(Icons.keyboard_arrow_down, color: kGreen, size: 20)
       ]
     ]);
   }
@@ -136,16 +134,16 @@ class _ScreenHomeState extends State<ScreenHome> {
         child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
             decoration: BoxDecoration(
-              color: kPurple.withOpacity(0.15),
+              color: kGreen.withOpacity(0.15),
               borderRadius: BorderRadius.circular(25),
               border: Border.all(
-                color: kPurple,
+                color: kGreen,
                 width: 1.5,
               ),
             ),
             child: const Text('Contact Us',
                 style: TextStyle(
-                    color: kPurple,
+                    color: kGreen,
                     fontSize: 16,
                     fontWeight: FontWeight.w600))));
   }

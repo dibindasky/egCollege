@@ -99,7 +99,7 @@ class _ContactFormScreenState extends State<ContactFormScreen> {
       ),
       const SizedBox(height: 20),
       Text(
-        'Not sure what you need? The team at\nFuture Events will be happy to listen to\nyou and suggest event ideas you\nhaven\'t considered.',
+        'Have questions or need guidance? Our team at eduGuardian is here to support you every step of the way — from choosing the right program to enrollment, visa assistance, and beyond. Whether you\'re a student, parent, or recruitment partner, feel free to reach out to us for quick, reliable, and friendly support. We’d love to hear from you!',
         style: TextStyle(
           fontSize: 16,
           color: kBlack.withOpacity(0.9),
@@ -116,17 +116,17 @@ class _ContactFormScreenState extends State<ContactFormScreen> {
     ]);
   }
 
-  Widget _buildContactItem({required IconData icon, required String text}) {
-    return Row(children: [
-      Icon(
-        icon,
-        color: kBlack,
-        size: 20,
-      ),
-      const SizedBox(width: 12),
-      Text(text, style: TextStyle(color: kBlack.withOpacity(0.9), fontSize: 16))
-    ]);
-  }
+  Widget _buildContactItem({required IconData icon, required String text}) =>
+      Row(children: [
+        Icon(
+          icon,
+          color: kBlack,
+          size: 20,
+        ),
+        const SizedBox(width: 12),
+        Text(text,
+            style: TextStyle(color: kBlack.withOpacity(0.9), fontSize: 16))
+      ]);
 
   Widget _buildFormCard() {
     return Container(
@@ -316,7 +316,7 @@ class _ContactFormScreenState extends State<ContactFormScreen> {
         Text(
           label,
           style: const TextStyle(
-              fontSize: 14, fontWeight: FontWeight.w500, color: kPurple),
+              fontSize: 14, fontWeight: FontWeight.w500, color: kGreen),
         ),
         const SizedBox(height: 8),
         TextFormField(

@@ -73,7 +73,7 @@ class SortingSection extends StatelessWidget {
                               whiChFilter: 'UNIVERSITY',
                             );
                           },
-                          activeColor: kPurple))
+                          activeColor: kGreen))
                     ]);
               })),
           kHeight20,
@@ -114,7 +114,7 @@ class SortingSection extends StatelessWidget {
                               whiChFilter: 'COUNTRY',
                             );
                           },
-                          activeColor: kPurple,
+                          activeColor: kGreen,
                         ),
                       )
                     ]);
@@ -153,7 +153,7 @@ class SortingSection extends StatelessWidget {
                                 whiChFilter: 'CITY',
                               );
                             },
-                            activeColor: kPurple,
+                            activeColor: kGreen,
                           ))
                     ]);
               })),
@@ -193,7 +193,7 @@ class SortingSection extends StatelessWidget {
                                 whiChFilter: 'FEE',
                               );
                             },
-                            activeColor: kPurple,
+                            activeColor: kGreen,
                           ))
                     ]);
               }))
@@ -229,7 +229,7 @@ class SortingSection extends StatelessWidget {
                     onChanged: (value) {
                       onChanged(value ?? false, data);
                     },
-                    activeColor: kPurple))
+                    activeColor: kGreen))
               ]);
         }));
   }
