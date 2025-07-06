@@ -32,34 +32,31 @@ class _ContactFormScreenState extends State<ContactFormScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: Container(
-            decoration: const BoxDecoration(color: kWhite),
-            child:
-                SafeArea(child: LayoutBuilder(builder: (context, constraints) {
-              bool isDesktop = constraints.maxWidth > 768;
-              return SingleChildScrollView(
-                  child: Column(
-                children: [
-                  const AppHeader(),
-                  isDesktop
-                      ? Padding(
-                          padding: EdgeInsets.symmetric(
-                            horizontal: isDesktop ? 40 : 20,
-                            vertical: isDesktop ? 40 : 20,
-                          ),
-                          child: _buildDesktopLayout(),
-                        )
-                      : Padding(
-                          padding: EdgeInsets.symmetric(
-                            horizontal: isDesktop ? 40 : 20,
-                            vertical: isDesktop ? 40 : 20,
-                          ),
-                          child: _buildMobileLayout(),
-                        ),
-                ],
-              ));
-            }))));
+    return Scaffold(body: LayoutBuilder(builder: (context, constraints) {
+      bool isDesktop = constraints.maxWidth > 768;
+      return SingleChildScrollView(
+        child: Column(
+          children: [
+            const AppHeader(),
+            isDesktop
+                ? Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: isDesktop ? 40 : 20,
+                      vertical: isDesktop ? 40 : 20,
+                    ),
+                    child: _buildDesktopLayout(),
+                  )
+                : Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: isDesktop ? 40 : 20,
+                      vertical: isDesktop ? 40 : 20,
+                    ),
+                    child: _buildMobileLayout(),
+                  ),
+          ],
+        ),
+      );
+    }));
   }
 
   Widget _buildDesktopLayout() {
@@ -101,16 +98,11 @@ class _ContactFormScreenState extends State<ContactFormScreen> {
       Text(
         'Have questions or need guidance? Our team at eduGuardian is here to support you every step of the way — from choosing the right program to enrollment, visa assistance, and beyond. Whether you\'re a student, parent, or recruitment partner, feel free to reach out to us for quick, reliable, and friendly support. We’d love to hear from you!',
         style: TextStyle(
-          fontSize: 16,
-          color: kBlack.withOpacity(0.9),
-          height: 1.5,
-        ),
+            fontSize: 16, color: kBlack.withOpacity(0.9), height: 1.5),
       ),
       const SizedBox(height: 40),
       _buildContactItem(
-        icon: Icons.email_outlined,
-        text: 'admission@myeduguardian.com',
-      ),
+          icon: Icons.email_outlined, text: 'admission@myeduguardian.com'),
       const SizedBox(height: 16),
       _buildContactItem(icon: Icons.phone_outlined, text: '+971568849699')
     ]);
@@ -156,19 +148,15 @@ class _ContactFormScreenState extends State<ContactFormScreen> {
                             color: Colors.grey.withOpacity(0.1),
                             shape: BoxShape.circle,
                           ),
-                          child: Positioned(
-                            right: 10,
-                            top: 10,
-                            child: Container(
-                                width: 150,
-                                height: 80,
-                                decoration: BoxDecoration(
-                                  color: Colors.white.withOpacity(0.2),
-                                  borderRadius: BorderRadius.circular(15),
-                                ),
-                                child: Image.asset(eduGuardianLogoWithText,
-                                    fit: BoxFit.contain)),
-                          ),
+                          child: Container(
+                              width: 150,
+                              height: 80,
+                              decoration: BoxDecoration(
+                                color: Colors.white.withOpacity(0.2),
+                                borderRadius: BorderRadius.circular(15),
+                              ),
+                              child: Image.asset(eduGuardianLogoWithText,
+                                  fit: BoxFit.contain)),
                         ),
                       ),
                       const SizedBox(height: 20),
