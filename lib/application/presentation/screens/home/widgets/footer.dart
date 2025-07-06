@@ -40,28 +40,19 @@ class CompanyFooterSection extends StatelessWidget {
       // Address
       _buildContactItem(
           icon: Icons.location_on_outlined,
-          child: const Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text('21 Revolution Street',
-                    style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w600,
-                        color: kWhite,
-                        height: 1.3)),
-                Text('Paris, France',
-                    style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w600,
-                        color: kWhite,
-                        height: 1.3))
-              ])),
+          child: const Text(
+              'Office No. B-12, Sharjah Book Authority, \nMuwaileh,Sharjah',
+              style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w600,
+                  color: kWhite,
+                  height: 1.3))),
       kHeight30,
 
       // Phone
       _buildContactItem(
           icon: Icons.phone_outlined,
-          child: const Text('+1 555 123456',
+          child: const Text('+971568849699',
               style: TextStyle(
                   fontSize: 18, fontWeight: FontWeight.w600, color: kWhite))),
       kHeight30,
@@ -71,11 +62,11 @@ class CompanyFooterSection extends StatelessWidget {
           icon: Icons.email_outlined,
           child: GestureDetector(
               //onTap: () => _launchEmail('support@company.com'),
-              child: const Text('support@company.com',
+              child: const Text('admission@myeduguardian.com',
                   style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w600,
-                      color: Color(0xFF4299E1), // Blue color for email
+                      color: kPurple, // Blue color for email
                       decoration: TextDecoration.underline))))
     ]);
   }
@@ -103,64 +94,66 @@ class CompanyFooterSection extends StatelessWidget {
   }
 
   Widget _buildAboutSection() {
-    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      const Text(
-        'About the company',
-        style: TextStyle(
-          fontSize: 24,
-          fontWeight: FontWeight.bold,
-          color: kWhite,
-          height: 1.2,
-        ),
-      ),
-      const SizedBox(height: 20),
-      const Text(
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce euismod convallis velit, eu auctor lacus vehicula sit amet.',
-        style: TextStyle(
-          fontSize: 16,
-          color: Color(0xFFA0AEC0), // Light gray for description
-          height: 1.6,
-        ),
-      ),
-      const SizedBox(height: 40),
-
-      // Social Media Icons
-      Row(children: [
-        _buildSocialIcon(
-          icon: Icons.facebook,
-          onTap: () {},
-        ),
-        const SizedBox(width: 16),
-        _buildSocialIcon(
-          icon: Icons.alternate_email, // Twitter-like icon
-          onTap: () {},
-        ),
-        const SizedBox(width: 16),
-        _buildSocialIcon(
-          icon: Icons.business_center, // LinkedIn-like icon
-          onTap: () {},
-        ),
-        const SizedBox(width: 16),
-        _buildSocialIcon(
-            icon: Icons.code, // GitHub-like icon
-            onTap: () {})
-      ])
-    ]);
-  }
-
-  Widget _buildSocialIcon({
-    required IconData icon,
-    required VoidCallback onTap,
-  }) {
-    return GestureDetector(
-        onTap: onTap,
-        child: Container(
-            width: 44,
-            height: 44,
-            decoration: BoxDecoration(
-              color: const Color(0xFF4A5568), // Darker gray for icon background
-              borderRadius: BorderRadius.circular(8),
+    return const Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'About the company',
+            style: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+              color: kWhite,
+              height: 1.2,
             ),
-            child: Icon(icon, color: kWhite, size: 20)));
+          ),
+          SizedBox(height: 20),
+          Text(
+            'eduGuardian is more than just an educational platform; we are a dedicated partner in your academic and career journey.',
+            style: TextStyle(
+              fontSize: 16,
+              color: Color(0xFFA0AEC0), // Light gray for description
+              height: 1.6,
+            ),
+          ),
+          SizedBox(height: 40),
+
+          // Social Media Icons
+          // Row(children: [
+          //   _buildSocialIcon(
+          //     icon: Icons.facebook,
+          //     onTap: () {},
+          //   ),
+          //   const SizedBox(width: 16),
+          //   _buildSocialIcon(
+          //     icon: Icons.alternate_email, // Twitter-like icon
+          //     onTap: () {},
+          //   ),
+          //   const SizedBox(width: 16),
+          //   _buildSocialIcon(
+          //     icon: Icons.business_center, // LinkedIn-like icon
+          //     onTap: () {},
+          //   ),
+          //   const SizedBox(width: 16),
+          //   _buildSocialIcon(
+          //       icon: Icons.code, // GitHub-like icon
+          //       onTap: () {})
+          // ])
+        ]);
   }
+
+  // Widget _buildSocialIcon({
+  //   required IconData icon,
+  //   required VoidCallback onTap,
+  // }) {
+  //   return GestureDetector(
+  //       onTap: onTap,
+  //       child: Container(
+  //           width: 44,
+  //           height: 44,
+  //           decoration: BoxDecoration(
+  //             color: const Color(0xFF4A5568), // Darker gray for icon background
+  //             borderRadius: BorderRadius.circular(8),
+  //           ),
+  //           child: Icon(icon, color: kWhite, size: 20)));
+  // }
 }

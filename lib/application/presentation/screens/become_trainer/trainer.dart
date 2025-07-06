@@ -1,3 +1,6 @@
+import 'package:edu_college/application/presentation/screens/home/widgets/app_bar.dart';
+import 'package:edu_college/application/presentation/utils/colors.dart';
+import 'package:edu_college/application/presentation/utils/const.dart';
 import 'package:flutter/material.dart';
 
 class BecomeTrainerScreen extends StatefulWidget {
@@ -22,83 +25,84 @@ class _BecomeTrainerScreenState extends State<BecomeTrainerScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            // Header Section
-            _buildHeader(),
+        body: SingleChildScrollView(
+            child: Column(children: [
+      // Header Section
+      _buildHeader(),
 
-            // Main Content
-            _buildMainContent(),
-          ],
-        ),
-      ),
-    );
+      // Main Content
+      _buildMainContent()
+    ])));
   }
 
   Widget _buildHeader() {
     return Container(
       width: double.infinity,
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [
-            Color(0xFFE8F4F8),
-            Color(0xFFDCEDF4),
+            kGrey.withOpacity(0.1),
+            kGrey.withOpacity(0.4),
+            kPurple.withOpacity(0.2),
+            kGrey.withOpacity(0.2)
           ],
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
         ),
       ),
       child: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 60),
-          child: Column(
-            children: [
-              // Main Title
-              const Text(
-                'Become a Trainer',
-                style: TextStyle(
-                  fontSize: 48,
-                  fontWeight: FontWeight.bold,
-                  color: Color(0xFF2D3748),
-                  height: 1.2,
-                ),
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: 16),
-
-              // Breadcrumb
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+        child: Column(
+          children: [
+            const AppHeader(),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 60),
+              child: Column(
                 children: [
-                  GestureDetector(
-                    //  onTap: () => Navigator.pop(context),
-                    child: const Text(
-                      'Home',
-                      style: TextStyle(
-                        color: Color(0xFF718096),
-                        fontSize: 16,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(width: 8),
-                  const Icon(
-                    Icons.chevron_right,
-                    size: 16,
-                    color: Color(0xFF718096),
-                  ),
-                  const SizedBox(width: 8),
+                  // Main Title
                   const Text(
                     'Become a Trainer',
                     style: TextStyle(
-                      color: Color(0xFF718096),
-                      fontSize: 16,
+                      fontSize: 48,
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xFF2D3748),
+                      height: 1.2,
                     ),
+                    textAlign: TextAlign.center,
+                  ),
+                  kHeight15,
+
+                  // Breadcrumb
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      GestureDetector(
+                        //  onTap: () => Navigator.pop(context),
+                        child: const Text(
+                          'Home',
+                          style: TextStyle(
+                            color: Color(0xFF718096),
+                            fontSize: 16,
+                          ),
+                        ),
+                      ),
+                      kWidth10,
+                      const Icon(
+                        Icons.chevron_right,
+                        size: 16,
+                        color: Color(0xFF718096),
+                      ),
+                      kWidth10,
+                      const Text(
+                        'Become a Trainer',
+                        style: TextStyle(
+                          color: Color(0xFF718096),
+                          fontSize: 16,
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
@@ -135,50 +139,44 @@ class _BecomeTrainerScreenState extends State<BecomeTrainerScreen> {
   }
 
   Widget _buildJoinTeamSection() {
-    return Column(
-      children: [
-        Container(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
-          decoration: BoxDecoration(
-            color: const Color(0xFF4FD1C7).withOpacity(0.1),
-            borderRadius: BorderRadius.circular(20),
-          ),
-          child: const Text(
-            'JOIN OUR TEAM',
-            style: TextStyle(
-              color: Color(0xFF4FD1C7),
-              fontSize: 14,
-              fontWeight: FontWeight.w600,
-              letterSpacing: 1.2,
-            ),
+    return Column(children: [
+      Container(
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+        decoration: BoxDecoration(
+          color: const Color(0xFF4FD1C7).withOpacity(0.1),
+          borderRadius: BorderRadius.circular(20),
+        ),
+        child: const Text(
+          'JOIN OUR TEAM',
+          style: TextStyle(
+            color: kPurple,
+            fontSize: 14,
+            fontWeight: FontWeight.w600,
+            letterSpacing: 1.2,
           ),
         ),
-        const SizedBox(height: 20),
-        const Text(
-          'Apply as a Trainer',
+      ),
+      kHeight20,
+      const Text('Apply as a Trainer',
           style: TextStyle(
             fontSize: 42,
             fontWeight: FontWeight.bold,
             color: Color(0xFF2D3748),
             height: 1.2,
           ),
-          textAlign: TextAlign.center,
-        ),
-        const SizedBox(height: 24),
-        Container(
+          textAlign: TextAlign.center),
+      kHeight30,
+      Container(
           constraints: const BoxConstraints(maxWidth: 600),
           child: const Text(
-            'Become a part of Vibe Education and inspire students through high-quality training. Share your expertise and help shape the future of learning.',
-            style: TextStyle(
-              fontSize: 18,
-              color: Color(0xFF718096),
-              height: 1.6,
-            ),
-            textAlign: TextAlign.center,
-          ),
-        ),
-      ],
-    );
+              'Become a part of Vibe Education and inspire students through high-quality training. Share your expertise and help shape the future of learning.',
+              style: TextStyle(
+                fontSize: 18,
+                color: Color(0xFF718096),
+                height: 1.6,
+              ),
+              textAlign: TextAlign.center))
+    ]);
   }
 
   Widget _buildDesktopLayout() {
@@ -216,38 +214,25 @@ class _BecomeTrainerScreenState extends State<BecomeTrainerScreen> {
 
   Widget _buildImageSection() {
     return Container(
-      width: double.infinity,
-      height: 500,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: [
+        width: double.infinity,
+        height: 500,
+        decoration:
+            BoxDecoration(borderRadius: BorderRadius.circular(16), boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.1),
-            blurRadius: 20,
-            offset: const Offset(0, 10),
-          ),
-        ],
-      ),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(16),
-        child: Image.asset(
-          'assets/images/trainer.jpg',
-          fit: BoxFit.cover,
-          errorBuilder: (context, error, stackTrace) {
-            return Container(
-              color: Colors.grey[200],
-              child: const Center(
-                child: Icon(
-                  Icons.person,
-                  size: 100,
-                  color: Colors.grey,
-                ),
-              ),
-            );
-          },
-        ),
-      ),
-    );
+              color: Colors.black.withOpacity(0.1),
+              blurRadius: 20,
+              offset: const Offset(0, 10))
+        ]),
+        child: ClipRRect(
+            borderRadius: BorderRadius.circular(16),
+            child: Image.asset(aboutUsImage3, fit: BoxFit.cover,
+                errorBuilder: (context, error, stackTrace) {
+              return Container(
+                  color: Colors.grey[200],
+                  child: const Center(
+                      child:
+                          Icon(Icons.person, size: 100, color: Colors.grey)));
+            })));
   }
 
   Widget _buildFormSection() {
@@ -279,14 +264,14 @@ class _BecomeTrainerScreenState extends State<BecomeTrainerScreen> {
               child: const Text(
                 'BECOME A TRAINER',
                 style: TextStyle(
-                  color: Color(0xFF4FD1C7),
+                  color: kPurple,
                   fontSize: 12,
                   fontWeight: FontWeight.w600,
                   letterSpacing: 1.2,
                 ),
               ),
             ),
-            const SizedBox(height: 16),
+            kHeight15,
 
             const Text(
               'Trainer Application',
@@ -318,7 +303,7 @@ class _BecomeTrainerScreenState extends State<BecomeTrainerScreen> {
                 ),
               ],
             ),
-            const SizedBox(height: 24),
+            kHeight30,
 
             Row(
               children: [
@@ -341,7 +326,7 @@ class _BecomeTrainerScreenState extends State<BecomeTrainerScreen> {
                 ),
               ],
             ),
-            const SizedBox(height: 24),
+            kHeight30,
 
             Row(
               children: [
@@ -363,7 +348,7 @@ class _BecomeTrainerScreenState extends State<BecomeTrainerScreen> {
                 ),
               ],
             ),
-            const SizedBox(height: 24),
+            kHeight30,
 
             _buildTextField(
               controller: _aboutController,
@@ -400,7 +385,7 @@ class _BecomeTrainerScreenState extends State<BecomeTrainerScreen> {
           style: const TextStyle(
             fontSize: 14,
             fontWeight: FontWeight.w600,
-            color: Color(0xFF4FD1C7),
+            color: kPurple,
             letterSpacing: 0.5,
           ),
         ),
@@ -461,7 +446,7 @@ class _BecomeTrainerScreenState extends State<BecomeTrainerScreen> {
           style: TextStyle(
             fontSize: 14,
             fontWeight: FontWeight.w600,
-            color: Color(0xFF4FD1C7),
+            color: kPurple,
             letterSpacing: 0.5,
           ),
         ),
@@ -519,7 +504,7 @@ class _BecomeTrainerScreenState extends State<BecomeTrainerScreen> {
       child: ElevatedButton(
         onPressed: _submitForm,
         style: ElevatedButton.styleFrom(
-          backgroundColor: const Color(0xFF4FD1C7),
+          backgroundColor: kPurple,
           foregroundColor: Colors.white,
           padding: const EdgeInsets.symmetric(vertical: 16),
           shape: RoundedRectangleBorder(

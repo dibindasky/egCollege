@@ -68,6 +68,9 @@ List<BoxShadow> boxShadow4 = [
 // logos
 String eduGuardianLogo = 'assets/logo/companylogonewfinal.png';
 String eduGuardianLogoWithText = 'assets/logo/eduGuardian_logo.png';
+String aboutUsImage1 = 'assets/dev/about22.png';
+String aboutUsImage2 = 'assets/dev/elearning3.png';
+String aboutUsImage3 = 'assets/dev/eSPG3.png';
 
 // home images
 String graduvatedStudentImg = 'assets/images/graduvated_student.png';
