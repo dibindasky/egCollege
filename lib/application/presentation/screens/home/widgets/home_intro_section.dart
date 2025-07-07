@@ -74,13 +74,13 @@ class HomeIntroSection extends StatelessWidget {
         ),
         kHeight50,
         Text(
-          'Achieving\nExcellence Together',
+          'Education \nWithout Boundaries',
           style: textMainHead.copyWith(fontSize: 36, color: kWhite),
         ),
         ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 500),
           child: Text(
-            'We will be with you throughout your entire educational journey — from admission, travel, hostel, and accommodation, to training and landing a job.',
+            'We will be with you throughout your entire educational journey — from admission, visa, travel and accommodation',
             style: textThinStyle1.copyWith(color: kWhite),
           ),
         )
