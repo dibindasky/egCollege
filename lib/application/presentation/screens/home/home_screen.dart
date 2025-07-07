@@ -52,6 +52,36 @@ class _ScreenHomeState extends State<ScreenHome> {
   Widget build(BuildContext context) {
     final controller = Get.find<HomeController>();
     return Scaffold(
+      appBar: (MediaQuery.of(context).size.width > 768)
+          ? null
+          : AppBar(
+              foregroundColor: kWhite,
+              backgroundColor: const Color(0xFF8A63D2),
+              title: const Text(
+                'eduGuardian',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 1.2,
+                ),
+              ),
+              actions: [],
+            ),
+      drawer: (MediaQuery.of(context).size.width > 768)
+          ? null
+          : Container(
+              color: kBlack.withOpacity(0.9),
+              width: 300,
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: _navButtons(context, true),
+                ),
+              ),
+            ),
       body: Stack(
         children: [
           CustomScrollView(
@@ -62,18 +92,7 @@ class _ScreenHomeState extends State<ScreenHome> {
                 CustomSliverAppbar(
                   title: '',
                   logoWithText: true,
-                  children: [
-                    const Spacer(),
-                    GestureDetector(
-                        onTap: () => context.go(Routes.about),
-                        child: _buildNavItem('About')),
-                    const SizedBox(width: 40),
-                    GestureDetector(
-                        onTap: () => context.go(Routes.courses),
-                        child: _buildNavItem('Courses')),
-                    const SizedBox(width: 40),
-                    _buildContactButton(),
-                  ],
+                  children: _navButtons(context, false),
                   // children: List.generate(
                   // controller.homeTitles.length,
                   // (index) => Padding(
@@ -90,18 +109,18 @@ class _ScreenHomeState extends State<ScreenHome> {
                   // ),
                   // ),
                 ),
-              SliverList.list(children: const [
-                AppHeader(),
-                HomeIntroSection(),
-                WhyChooseUsSection(),
-                StatictsCountsSection(),
-                CareerSupportAndPlacementSection(),
-                EmpoveringJourneySection(),
-                EnrollmentAdmissionSection(),
-                OurProgramsSection(),
-                LearningSection(),
-                StudentFeedbackSection(),
-                CompanyFooterSection(),
+              SliverList.list(children: [
+                if (MediaQuery.of(context).size.width > 768) const AppHeader(),
+                const HomeIntroSection(),
+                const WhyChooseUsSection(),
+                const StatictsCountsSection(),
+                const CareerSupportAndPlacementSection(),
+                const EmpoveringJourneySection(),
+                const EnrollmentAdmissionSection(),
+                const OurProgramsSection(),
+                const LearningSection(),
+                const StudentFeedbackSection(),
+                const CompanyFooterSection(),
               ])
             ],
           ),
@@ -109,6 +128,44 @@ class _ScreenHomeState extends State<ScreenHome> {
         ],
       ),
     );
+  }
+
+  List<Widget> _navButtons(BuildContext context, bool isMobile) {
+    final desktopNav = [
+      const Spacer(),
+      GestureDetector(
+          onTap: () => context.go(Routes.about), child: _buildNavItem('About')),
+      const SizedBox(width: 40),
+      GestureDetector(
+          onTap: () => context.go(Routes.courses),
+          child: _buildNavItem('Courses')),
+      const SizedBox(width: 40),
+      _buildContactButton(),
+    ];
+
+    final mobileNav = [
+      SizedBox(height: 50, width: 50, child: Image.asset(eduGuardianLogo)),
+      kHeight30,
+      ListTile(
+        leading: const Icon(Icons.info_outline, color: kPurple),
+        title: _buildNavItem('About'),
+        onTap: () => context.go(Routes.about),
+      ),
+      kHeight10,
+      ListTile(
+        leading: const Icon(Icons.school_outlined, color: kPurple),
+        title: _buildNavItem('Courses'),
+        onTap: () => context.go(Routes.courses),
+      ),
+      kHeight10,
+      ListTile(
+        leading: const Icon(Icons.call_outlined, color: kPurple),
+        title: _buildNavItem('Contact Us'),
+        onTap: () => context.go(Routes.contactUs),
+      ),
+    ];
+
+    return isMobile ? mobileNav : desktopNav;
   }
 
   Widget _buildNavItem(String text, {bool hasDropdown = false}) {
