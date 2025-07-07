@@ -8,17 +8,16 @@ class CareerSupportAndPlacementSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        final bool isDesktop = constraints.maxWidth >= 800;
-        return Container(
+    return LayoutBuilder(builder: (context, constraints) {
+      final bool isDesktop = constraints.maxWidth >= 800;
+      return Container(
           padding: EdgeInsets.symmetric(
               horizontal: isDesktop ? 50 : 20, vertical: 100),
           decoration: BoxDecoration(
               gradient: LinearGradient(colors: [
-            kGreen.withOpacity(0.3),
-            kGreen.withOpacity(0.2),
-            kGreen.withOpacity(0.1),
+            const Color(0xFF8F58E9).withOpacity(0.2),
+            const Color(0xFF8F58E9).withOpacity(0.12),
+            const Color(0xFF8F58E9).withOpacity(0.1),
             kWhite
           ])),
           child: isDesktop
@@ -29,16 +28,12 @@ class CareerSupportAndPlacementSection extends StatelessWidget {
                     Expanded(child: _BuildImageSection())
                   ],
                 )
-              : const Column(
-                  children: [
-                    _BuildImageSection(),
-                    kHeight15,
-                    _GuidanceInfDetail(),
-                  ],
-                ),
-        );
-      },
-    );
+              : const Column(children: [
+                  _BuildImageSection(),
+                  kHeight15,
+                  _GuidanceInfDetail()
+                ]));
+    });
   }
 }
 
@@ -52,14 +47,14 @@ class _GuidanceInfDetail extends StatelessWidget {
       children: [
         Container(
           decoration: BoxDecoration(
-              color: kGreen.withOpacity(0.2), borderRadius: kRadius50),
+              color: kPurple.withOpacity(0.2), borderRadius: kRadius50),
           padding: const EdgeInsets.symmetric(
             horizontal: 20,
             vertical: 10,
           ),
           child: Text(
             'CAREER SUPPORT & PLACEMENTS',
-            style: textThinStyle1.copyWith(color: kGreen),
+            style: textThinStyle1.copyWith(color: kPurple),
           ),
         ),
         kHeight10,
@@ -71,7 +66,7 @@ class _GuidanceInfDetail extends StatelessWidget {
               TextSpan(
                 text: 'Internship & Job Guidance',
                 style: textMainHead.copyWith(
-                    color: kGreen, fontWeight: FontWeight.bold),
+                    color: kPurple, fontWeight: FontWeight.bold),
               ),
             ],
           ),
@@ -95,7 +90,8 @@ class _GuidanceInfDetail extends StatelessWidget {
                 Expanded(
                   child: Text(
                     'Our support includes:',
-                    style: textStyle1.copyWith(color: kBlack, fontWeight: FontWeight.bold),
+                    style: textStyle1.copyWith(
+                        color: kBlack, fontWeight: FontWeight.bold),
                   ),
                 ),
               ],
@@ -106,11 +102,15 @@ class _GuidanceInfDetail extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('• Professional CV & resume preparation', style: textThinStyle1),
+                  Text('• Professional CV & resume preparation',
+                      style: textThinStyle1),
                   const SizedBox(height: 6),
-                  Text('• Interview coaching & personal branding', style: textThinStyle1),
+                  Text('• Interview coaching & personal branding',
+                      style: textThinStyle1),
                   const SizedBox(height: 6),
-                  Text('• Access to 100+ active internship and job partners across the UAE & Singapore', style: textThinStyle1),
+                  Text(
+                      '• Access to 100+ active internship and job partners across the UAE & Singapore',
+                      style: textThinStyle1),
                 ],
               ),
             ),
@@ -185,7 +185,7 @@ class _BuildImageSection extends StatelessWidget {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                 decoration: BoxDecoration(
-                    color: kGreen.withOpacity(.4),
+                    color: kPurple.withOpacity(.4),
                     border: Border.all(color: kWhite),
                     borderRadius: BorderRadius.circular(12),
                     boxShadow: boxShadow3),

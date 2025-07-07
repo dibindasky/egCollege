@@ -23,6 +23,9 @@ class CourseController extends GetxController {
 
   /// All courses object
   RxList<GetAllCouses> allCourses = <GetAllCouses>[].obs;
+  RxList<GetAllCouses> allLevelSevenCourses = <GetAllCouses>[].obs;
+  RxList<GetAllCouses> allLevelFiveCourses = <GetAllCouses>[].obs;
+
   RxList<String> allCourseNames = <String>[].obs;
   // For filtering
   RxList<GetAllCouses> filteredCourses = <GetAllCouses>[].obs;
@@ -131,8 +134,19 @@ class CourseController extends GetxController {
           .where((name) => name.isNotEmpty)
           .toSet()
           .toList();
+      // Filter by level from the course name
+      allLevelFiveCourses.value = r
+          .where((course) =>
+              (course.name?.toLowerCase().contains('level 5') ?? false))
+          .toList();
+
+      allLevelSevenCourses.value = r
+          .where((course) =>
+              (course.name?.toLowerCase().contains('level 7') ?? false))
+          .toList();
       filteredCourses.value = r; // Default to all courses
     });
+
     isloading.value = false;
   }
 

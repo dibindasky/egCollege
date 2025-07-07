@@ -68,7 +68,7 @@ class University extends StatelessWidget {
                                         whiChFilter: 'UNIVERSITY',
                                       );
                                     },
-                                    activeColor: kGreen,
+                                    activeColor: kPurple,
                                   );
                                 })
                               ]));

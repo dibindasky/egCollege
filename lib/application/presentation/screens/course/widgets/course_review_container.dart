@@ -21,7 +21,7 @@ class CourseReviewContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => ContainerWidget(
-      border: Border.all(color: kGreen, width: 2),
+      border: Border.all(color: kPurple, width: 2),
       boxShadow: const [],
       horizontalMargin: 10,
       width: 380,
@@ -39,7 +39,7 @@ class CourseReviewContainer extends StatelessWidget {
           ...List.generate(
               5,
               (index) => const Row(
-                  children: [kWidth5, Icon(Icons.star, color: kGreen)])),
+                  children: [kWidth5, Icon(Icons.star, color: kPurple)])),
           kWidth10,
           Text('4.8 out of 5 ',
               style: textStyle1.copyWith(

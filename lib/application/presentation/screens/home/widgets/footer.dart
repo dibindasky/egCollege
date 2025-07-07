@@ -66,7 +66,7 @@ class CompanyFooterSection extends StatelessWidget {
                   style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w600,
-                      color: kGreen, // Blue color for email
+                      color: kPurple, // Blue color for email
                       decoration: TextDecoration.underline))))
     ]);
   }

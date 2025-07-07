@@ -304,7 +304,7 @@ class _ContactFormScreenState extends State<ContactFormScreen> {
         Text(
           label,
           style: const TextStyle(
-              fontSize: 14, fontWeight: FontWeight.w500, color: kGreen),
+              fontSize: 14, fontWeight: FontWeight.w500, color: kPurple),
         ),
         const SizedBox(height: 8),
         TextFormField(

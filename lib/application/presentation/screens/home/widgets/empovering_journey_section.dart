@@ -26,7 +26,7 @@ class EmpoveringJourneySection extends StatelessWidget {
       '''Choose the learning mode that works best for you — whether it’s fully online, on-site, blended, or hybrid. Our flexible programs make it easy to balance your education with work, and other commitments.'''
     ];
 
-    final colors = [kGreen, kGreen, kRed, kYellow, kIndigo, kBlue];
+    final colors = [kPurple, kPurple, kRed, kYellow, kIndigo, kBlue];
 
     return LayoutBuilder(
       builder: (context, constraints) {
@@ -79,7 +79,7 @@ class EmpoveringJourneySection extends StatelessWidget {
                                   listHeading: listHeading[index],
                                   listContent: listContent[index],
                                   // color: colors[index],
-                                  color: kGreen,
+                                  color: kPurple,
                                 ),
                               ),
                             );

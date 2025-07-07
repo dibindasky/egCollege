@@ -41,7 +41,7 @@ class StudentFeedbackSection extends StatelessWidget {
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
           decoration: BoxDecoration(
-            color: kGreen.withOpacity(0.2),
+            color: kPurple.withOpacity(0.2),
             borderRadius: kRadius50,
           ),
           child: Text(
@@ -49,7 +49,7 @@ class StudentFeedbackSection extends StatelessWidget {
             style: TextStyle(
               fontSize: isMobile ? 12 : 14,
               fontWeight: FontWeight.w600,
-              color: kGreen,
+              color: kPurple,
               letterSpacing: 0.5,
             ),
           ),
@@ -67,7 +67,7 @@ class StudentFeedbackSection extends StatelessWidget {
               TextSpan(
                 text: "Feedback",
                 style: TextStyle(
-                  color: kGreen,
+                  color: kPurple,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -212,12 +212,12 @@ class StudentFeedbackSection extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
-                  color: kGreen.withOpacity(0.1),
+                  color: kPurple.withOpacity(0.1),
                   borderRadius: kRadius10,
                 ),
                 child: const Icon(
                   Icons.format_quote,
-                  color: kGreen,
+                  color: kPurple,
                   size: 24,
                 ),
               ),
@@ -245,7 +245,7 @@ class StudentFeedbackSection extends StatelessWidget {
             child: Text(
               '',
               style: textThinStyle1.copyWith(
-                color: kGreen,
+                color: kPurple,
                 fontWeight: FontWeight.w600,
                 fontSize: 13,
               ),

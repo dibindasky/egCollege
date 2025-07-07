@@ -105,13 +105,13 @@ class OurProgramsSection extends StatelessWidget {
           _buildProgramCard(
             'Training & Career',
             'https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-            kGreen,
+            kPurple,
           ),
           kHeight20,
           _buildProgramCard(
             'Corporate Training',
             'https://images.unsplash.com/photo-1556761175-b413da4baf72?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-            kGreen,
+            kPurple,
           ),
           kHeight30,
           _buildBrowseButton(context),
@@ -126,7 +126,7 @@ class OurProgramsSection extends StatelessWidget {
           child: _buildProgramCard(
             'UK Diploma',
             'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-            kGreen,
+            kPurple,
           ),
         ),
         kWidth20,
@@ -135,7 +135,7 @@ class OurProgramsSection extends StatelessWidget {
           child: _buildProgramCard(
             'Training & Career',
             'https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-            kGreen,
+            kPurple,
           ),
         ),
         kWidth20,
@@ -144,7 +144,7 @@ class OurProgramsSection extends StatelessWidget {
           child: _buildProgramCard(
             'Corporate Training',
             'https://images.unsplash.com/photo-1556761175-b413da4baf72?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-            kGreen,
+            kPurple,
           ),
         ),
       ],

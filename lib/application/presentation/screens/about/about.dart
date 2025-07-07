@@ -300,7 +300,7 @@ class AboutScreen extends StatelessWidget {
                                 child: const Text('Learn More →',
                                     style: TextStyle(
                                       fontSize: 16,
-                                      color: kGreen,
+                                      color: kPurple,
                                       fontWeight: FontWeight.w600,
                                     )))
                           ]))
@@ -329,7 +329,7 @@ class AboutScreen extends StatelessWidget {
                       child: const Text('Learn More →',
                           style: TextStyle(
                               fontSize: 16,
-                              color: kGreen,
+                              color: kPurple,
                               fontWeight: FontWeight.w600)))
                 ]);
         }));
@@ -348,10 +348,10 @@ class AboutScreen extends StatelessWidget {
             width: 60,
             height: 60,
             decoration: BoxDecoration(
-              color: kGreen.withOpacity(0.1),
+              color: kPurple.withOpacity(0.1),
               borderRadius: BorderRadius.circular(30),
             ),
-            child: Icon(icon, color: kGreen, size: 30),
+            child: Icon(icon, color: kPurple, size: 30),
           ),
           kHeight15,
           Text(title,
@@ -400,7 +400,7 @@ class AboutScreen extends StatelessWidget {
                       child: Container(
                           height: 400,
                           decoration: BoxDecoration(
-                            color: kGreen,
+                            color: kPurple,
                             borderRadius: BorderRadius.circular(20),
                           ),
                           child: const Center(
@@ -422,7 +422,7 @@ class AboutScreen extends StatelessWidget {
                   Container(
                     height: 250,
                     decoration: BoxDecoration(
-                      color: kGreen,
+                      color: kPurple,
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: const Center(
@@ -452,7 +452,7 @@ class AboutScreen extends StatelessWidget {
         width: 24,
         height: 24,
         decoration: BoxDecoration(
-          color: kGreen,
+          color: kPurple,
           borderRadius: BorderRadius.circular(12),
         ),
         child: const Icon(Icons.check, color: kWhite, size: 16),
@@ -1087,7 +1087,7 @@ class AdventureLandingPage extends StatelessWidget {
                           width: 40,
                           height: 40,
                           decoration: BoxDecoration(
-                            color: kGreen,
+                            color: kPurple,
                             borderRadius: BorderRadius.circular(8),
                           ),
                           child: const Icon(
@@ -1182,8 +1182,9 @@ class AdventureLandingPage extends StatelessWidget {
                                     height: 8,
                                     margin: const EdgeInsets.only(right: 8),
                                     decoration: BoxDecoration(
-                                      color:
-                                          index < 3 ? kGreen : Colors.grey[300],
+                                      color: index < 3
+                                          ? kPurple
+                                          : Colors.grey[300],
                                       shape: BoxShape.circle,
                                     )))),
                         kHeight60
