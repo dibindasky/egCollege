@@ -1,4 +1,5 @@
 import 'package:animate_do/animate_do.dart';
+import 'package:edu_college/application/presentation/utils/animations/animated_counter.dart';
 import 'package:edu_college/application/presentation/utils/animations/hover/rise_up_hove.dart';
 import 'package:edu_college/application/presentation/utils/colors.dart';
 import 'package:edu_college/application/presentation/utils/const.dart';
@@ -23,19 +24,19 @@ class StatictsCountsSection extends StatelessWidget {
               children: [
                 _StaticetsCountTile(
                   title: 'Active Leaners',
-                  count: '500+',
+                  count: 500,
                 ),
                 _StaticetsCountTile(
                   title: 'Courses & Programs',
-                  count: '200+',
+                  count: 200,
                 ),
                 _StaticetsCountTile(
                   title: 'Learners',
-                  count: '2000+',
+                  count: 2000,
                 ),
                 _StaticetsCountTile(
                   title: 'Enrollment per month',
-                  count: '100+',
+                  count: 100,
                 ),
               ],
             ),
@@ -79,7 +80,7 @@ class _StaticetsCountTile extends StatelessWidget {
   });
 
   final String title;
-  final String count;
+  final int count;
 
   @override
   Widget build(BuildContext context) {
@@ -134,10 +135,21 @@ class _StaticetsCountTile extends StatelessWidget {
                               fontSize: 24, fontWeight: FontWeight.bold),
                         ),
                         const SizedBox(height: 10),
-                        Text(
-                          count,
-                          style: const TextStyle(
-                              fontSize: 32, fontWeight: FontWeight.bold),
+                        Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            AnimatedCounter(
+                              start: 0,
+                              end: count,
+                              style: const TextStyle(
+                                  fontSize: 32, fontWeight: FontWeight.bold),
+                            ),
+                            Text(
+                              '+',
+                              style: const TextStyle(
+                                  fontSize: 32, fontWeight: FontWeight.bold),
+                            ),
+                          ],
                         ),
                       ],
                     ),
