@@ -58,7 +58,7 @@ class _GuidanceInfDetail extends StatelessWidget {
             vertical: 10,
           ),
           child: Text(
-            'CAREER SUPPORT & PLACEMENTS',
+            'CAREER SUPPORT & eG JOBS FACILITIES',
             style: textThinStyle1.copyWith(color: kGreen),
           ),
         ),
@@ -95,7 +95,8 @@ class _GuidanceInfDetail extends StatelessWidget {
                 Expanded(
                   child: Text(
                     'Our support includes:',
-                    style: textStyle1.copyWith(color: kBlack, fontWeight: FontWeight.bold),
+                    style: textStyle1.copyWith(
+                        color: kBlack, fontWeight: FontWeight.bold),
                   ),
                 ),
               ],
@@ -106,11 +107,15 @@ class _GuidanceInfDetail extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('• Professional CV & resume preparation', style: textThinStyle1),
+                  Text('• Professional CV & resume preparation',
+                      style: textThinStyle1),
                   const SizedBox(height: 6),
-                  Text('• Interview coaching & personal branding', style: textThinStyle1),
+                  Text('• Interview coaching & personal branding',
+                      style: textThinStyle1),
                   const SizedBox(height: 6),
-                  Text('• Access to 100+ active internship and job partners across the UAE & Singapore', style: textThinStyle1),
+                  Text(
+                      '• Access to 100+ active internship and job partners across the UAE & Singapore',
+                      style: textThinStyle1),
                 ],
               ),
             ),
@@ -172,54 +177,54 @@ class _BuildImageSection extends StatelessWidget {
             studentLearning,
           ),
         ),
-        Positioned(
-          top: 40,
-          left: 20,
-          child: ShakeX(
-            from: 5,
-            duration: const Duration(seconds: 20),
-            child: ShakeY(
-              from: 5,
-              duration: const Duration(seconds: 20),
-              child: Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                decoration: BoxDecoration(
-                    color: kGreen.withOpacity(.4),
-                    border: Border.all(color: kWhite),
-                    borderRadius: BorderRadius.circular(12),
-                    boxShadow: boxShadow3),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        const Icon(
-                          Icons.star,
-                          color: kWhite,
-                          size: 30,
-                        ),
-                        kWidth10,
-                        Text(
-                          '5+',
-                          style: textHeadStyle1.copyWith(color: kWhite),
-                        ),
-                      ],
-                    ),
-                    Text(
-                      'Years of Experience',
-                      style: textThinStyle1.copyWith(
-                        color: kBlack.withOpacity(0.6),
-                      ),
-                    )
-                  ],
-                ),
-              ),
-            ),
-          ),
-        )
+        // Positioned(
+        //   top: 40,
+        //   left: 20,
+        //   child: ShakeX(
+        //     from: 5,
+        //     duration: const Duration(seconds: 20),
+        //     child: ShakeY(
+        //       from: 5,
+        //       duration: const Duration(seconds: 20),
+        //       child: Container(
+        //         padding:
+        //             const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+        //         decoration: BoxDecoration(
+        //             color: kGreen.withOpacity(.4),
+        //             border: Border.all(color: kWhite),
+        //             borderRadius: BorderRadius.circular(12),
+        //             boxShadow: boxShadow3),
+        //         child: Column(
+        //           mainAxisSize: MainAxisSize.min,
+        //           crossAxisAlignment: CrossAxisAlignment.start,
+        //           children: [
+        //             Row(
+        //               mainAxisSize: MainAxisSize.min,
+        //               children: [
+        //                 const Icon(
+        //                   Icons.star,
+        //                   color: kWhite,
+        //                   size: 30,
+        //                 ),
+        //                 kWidth10,
+        //                 Text(
+        //                   '5+',
+        //                   style: textHeadStyle1.copyWith(color: kWhite),
+        //                 ),
+        //               ],
+        //             ),
+        //             Text(
+        //               'Years of Experience',
+        //               style: textThinStyle1.copyWith(
+        //                 color: kBlack.withOpacity(0.6),
+        //               ),
+        //             )
+        //           ],
+        //         ),
+        //       ),
+        //     ),
+        //   ),
+        // )
       ],
     );
   }

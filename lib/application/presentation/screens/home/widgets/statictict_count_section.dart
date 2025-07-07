@@ -23,7 +23,7 @@ class StatictsCountsSection extends StatelessWidget {
               children: [
                 _StaticetsCountTile(
                   title: 'Active Leaners',
-                  count: '700+',
+                  count: '500+',
                 ),
                 _StaticetsCountTile(
                   title: 'Courses & Programs',
@@ -31,11 +31,11 @@ class StatictsCountsSection extends StatelessWidget {
                 ),
                 _StaticetsCountTile(
                   title: 'Learners',
-                  count: '5000+',
+                  count: '2000+',
                 ),
                 _StaticetsCountTile(
                   title: 'Enrollment per month',
-                  count: '200+',
+                  count: '100+',
                 ),
               ],
             ),

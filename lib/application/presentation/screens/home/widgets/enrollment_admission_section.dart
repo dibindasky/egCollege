@@ -24,13 +24,13 @@ class EnrollmentAdmissionSection extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: isMobile ? 40 : 80),
         child: Column(
           children: [
-            kHeight30,
-            Text(
-              'Your Journey...\nAt A Glance',
-              style: textMainHead.copyWith(
-                color: kWhite,
-              ),
-            ),
+            // kHeight30,
+            // Text(
+            //   'Your Journey...\nAt A Glance',
+            //   style: textMainHead.copyWith(
+            //     color: kWhite,
+            //   ),
+            // ),
             kHeight30,
             EnrollmentAdmissionCard(
               description: descriptions.first,
@@ -251,7 +251,7 @@ class EnrollmentAdmissionCard extends StatelessWidget {
         _buildStatItem(
           icon: Icons.emoji_events,
           iconColor: Colors.orange,
-          number: '300',
+          number: '100',
           label: 'Graduated',
         ),
         SizedBox(width: isMobile ? 40 : 60),

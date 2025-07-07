@@ -84,7 +84,7 @@ class StudentFeedbackSection extends StatelessWidget {
 
     List<FeedbackData> feedbacks = [
       FeedbackData(
-        name: "Lilash Vamadevan",
+        name: "Albin Varghese",
         course: "Student @ Project Management",
         imageUrl:
             "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
@@ -92,7 +92,7 @@ class StudentFeedbackSection extends StatelessWidget {
             "I recently completed my PMP training here, A huge shoutout to Mr. Sajid, the coordinator, for his outstanding support throughout the enrollment process. His prompt responses, clear guidance, and warm demeanour made everything seamless. Kudos to Mr.",
       ),
       FeedbackData(
-        name: "Sajjad Hossen",
+        name: "Subash Chandran",
         course: "Student @ CSWIP",
         imageUrl:
             "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
@@ -100,7 +100,7 @@ class StudentFeedbackSection extends StatelessWidget {
             "I am grateful to be part of such an incredible Institute and want to thank the team for their hard work and dedication. Your efforts have made a significant impact, and it shows. Each team member has been invaluable in their collaboration, support, and",
       ),
       FeedbackData(
-        name: "Anas Shaikh",
+        name: "Arun Dev",
         course: "Student @ Digital Marketing",
         imageUrl:
             "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",

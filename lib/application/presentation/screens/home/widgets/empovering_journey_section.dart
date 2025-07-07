@@ -14,7 +14,7 @@ class EmpoveringJourneySection extends StatelessWidget {
       'Customized Training Solutions',
       'Expert Trainers with Industry Experience',
       'Career-Driven Learning for Real-World Success',
-      'Dedicated Placement Support',
+      'Dedicated Career Support',
       'Flexible Learning That Fits Your Lifestyle'
     ];
     final listContent = [
