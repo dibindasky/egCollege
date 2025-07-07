@@ -1,4 +1,5 @@
 import 'package:edu_college/application/presentation/screens/course/all_courses/widgets/course_list_builder.dart';
+import 'package:edu_college/application/presentation/screens/course/level4_courses/builder.dart';
 import 'package:edu_college/application/presentation/utils/const.dart';
 import 'package:flutter/material.dart';
 
@@ -32,7 +33,10 @@ class CoursesScreen extends StatelessWidget {
                                   color: Colors.black54,
                                   fontWeight: FontWeight.w400)),
                           const SizedBox(height: 30),
-                          const CourseListBuilder()
+                          //const CourseListBuilder(),
+                          const LevelSevenCourses(),
+                          const LevelFiveCourses(),
+                          const LevelFourCourses()
                         ])))));
   }
 

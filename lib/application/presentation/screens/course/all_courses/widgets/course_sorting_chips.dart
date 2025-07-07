@@ -99,7 +99,7 @@ class ChipPositionedIcon extends StatelessWidget {
         right: 0,
         top: 0,
         child: CircleAvatar(
-          backgroundColor: kGreen,
+          backgroundColor: kPurple,
           radius: 12,
           child: GestureDetector(
               onTap: onTap,

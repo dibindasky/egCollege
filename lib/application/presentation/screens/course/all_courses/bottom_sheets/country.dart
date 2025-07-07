@@ -69,7 +69,7 @@ class CourseCountry extends StatelessWidget {
                                           whiChFilter: 'COUNTRY',
                                         );
                                       },
-                                      activeColor: kGreen,
+                                      activeColor: kPurple,
                                     ))
                               ]));
                     }),

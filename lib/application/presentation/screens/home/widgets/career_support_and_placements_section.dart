@@ -8,17 +8,16 @@ class CareerSupportAndPlacementSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        final bool isDesktop = constraints.maxWidth >= 800;
-        return Container(
+    return LayoutBuilder(builder: (context, constraints) {
+      final bool isDesktop = constraints.maxWidth >= 800;
+      return Container(
           padding: EdgeInsets.symmetric(
               horizontal: isDesktop ? 50 : 20, vertical: 100),
           decoration: BoxDecoration(
               gradient: LinearGradient(colors: [
-            kGreen.withOpacity(0.3),
-            kGreen.withOpacity(0.2),
-            kGreen.withOpacity(0.1),
+            kPurple.withOpacity(0.2),
+            kPurple.withOpacity(0.12),
+            kPurple.withOpacity(0.1),
             kWhite
           ])),
           child: isDesktop
@@ -29,16 +28,12 @@ class CareerSupportAndPlacementSection extends StatelessWidget {
                     Expanded(child: _BuildImageSection())
                   ],
                 )
-              : const Column(
-                  children: [
-                    _BuildImageSection(),
-                    kHeight15,
-                    _GuidanceInfDetail(),
-                  ],
-                ),
-        );
-      },
-    );
+              : const Column(children: [
+                  _BuildImageSection(),
+                  kHeight15,
+                  _GuidanceInfDetail()
+                ]));
+    });
   }
 }
 
@@ -52,14 +47,14 @@ class _GuidanceInfDetail extends StatelessWidget {
       children: [
         Container(
           decoration: BoxDecoration(
-              color: kGreen.withOpacity(0.2), borderRadius: kRadius50),
+              color: kPurple.withOpacity(0.2), borderRadius: kRadius50),
           padding: const EdgeInsets.symmetric(
             horizontal: 20,
             vertical: 10,
           ),
           child: Text(
             'CAREER SUPPORT & eG JOBS FACILITIES',
-            style: textThinStyle1.copyWith(color: kGreen),
+            style: textThinStyle1.copyWith(color: kPurple),
           ),
         ),
         kHeight10,
@@ -71,7 +66,7 @@ class _GuidanceInfDetail extends StatelessWidget {
               TextSpan(
                 text: 'Internship & Job Guidance',
                 style: textMainHead.copyWith(
-                    color: kGreen, fontWeight: FontWeight.bold),
+                    color: kPurple, fontWeight: FontWeight.bold),
               ),
             ],
           ),

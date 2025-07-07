@@ -26,8 +26,6 @@ class EmpoveringJourneySection extends StatelessWidget {
       '''Choose the learning mode that works best for you — whether it’s fully online, on-site, blended, or hybrid. Our flexible programs make it easy to balance your education with work, and other commitments.'''
     ];
 
-    final colors = [kGreen, kGreen, kRed, kYellow, kIndigo, kBlue];
-
     return LayoutBuilder(
       builder: (context, constraints) {
         final bool isDesktop = constraints.maxWidth >= 1100;
@@ -79,7 +77,7 @@ class EmpoveringJourneySection extends StatelessWidget {
                                   listHeading: listHeading[index],
                                   listContent: listContent[index],
                                   // color: colors[index],
-                                  color: kGreen,
+                                  color: kPurple,
                                 ),
                               ),
                             );
@@ -125,12 +123,12 @@ class _GridTileEmpoveingJourneyState extends State<_GridTileEmpoveingJourney> {
         isHovered = value;
       }),
       child: Container(
+        height: 300,
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
         decoration: BoxDecoration(
             border: isHovered ? Border.all(color: widget.color) : null,
-            borderRadius: kRadius15,
-            color: kWhite,
-            boxShadow: boxShadow3),
+            borderRadius: kRadius5,
+            color: kWhite),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

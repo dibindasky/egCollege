@@ -76,7 +76,7 @@ String aboutUsImage3 = 'assets/dev/eSPG3.png';
 String graduvatedStudentImg = 'assets/images/graduvated_student.png';
 String studentsCheering = 'assets/images/students.png';
 String studentWithGlobe = 'assets/images/student_globe.png';
-String studentLearning = 'assets/images/student_learning.png';
+String studentLearning = 'assets/dev/student_learning 01.png';
 String studentDiscussing = 'assets/images/students_discucssion.png';
 String studentGraduvated = 'assets/images/student_graduvated.png';
 
