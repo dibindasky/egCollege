@@ -1,5 +1,11 @@
+import 'package:edu_college/application/controller/course/course_controller.dart';
 import 'package:edu_college/application/presentation/screens/course/level4_courses/level4_course.dart';
+import 'package:edu_college/application/presentation/screens/course/widgets/course_mini_des.dart';
+import 'package:edu_college/application/presentation/screens/course/widgets/desktop_view.dart';
+import 'package:edu_college/application/presentation/utils/colors.dart';
+import 'package:edu_college/application/presentation/utils/const.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class Level4CourseDetailView extends StatefulWidget {
   final OTHMDiploma course;
@@ -33,93 +39,33 @@ class _Level4CourseDetailViewState extends State<Level4CourseDetailView>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          _buildSliverAppBar(),
-          SliverToBoxAdapter(
-            child: _buildContent(),
-          ),
-        ],
-      ),
+    bool isMobile = MediaQuery.of(context).size.width < 768;
+    WidgetsBinding.instance.addPostFrameCallback(
+      (timeStamp) => Get.find<CourseController>()
+          .getLevel4SingleCourse(id: widget.id ?? '', course: widget.course),
     );
-  }
-
-  Widget _buildSliverAppBar() {
-    return SliverAppBar(
-      expandedHeight: 250.0,
-      floating: false,
-      pinned: true,
-      elevation: 0,
-      backgroundColor: Colors.blue.shade800,
-      flexibleSpace: FlexibleSpaceBar(
-        title: Text(
-          widget.course.courseName,
-          style: const TextStyle(
-            color: Colors.white,
-            fontSize: 16,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        background: Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                Colors.blue.shade900,
-                Colors.blue.shade700,
-                Colors.blue.shade500,
-              ],
-            ),
-          ),
-          child: Stack(
-            children: [
-              Positioned.fill(
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.black.withOpacity(0.3),
-                  ),
-                ),
-              ),
-              Positioned(
-                bottom: 60,
-                left: 16,
-                right: 16,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 12,
-                        vertical: 6,
-                      ),
-                      decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.2),
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child: Text(
-                        widget.course.level,
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 12,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 8),
-                    Text(
-                      '${widget.course.totalCredits} Credits • ${widget.course.deliveryPeriod}',
-                      style: const TextStyle(
-                        color: Colors.white70,
-                        fontSize: 14,
-                      ),
-                    ),
+    return Scaffold(
+      body: Padding(
+        padding: EdgeInsets.all(isMobile ? 10 : 80),
+        child: Obx(
+          () => Get.find<CourseController>().courseLEvel4DetailLoading.value
+              ? const Center(child: CircularProgressIndicator())
+              : CustomScrollView(
+                  slivers: [
+                    SliverList.list(children: [
+                      DesktopView(
+                          image: widget.course.image ?? "",
+                          text: widget.course.courseName ?? "",
+                          halfContiner: CourcseMiniDescription(
+                              courseSlug: '',
+                              courseId: "",
+                              course: widget.course.courseName ?? '',
+                              description: widget.course.description ?? "")),
+                      kHeight30,
+                      _buildContent()
+                    ])
                   ],
                 ),
-              ),
-            ],
-          ),
         ),
       ),
     );
@@ -129,6 +75,7 @@ class _Level4CourseDetailViewState extends State<Level4CourseDetailView>
     return Column(
       children: [
         _buildQuickStats(),
+        kHeight20,
         _buildTabSection(),
       ],
     );
@@ -136,22 +83,19 @@ class _Level4CourseDetailViewState extends State<Level4CourseDetailView>
 
   Widget _buildQuickStats() {
     return Container(
-      margin: const EdgeInsets.all(16),
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(12),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.1),
-            spreadRadius: 1,
-            blurRadius: 8,
-            offset: const Offset(0, 2),
-          ),
-        ],
-      ),
-      child: LayoutBuilder(
-        builder: (context, constraints) {
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(12),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.1),
+              spreadRadius: 1,
+              blurRadius: 8,
+              offset: const Offset(0, 2),
+            ),
+          ],
+        ),
+        child: LayoutBuilder(builder: (context, constraints) {
           bool isWideScreen = constraints.maxWidth > 600;
           return isWideScreen
               ? Row(
@@ -178,41 +122,50 @@ class _Level4CourseDetailViewState extends State<Level4CourseDetailView>
                   mainAxisSpacing: 8,
                   crossAxisSpacing: 8,
                   children: [
-                    _buildStatItem('Credits', '${widget.course.totalCredits}'),
-                    _buildStatItem('Units', '${widget.course.mandatoryUnits}'),
-                    _buildStatItem(
-                        'GLH', '${widget.course.guidedLearningHours}'),
-                    _buildStatItem(
-                        'TQT', '${widget.course.totalQualificationTime}'),
-                  ],
-                );
-        },
-      ),
-    );
+                      _buildStatItem(
+                          'Credits', '${widget.course.totalCredits}'),
+                      _buildStatItem(
+                          'Units', '${widget.course.mandatoryUnits}'),
+                      _buildStatItem(
+                          'GLH', '${widget.course.guidedLearningHours}'),
+                      _buildStatItem(
+                          'TQT', '${widget.course.totalQualificationTime}')
+                    ]);
+        }));
   }
 
   Widget _buildStatItem(String label, String value) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text(
-          value,
-          style: const TextStyle(
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
-            color: Colors.blue,
+    return Container(
+      margin: const EdgeInsets.only(right: 6),
+      width: 120,
+      height: 60,
+      decoration: BoxDecoration(
+        color: const Color(0xFFF9FAFB),
+        borderRadius: BorderRadius.circular(8),
+        border: Border.all(color: const Color(0xFFE5E7EB)),
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            value,
+            style: const TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+              color: kPurple,
+            ),
           ),
-        ),
-        const SizedBox(height: 4),
-        Text(
-          label,
-          style: TextStyle(
-            fontSize: 12,
-            color: Colors.grey.shade600,
-            fontWeight: FontWeight.w500,
+          const SizedBox(height: 4),
+          Text(
+            label,
+            style: TextStyle(
+              fontSize: 12,
+              color: Colors.grey..withOpacity(.6),
+              fontWeight: FontWeight.w500,
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 
@@ -243,10 +196,10 @@ class _Level4CourseDetailViewState extends State<Level4CourseDetailView>
             ),
             child: TabBar(
               controller: _tabController,
-              isScrollable: true,
-              labelColor: Colors.blue.shade800,
-              unselectedLabelColor: Colors.grey.shade600,
-              indicatorColor: Colors.blue.shade800,
+              // isScrollable: true,
+              labelColor: kPurple.withOpacity(.5),
+              unselectedLabelColor: Colors.grey..withOpacity(.6),
+              indicatorColor: kPurple.withOpacity(.5),
               indicatorWeight: 3,
               labelStyle: const TextStyle(
                 fontWeight: FontWeight.bold,
@@ -285,13 +238,14 @@ class _Level4CourseDetailViewState extends State<Level4CourseDetailView>
 
   Widget _buildOverviewTab() {
     return SingleChildScrollView(
+      physics: const NeverScrollableScrollPhysics(),
       padding: const EdgeInsets.all(16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           _buildSectionTitle('Description'),
           Text(
-            widget.course.description,
+            widget.course.description ?? "",
             style: const TextStyle(
               fontSize: 16,
               height: 1.6,
@@ -301,7 +255,7 @@ class _Level4CourseDetailViewState extends State<Level4CourseDetailView>
           const SizedBox(height: 24),
           _buildSectionTitle('Objective'),
           Text(
-            widget.course.objective,
+            widget.course.objective ?? "",
             style: const TextStyle(
               fontSize: 16,
               height: 1.6,
@@ -318,16 +272,16 @@ class _Level4CourseDetailViewState extends State<Level4CourseDetailView>
 
   Widget _buildUnitsTab() {
     return ListView.builder(
-      padding: const EdgeInsets.all(16),
-      itemCount: widget.course.units.length,
+      // padding: const EdgeInsets.all(16),
+      itemCount: widget.course.units?.length,
       itemBuilder: (context, index) {
-        final unit = widget.course.units[index];
+        final unit = widget.course.units?[index];
         return _buildUnitCard(unit);
       },
     );
   }
 
-  Widget _buildUnitCard(Unit unit) {
+  Widget _buildUnitCard(Unit? unit) {
     return Container(
       margin: const EdgeInsets.only(bottom: 16),
       padding: const EdgeInsets.all(16),
@@ -345,13 +299,13 @@ class _Level4CourseDetailViewState extends State<Level4CourseDetailView>
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                 decoration: BoxDecoration(
-                  color: Colors.blue.shade100,
+                  color: kWhite,
                   borderRadius: BorderRadius.circular(6),
                 ),
                 child: Text(
-                  unit.unitId,
+                  unit?.unitId ?? '',
                   style: TextStyle(
-                    color: Colors.blue.shade800,
+                    color: kPurple.withOpacity(.5),
                     fontWeight: FontWeight.bold,
                     fontSize: 12,
                   ),
@@ -363,7 +317,7 @@ class _Level4CourseDetailViewState extends State<Level4CourseDetailView>
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      unit.unitName,
+                      unit?.unitName ?? "",
                       style: const TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
@@ -372,10 +326,10 @@ class _Level4CourseDetailViewState extends State<Level4CourseDetailView>
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      '${unit.credits} Credits • ${unit.guidedLearningHours} GLH',
+                      '${unit?.credits} Credits • ${unit?.guidedLearningHours} GLH',
                       style: TextStyle(
                         fontSize: 12,
-                        color: Colors.grey.shade600,
+                        color: Colors.grey..withOpacity(.6),
                       ),
                     ),
                   ],
@@ -385,7 +339,7 @@ class _Level4CourseDetailViewState extends State<Level4CourseDetailView>
           ),
           const SizedBox(height: 12),
           Text(
-            unit.description,
+            unit?.description ?? "",
             style: const TextStyle(
               fontSize: 14,
               height: 1.5,
@@ -404,7 +358,7 @@ class _Level4CourseDetailViewState extends State<Level4CourseDetailView>
             ),
             tilePadding: EdgeInsets.zero,
             childrenPadding: const EdgeInsets.only(left: 16),
-            children: unit.learningOutcomes.map((outcome) {
+            children: (unit?.learningOutcomes ?? []).map((outcome) {
               return Padding(
                 padding: const EdgeInsets.only(bottom: 8),
                 child: Row(
@@ -415,7 +369,7 @@ class _Level4CourseDetailViewState extends State<Level4CourseDetailView>
                       height: 6,
                       margin: const EdgeInsets.only(top: 8, right: 12),
                       decoration: BoxDecoration(
-                        color: Colors.blue.shade600,
+                        color: kPurple..withOpacity(.6),
                         shape: BoxShape.circle,
                       ),
                     ),
@@ -464,34 +418,34 @@ class _Level4CourseDetailViewState extends State<Level4CourseDetailView>
           physics: const NeverScrollableScrollPhysics(),
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: crossAxisCount,
-            childAspectRatio: 4,
+            childAspectRatio: 6,
             crossAxisSpacing: 8,
             mainAxisSpacing: 8,
           ),
-          itemCount: widget.course.careerOpportunities.length,
+          itemCount: widget.course.careerOpportunities?.length,
           itemBuilder: (context, index) {
             return Container(
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
-                color: Colors.green.shade50,
+                color: kWhite,
                 borderRadius: BorderRadius.circular(8),
-                border: Border.all(color: Colors.green.shade200),
+                border: Border.all(color: kPurple.withOpacity(.2)),
               ),
               child: Row(
                 children: [
                   Icon(
                     Icons.work_outline,
-                    color: Colors.green.shade600,
+                    color: kPurple.withOpacity(.6),
                     size: 20,
                   ),
                   const SizedBox(width: 8),
                   Expanded(
                     child: Text(
-                      widget.course.careerOpportunities[index],
-                      style: TextStyle(
+                      widget.course.careerOpportunities?[index] ?? '',
+                      style: const TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w500,
-                        color: Colors.green.shade800,
+                        color: kBlack,
                       ),
                     ),
                   ),
@@ -506,12 +460,12 @@ class _Level4CourseDetailViewState extends State<Level4CourseDetailView>
 
   Widget _buildProgressionList() {
     return Column(
-      children: widget.course.progressionPathways.map((pathway) {
+      children: (widget.course.entryRequirements ?? []).map((pathway) {
         return Container(
           margin: const EdgeInsets.only(bottom: 8),
           padding: const EdgeInsets.all(12),
           decoration: BoxDecoration(
-            color: Colors.purple.shade50,
+            color: kWhite,
             borderRadius: BorderRadius.circular(8),
             border: Border.all(color: Colors.purple.shade200),
           ),
@@ -519,17 +473,17 @@ class _Level4CourseDetailViewState extends State<Level4CourseDetailView>
             children: [
               Icon(
                 Icons.arrow_forward,
-                color: Colors.purple.shade600,
+                color: Colors.purple..withOpacity(.6),
                 size: 20,
               ),
               const SizedBox(width: 12),
               Expanded(
                 child: Text(
                   pathway,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w500,
-                    color: Colors.purple.shade800,
+                    color: kBlack,
                   ),
                 ),
               ),
@@ -542,48 +496,38 @@ class _Level4CourseDetailViewState extends State<Level4CourseDetailView>
 
   Widget _buildRequirementsTab() {
     return SingleChildScrollView(
-      padding: const EdgeInsets.all(16),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
+        padding: const EdgeInsets.all(16),
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           _buildSectionTitle('Entry Requirements'),
           Column(
-            children: widget.course.entryRequirements.map((requirement) {
-              return Container(
+              children:
+                  (widget.course.entryRequirements ?? []).map((requirement) {
+            return Container(
                 margin: const EdgeInsets.only(bottom: 8),
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
-                  color: Colors.orange.shade50,
+                  color: kWhite,
                   borderRadius: BorderRadius.circular(8),
-                  border: Border.all(color: Colors.orange.shade200),
+                  border: Border.all(color: kPurple.withOpacity(.1)),
                 ),
                 child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Icon(
-                      Icons.check_circle_outline,
-                      color: Colors.orange.shade600,
-                      size: 20,
-                    ),
-                    const SizedBox(width: 12),
-                    Expanded(
-                      child: Text(
-                        requirement,
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500,
-                          color: Colors.orange.shade800,
-                        ),
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Icon(
+                        Icons.check_circle_outline,
+                        color: kPurple..withOpacity(.6),
+                        size: 20,
                       ),
-                    ),
-                  ],
-                ),
-              );
-            }).toList(),
-          ),
-        ],
-      ),
-    );
+                      const SizedBox(width: 12),
+                      Expanded(
+                          child: Text(requirement,
+                              style: const TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w500,
+                                  color: kBlack)))
+                    ]));
+          }).toList())
+        ]));
   }
 
   Widget _buildAssessmentTab() {
@@ -596,9 +540,9 @@ class _Level4CourseDetailViewState extends State<Level4CourseDetailView>
           Container(
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
-              color: Colors.blue.shade50,
+              color: kPurple.withOpacity(.2),
               borderRadius: BorderRadius.circular(12),
-              border: Border.all(color: Colors.blue.shade200),
+              border: Border.all(color: kPurple.withOpacity(.2)),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -607,23 +551,23 @@ class _Level4CourseDetailViewState extends State<Level4CourseDetailView>
                   children: [
                     Icon(
                       Icons.assessment,
-                      color: Colors.blue.shade600,
+                      color: kPurple..withOpacity(.6),
                       size: 24,
                     ),
                     const SizedBox(width: 12),
                     Text(
-                      widget.course.assessmentMethod.type,
+                      widget.course.assessmentMethod?.type ?? "",
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
-                        color: Colors.blue.shade800,
+                        color: kPurple.withOpacity(.5),
                       ),
                     ),
                   ],
                 ),
                 const SizedBox(height: 12),
                 Text(
-                  widget.course.assessmentMethod.description,
+                  widget.course.assessmentMethod?.description ?? '',
                   style: const TextStyle(
                     fontSize: 14,
                     height: 1.5,
@@ -636,7 +580,8 @@ class _Level4CourseDetailViewState extends State<Level4CourseDetailView>
           const SizedBox(height: 16),
           _buildSectionTitle('Assessment Methods'),
           Column(
-            children: widget.course.assessmentMethod.methods.map((method) {
+            children:
+                (widget.course.assessmentMethod?.methods ?? []).map((method) {
               return Container(
                 margin: const EdgeInsets.only(bottom: 8),
                 padding: const EdgeInsets.all(12),
@@ -649,7 +594,7 @@ class _Level4CourseDetailViewState extends State<Level4CourseDetailView>
                   children: [
                     Icon(
                       Icons.assignment_outlined,
-                      color: Colors.grey.shade600,
+                      color: Colors.grey..withOpacity(.6),
                       size: 20,
                     ),
                     const SizedBox(width: 12),
@@ -682,34 +627,34 @@ class _Level4CourseDetailViewState extends State<Level4CourseDetailView>
           physics: const NeverScrollableScrollPhysics(),
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: crossAxisCount,
-            childAspectRatio: 4,
+            childAspectRatio: 6,
             crossAxisSpacing: 8,
             mainAxisSpacing: 8,
           ),
-          itemCount: widget.course.keySkills.length,
+          itemCount: widget.course.keySkills?.length,
           itemBuilder: (context, index) {
             return Container(
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
-                color: Colors.blue.shade50,
+                color: kWhite,
                 borderRadius: BorderRadius.circular(8),
-                border: Border.all(color: Colors.blue.shade200),
+                border: Border.all(color: kPurple.withOpacity(.2)),
               ),
               child: Row(
                 children: [
                   Icon(
                     Icons.star_outline,
-                    color: Colors.blue.shade600,
+                    color: kPurple..withOpacity(.6),
                     size: 20,
                   ),
                   const SizedBox(width: 8),
                   Expanded(
                     child: Text(
-                      widget.course.keySkills[index],
+                      widget.course.keySkills?[index] ?? '',
                       style: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w500,
-                        color: Colors.blue.shade800,
+                        color: kPurple.withOpacity(.5),
                       ),
                     ),
                   ),

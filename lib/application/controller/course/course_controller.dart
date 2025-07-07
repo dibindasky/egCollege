@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+import 'package:edu_college/application/presentation/screens/course/level4_courses/level4_course.dart';
 import 'package:edu_college/data/service/course_service/course_service.dart';
 import 'package:edu_college/domain/model/courses/add_course_review_model/add_course_review_model.dart';
 import 'package:edu_college/domain/model/courses/getcource_review_bycource/getcource_review_bycource.dart';
@@ -11,6 +14,7 @@ class CourseController extends GetxController {
   final CoursesRepo coursesRepo = CourseService();
 
   RxBool courseDetailLoading = false.obs;
+  RxBool courseLEvel4DetailLoading = false.obs;
   RxBool isloading = false.obs;
   RxBool hasError = false.obs;
   RxBool reviewLoading = false.obs;
@@ -25,6 +29,8 @@ class CourseController extends GetxController {
   RxList<GetAllCouses> allCourses = <GetAllCouses>[].obs;
   RxList<GetAllCouses> allLevelSevenCourses = <GetAllCouses>[].obs;
   RxList<GetAllCouses> allLevelFiveCourses = <GetAllCouses>[].obs;
+
+  Rx<OTHMDiploma> levelFOurCourseDetail = OTHMDiploma().obs;
 
   RxList<String> allCourseNames = <String>[].obs;
   // For filtering
@@ -108,6 +114,19 @@ class CourseController extends GetxController {
     courseDetailLoading.value = false;
     getAllReviewByCourse(
         courseSlug: courseDetail.value.slug ?? "", isLoad: true);
+  }
+
+  Future<void> getLevel4SingleCourse(
+      {OTHMDiploma? course, required String id}) async {
+    courseLEvel4DetailLoading.value = true;
+    if (course != null) {
+      levelFOurCourseDetail.value = course;
+    } else {
+      log('message');
+      levelFOurCourseDetail.value = OTHMDiploma.fromJson(
+          othmLevel4DiplomasJson.firstWhere((c) => c['id'] == id));
+    }
+    courseLEvel4DetailLoading.value = false;
   }
 
   Future<void> getAllCourses({bool isLaod = false}) async {

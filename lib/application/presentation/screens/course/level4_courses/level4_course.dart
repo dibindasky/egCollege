@@ -1,41 +1,41 @@
 // OTHM Level 4 Diploma Data Model
 class OTHMDiploma {
-  final String id;
-  final String image;
-  final String courseName;
-  final String level;
-  final String description;
-  final String objective;
-  final int totalCredits;
-  final int totalQualificationTime;
-  final int guidedLearningHours;
-  final int mandatoryUnits;
-  final String deliveryPeriod;
-  final List<String> entryRequirements;
-  final List<Unit> units;
-  final List<String> careerOpportunities;
-  final List<String> progressionPathways;
-  final List<String> keySkills;
-  final AssessmentMethod assessmentMethod;
+  final String? id;
+  final String? image;
+  final String? courseName;
+  final String? level;
+  final String? description;
+  final String? objective;
+  final int? totalCredits;
+  final int? totalQualificationTime;
+  final int? guidedLearningHours;
+  final int? mandatoryUnits;
+  final String? deliveryPeriod;
+  final List<String>? entryRequirements;
+  final List<Unit>? units;
+  final List<String>? careerOpportunities;
+  final List<String>? progressionPathways;
+  final List<String>? keySkills;
+  final AssessmentMethod? assessmentMethod;
 
   OTHMDiploma({
-    required this.image,
-    required this.id,
-    required this.courseName,
-    required this.level,
-    required this.description,
-    required this.objective,
-    required this.totalCredits,
-    required this.totalQualificationTime,
-    required this.guidedLearningHours,
-    required this.mandatoryUnits,
-    required this.deliveryPeriod,
-    required this.entryRequirements,
-    required this.units,
-    required this.careerOpportunities,
-    required this.progressionPathways,
-    required this.keySkills,
-    required this.assessmentMethod,
+    this.image,
+    this.id,
+    this.courseName,
+    this.level,
+    this.description,
+    this.objective,
+    this.totalCredits,
+    this.totalQualificationTime,
+    this.guidedLearningHours,
+    this.mandatoryUnits,
+    this.deliveryPeriod,
+    this.entryRequirements,
+    this.units,
+    this.careerOpportunities,
+    this.progressionPathways,
+    this.keySkills,
+    this.assessmentMethod,
   });
 
   factory OTHMDiploma.fromJson(Map<String, dynamic> json) {
@@ -75,11 +75,11 @@ class OTHMDiploma {
       'mandatoryUnits': mandatoryUnits,
       'deliveryPeriod': deliveryPeriod,
       'entryRequirements': entryRequirements,
-      'units': units.map((unit) => unit.toJson()).toList(),
+      'units': units?.map((unit) => unit.toJson()).toList(),
       'careerOpportunities': careerOpportunities,
       'progressionPathways': progressionPathways,
       'keySkills': keySkills,
-      'assessmentMethod': assessmentMethod.toJson(),
+      'assessmentMethod': assessmentMethod?.toJson(),
     };
   }
 }
