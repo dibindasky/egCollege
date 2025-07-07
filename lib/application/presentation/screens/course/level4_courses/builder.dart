@@ -13,7 +13,6 @@ class LevelFourCourses extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //final courses = othmLevel4DiplomasJson;
     return LayoutBuilder(builder: (context, constraints) {
       int crossAxisCount;
       double childAspectRatio;
@@ -52,16 +51,16 @@ class LevelFourCourses extends StatelessWidget {
             length: othmLevel4Diplomas.length,
             itemBuilder: (context, index) => GestureDetector(
                 onTap: () => context.go(
-                        Routes.level4CourseDetailView
-                            .replaceFirst(":id", othmLevel4Diplomas[index].id),
+                        Routes.level4CourseDetailView.replaceFirst(
+                            ":id", othmLevel4Diplomas[index].id ?? ""),
                         extra: <String, dynamic>{
                           'course': othmLevel4Diplomas[index]
                         }),
                 child: CourceCard(
                     course: ServiceFeatureModel(
-                      title: othmLevel4Diplomas[index].courseName,
-                      description: othmLevel4Diplomas[index].description,
-                      imagePath: othmLevel4Diplomas[index].image,
+                      title: othmLevel4Diplomas[index].courseName ?? "",
+                      description: othmLevel4Diplomas[index].description ?? "",
+                      imagePath: othmLevel4Diplomas[index].image ?? "",
                     ),
                     constraints: constraints)))
       ]);
