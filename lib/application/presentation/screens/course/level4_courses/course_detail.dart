@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class Level4CourseDetailView extends StatefulWidget {
-  final OTHMDiploma course;
+  final OTHMDiploma? course;
   final String? id;
 
   const Level4CourseDetailView({
@@ -27,6 +27,9 @@ class _Level4CourseDetailViewState extends State<Level4CourseDetailView>
 
   @override
   void initState() {
+    Get.find<CourseController>()
+        .getLevel4SingleCourse(id: widget.id ?? '', course: widget.course);
+
     super.initState();
     _tabController = TabController(length: 5, vsync: this);
   }
@@ -39,30 +42,38 @@ class _Level4CourseDetailViewState extends State<Level4CourseDetailView>
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.find<CourseController>();
     bool isMobile = MediaQuery.of(context).size.width < 768;
-    WidgetsBinding.instance.addPostFrameCallback(
-      (timeStamp) => Get.find<CourseController>()
-          .getLevel4SingleCourse(id: widget.id ?? '', course: widget.course),
-    );
+    // WidgetsBinding.instance.addPostFrameCallback(
+    //   (timeStamp) => Get.find<CourseController>()
+    //       .getLevel4SingleCourse(id: widget.id ?? '', course: widget.course),
+    // );
     return Scaffold(
       body: Padding(
         padding: EdgeInsets.all(isMobile ? 10 : 80),
         child: Obx(
-          () => Get.find<CourseController>().courseLEvel4DetailLoading.value
+          () => controller.courseLEvel4DetailLoading.value
               ? const Center(child: CircularProgressIndicator())
               : CustomScrollView(
                   slivers: [
                     SliverList.list(children: [
                       DesktopView(
-                          image: widget.course.image ?? "",
-                          text: widget.course.courseName ?? "",
+                          image: controller.levelFOurCourseDetail.value.image ??
+                              "",
+                          text: controller
+                                  .levelFOurCourseDetail.value.courseName ??
+                              "",
                           halfContiner: CourcseMiniDescription(
                               courseSlug: '',
                               courseId: "",
-                              course: widget.course.courseName ?? '',
-                              description: widget.course.description ?? "")),
+                              course: controller
+                                      .levelFOurCourseDetail.value.courseName ??
+                                  '',
+                              description: controller.levelFOurCourseDetail
+                                      .value.description ??
+                                  "")),
                       kHeight30,
-                      _buildContent()
+                      _buildContent(controller)
                     ])
                   ],
                 ),
@@ -71,17 +82,17 @@ class _Level4CourseDetailViewState extends State<Level4CourseDetailView>
     );
   }
 
-  Widget _buildContent() {
+  Widget _buildContent(CourseController controller) {
     return Column(
       children: [
-        _buildQuickStats(),
+        _buildQuickStats(controller),
         kHeight20,
-        _buildTabSection(),
+        _buildTabSection(controller),
       ],
     );
   }
 
-  Widget _buildQuickStats() {
+  Widget _buildQuickStats(CourseController controller) {
     return Container(
         decoration: BoxDecoration(
           color: Colors.white,
@@ -102,16 +113,16 @@ class _Level4CourseDetailViewState extends State<Level4CourseDetailView>
                   children: [
                     Expanded(
                         child: _buildStatItem(
-                            'Credits', '${widget.course.totalCredits}')),
+                            'Credits', '${controller.levelFOurCourseDetail.value.totalCredits}')),
                     Expanded(
                         child: _buildStatItem(
-                            'Units', '${widget.course.mandatoryUnits}')),
+                            'Units', '${controller.levelFOurCourseDetail.value.mandatoryUnits}')),
                     Expanded(
                         child: _buildStatItem(
-                            'GLH', '${widget.course.guidedLearningHours}')),
+                            'GLH', '${controller.levelFOurCourseDetail.value.guidedLearningHours}')),
                     Expanded(
                         child: _buildStatItem(
-                            'TQT', '${widget.course.totalQualificationTime}')),
+                            'TQT', '${controller.levelFOurCourseDetail.value.totalQualificationTime}')),
                   ],
                 )
               : GridView.count(
@@ -123,13 +134,13 @@ class _Level4CourseDetailViewState extends State<Level4CourseDetailView>
                   crossAxisSpacing: 8,
                   children: [
                       _buildStatItem(
-                          'Credits', '${widget.course.totalCredits}'),
+                          'Credits', '${controller.levelFOurCourseDetail.value.totalCredits}'),
                       _buildStatItem(
-                          'Units', '${widget.course.mandatoryUnits}'),
+                          'Units', '${controller.levelFOurCourseDetail.value.mandatoryUnits}'),
                       _buildStatItem(
-                          'GLH', '${widget.course.guidedLearningHours}'),
+                          'GLH', '${controller.levelFOurCourseDetail.value.guidedLearningHours}'),
                       _buildStatItem(
-                          'TQT', '${widget.course.totalQualificationTime}')
+                          'TQT', '${controller.levelFOurCourseDetail.value.totalQualificationTime}')
                     ]);
         }));
   }
@@ -169,7 +180,7 @@ class _Level4CourseDetailViewState extends State<Level4CourseDetailView>
     );
   }
 
-  Widget _buildTabSection() {
+  Widget _buildTabSection(CourseController controller) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 16),
       decoration: BoxDecoration(
@@ -223,11 +234,11 @@ class _Level4CourseDetailViewState extends State<Level4CourseDetailView>
             child: TabBarView(
               controller: _tabController,
               children: [
-                _buildOverviewTab(),
-                _buildUnitsTab(),
-                _buildCareersTab(),
-                _buildRequirementsTab(),
-                _buildAssessmentTab(),
+                _buildOverviewTab(controller),
+                _buildUnitsTab(controller),
+                _buildCareersTab(controller),
+                _buildRequirementsTab(controller),
+                _buildAssessmentTab(controller),
               ],
             ),
           ),
@@ -236,7 +247,7 @@ class _Level4CourseDetailViewState extends State<Level4CourseDetailView>
     );
   }
 
-  Widget _buildOverviewTab() {
+  Widget _buildOverviewTab(CourseController controller) {
     return SingleChildScrollView(
       physics: const NeverScrollableScrollPhysics(),
       padding: const EdgeInsets.all(16),
@@ -245,7 +256,7 @@ class _Level4CourseDetailViewState extends State<Level4CourseDetailView>
         children: [
           _buildSectionTitle('Description'),
           Text(
-            widget.course.description ?? "",
+            controller.levelFOurCourseDetail.value.description ?? "",
             style: const TextStyle(
               fontSize: 16,
               height: 1.6,
@@ -255,7 +266,7 @@ class _Level4CourseDetailViewState extends State<Level4CourseDetailView>
           const SizedBox(height: 24),
           _buildSectionTitle('Objective'),
           Text(
-            widget.course.objective ?? "",
+            controller.levelFOurCourseDetail.value.objective ?? "",
             style: const TextStyle(
               fontSize: 16,
               height: 1.6,
@@ -264,18 +275,18 @@ class _Level4CourseDetailViewState extends State<Level4CourseDetailView>
           ),
           const SizedBox(height: 24),
           _buildSectionTitle('Key Skills'),
-          _buildSkillsGrid(),
+          _buildSkillsGrid(controller),
         ],
       ),
     );
   }
 
-  Widget _buildUnitsTab() {
+  Widget _buildUnitsTab(CourseController controller) {
     return ListView.builder(
       // padding: const EdgeInsets.all(16),
-      itemCount: widget.course.units?.length,
+      itemCount: controller.levelFOurCourseDetail.value.units?.length,
       itemBuilder: (context, index) {
-        final unit = widget.course.units?[index];
+        final unit = controller.levelFOurCourseDetail.value.units?[index];
         return _buildUnitCard(unit);
       },
     );
@@ -393,23 +404,23 @@ class _Level4CourseDetailViewState extends State<Level4CourseDetailView>
     );
   }
 
-  Widget _buildCareersTab() {
+  Widget _buildCareersTab(CourseController controller) {
     return SingleChildScrollView(
       padding: const EdgeInsets.all(16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           _buildSectionTitle('Career Opportunities'),
-          _buildCareerGrid(),
+          _buildCareerGrid(controller),
           const SizedBox(height: 24),
           _buildSectionTitle('Progression Pathways'),
-          _buildProgressionList(),
+          _buildProgressionList(controller),
         ],
       ),
     );
   }
 
-  Widget _buildCareerGrid() {
+  Widget _buildCareerGrid(CourseController controller) {
     return LayoutBuilder(
       builder: (context, constraints) {
         int crossAxisCount = constraints.maxWidth > 600 ? 2 : 1;
@@ -422,7 +433,7 @@ class _Level4CourseDetailViewState extends State<Level4CourseDetailView>
             crossAxisSpacing: 8,
             mainAxisSpacing: 8,
           ),
-          itemCount: widget.course.careerOpportunities?.length,
+          itemCount: controller.levelFOurCourseDetail.value.careerOpportunities?.length,
           itemBuilder: (context, index) {
             return Container(
               padding: const EdgeInsets.all(12),
@@ -441,7 +452,7 @@ class _Level4CourseDetailViewState extends State<Level4CourseDetailView>
                   const SizedBox(width: 8),
                   Expanded(
                     child: Text(
-                      widget.course.careerOpportunities?[index] ?? '',
+                      controller.levelFOurCourseDetail.value.careerOpportunities?[index] ?? '',
                       style: const TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w500,
@@ -458,9 +469,9 @@ class _Level4CourseDetailViewState extends State<Level4CourseDetailView>
     );
   }
 
-  Widget _buildProgressionList() {
+  Widget _buildProgressionList(CourseController controller) {
     return Column(
-      children: (widget.course.entryRequirements ?? []).map((pathway) {
+      children: (controller.levelFOurCourseDetail.value.entryRequirements ?? []).map((pathway) {
         return Container(
           margin: const EdgeInsets.only(bottom: 8),
           padding: const EdgeInsets.all(12),
@@ -494,14 +505,14 @@ class _Level4CourseDetailViewState extends State<Level4CourseDetailView>
     );
   }
 
-  Widget _buildRequirementsTab() {
+  Widget _buildRequirementsTab(CourseController controller) {
     return SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           _buildSectionTitle('Entry Requirements'),
           Column(
               children:
-                  (widget.course.entryRequirements ?? []).map((requirement) {
+                  (controller.levelFOurCourseDetail.value.entryRequirements ?? []).map((requirement) {
             return Container(
                 margin: const EdgeInsets.only(bottom: 8),
                 padding: const EdgeInsets.all(12),
@@ -530,7 +541,7 @@ class _Level4CourseDetailViewState extends State<Level4CourseDetailView>
         ]));
   }
 
-  Widget _buildAssessmentTab() {
+  Widget _buildAssessmentTab(CourseController controller) {
     return SingleChildScrollView(
       padding: const EdgeInsets.all(16),
       child: Column(
@@ -556,7 +567,7 @@ class _Level4CourseDetailViewState extends State<Level4CourseDetailView>
                     ),
                     const SizedBox(width: 12),
                     Text(
-                      widget.course.assessmentMethod?.type ?? "",
+                      controller.levelFOurCourseDetail.value.assessmentMethod?.type ?? "",
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
@@ -567,7 +578,7 @@ class _Level4CourseDetailViewState extends State<Level4CourseDetailView>
                 ),
                 const SizedBox(height: 12),
                 Text(
-                  widget.course.assessmentMethod?.description ?? '',
+                  controller.levelFOurCourseDetail.value.assessmentMethod?.description ?? '',
                   style: const TextStyle(
                     fontSize: 14,
                     height: 1.5,
@@ -581,7 +592,7 @@ class _Level4CourseDetailViewState extends State<Level4CourseDetailView>
           _buildSectionTitle('Assessment Methods'),
           Column(
             children:
-                (widget.course.assessmentMethod?.methods ?? []).map((method) {
+                (controller.levelFOurCourseDetail.value.assessmentMethod?.methods ?? []).map((method) {
               return Container(
                 margin: const EdgeInsets.only(bottom: 8),
                 padding: const EdgeInsets.all(12),
@@ -618,7 +629,7 @@ class _Level4CourseDetailViewState extends State<Level4CourseDetailView>
     );
   }
 
-  Widget _buildSkillsGrid() {
+  Widget _buildSkillsGrid(CourseController controller) {
     return LayoutBuilder(
       builder: (context, constraints) {
         int crossAxisCount = constraints.maxWidth > 600 ? 2 : 1;
@@ -631,7 +642,7 @@ class _Level4CourseDetailViewState extends State<Level4CourseDetailView>
             crossAxisSpacing: 8,
             mainAxisSpacing: 8,
           ),
-          itemCount: widget.course.keySkills?.length,
+          itemCount: controller.levelFOurCourseDetail.value.keySkills?.length,
           itemBuilder: (context, index) {
             return Container(
               padding: const EdgeInsets.all(12),
@@ -650,7 +661,7 @@ class _Level4CourseDetailViewState extends State<Level4CourseDetailView>
                   const SizedBox(width: 8),
                   Expanded(
                     child: Text(
-                      widget.course.keySkills?[index] ?? '',
+                      controller.levelFOurCourseDetail.value.keySkills?[index] ?? '',
                       style: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w500,
