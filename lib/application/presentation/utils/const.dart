@@ -26,28 +26,28 @@ final kRadius10 = BorderRadius.circular(10);
 final kRadius15 = BorderRadius.circular(15);
 final kRadius50 = BorderRadius.circular(50);
 
+const animationDuration = Duration(milliseconds: 500);
+const animationDurationLong = Duration(milliseconds: 800);
+const animationDurationFast = Duration(milliseconds: 300);
+
 TextStyle textMainHead = const TextStyle(
-  fontWeight: FontWeight.w500,
+  fontWeight: FontWeight.bold,
   fontSize: 40,
-  height: 2.1,
 );
 
 TextStyle textHeadStyle1 = const TextStyle(
   fontWeight: FontWeight.w500,
   fontSize: 25,
-  height: 2.1,
 );
 
 TextStyle textStyle1 = const TextStyle(
   fontWeight: FontWeight.w500,
   fontSize: 17,
-  height: 2.1,
 );
 
 TextStyle textThinStyle1 = const TextStyle(
   fontWeight: FontWeight.w400,
   fontSize: 15,
-  height: 2.1,
 );
 
 List<BoxShadow> boxShadow1 = const [
@@ -65,6 +65,20 @@ List<BoxShadow> boxShadow4 = [
       spreadRadius: 2, blurRadius: 5, offset: Offset(0, 1), color: kGrey)
 ];
 
-
+// logos
 String eduGuardianLogo = 'assets/logo/companylogonewfinal.png';
 String eduGuardianLogoWithText = 'assets/logo/eduGuardian_logo.png';
+String aboutUsImage1 = 'assets/dev/about22.png';
+String aboutUsImage2 = 'assets/dev/elearning3.png';
+String aboutUsImage3 = 'assets/dev/eSPG3.png';
+
+// home images
+String graduvatedStudentImg = 'assets/images/graduvated_student.png';
+String studentsCheering = 'assets/images/students.png';
+String studentWithGlobe = 'assets/images/student_globe.png';
+String studentLearning = 'assets/dev/student_learning 01.png';
+String studentDiscussing = 'assets/images/students_discucssion.png';
+String studentGraduvated = 'assets/images/student_graduvated.png';
+
+const String token =
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MzU2ZDE5ZGY0MWE3MzhmOGRiYTI1YyIsImVtYWlsIjoiZmViaW5iYWJ5ODc5QGdtYWlsLmNvbSIsImZ1bGxOYW1lIjoiRmViaW4iLCJyb2xlIjoidXNlciIsImlhdCI6MTc0ODMzMTgwMX0.SX93iYi8uWAE6Q-dQBNMB6XNVnmRbi-daNidQRbaBkw';

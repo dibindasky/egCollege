@@ -1,3 +1,6 @@
+import 'package:edu_college/application/presentation/screens/home/widgets/app_bar.dart';
+import 'package:edu_college/application/presentation/utils/colors.dart';
+import 'package:edu_college/application/presentation/utils/const.dart';
 import 'package:flutter/material.dart';
 
 class ContactFormScreen extends StatefulWidget {
@@ -29,30 +32,31 @@ class _ContactFormScreenState extends State<ContactFormScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: Container(
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                colors: [
-                  Color(0xFF6B46C1), // Purple-700
-                  Color(0xFF8B5CF6), // Purple-500
-                  Color(0xFF7C3AED), // Purple-600
-                ],
-              ),
-            ),
-            child:
-                SafeArea(child: LayoutBuilder(builder: (context, constraints) {
-              bool isDesktop = constraints.maxWidth > 768;
-              return SingleChildScrollView(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: isDesktop ? 40 : 20,
-                    vertical: isDesktop ? 40 : 20,
+    return Scaffold(body: LayoutBuilder(builder: (context, constraints) {
+      bool isDesktop = constraints.maxWidth > 768;
+      return SingleChildScrollView(
+        child: Column(
+          children: [
+            const AppHeader(),
+            isDesktop
+                ? Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: isDesktop ? 40 : 20,
+                      vertical: isDesktop ? 40 : 20,
+                    ),
+                    child: _buildDesktopLayout(),
+                  )
+                : Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: isDesktop ? 40 : 20,
+                      vertical: isDesktop ? 40 : 20,
+                    ),
+                    child: _buildMobileLayout(),
                   ),
-                  child:
-                      isDesktop ? _buildDesktopLayout() : _buildMobileLayout());
-            }))));
+          ],
+        ),
+      );
+    }));
   }
 
   Widget _buildDesktopLayout() {
@@ -86,55 +90,47 @@ class _ContactFormScreenState extends State<ContactFormScreen> {
         style: TextStyle(
           fontSize: 48,
           fontWeight: FontWeight.bold,
-          color: Colors.white,
+          color: kBlack,
           height: 1.1,
         ),
       ),
       const SizedBox(height: 20),
       Text(
-        'Not sure what you need? The team at\nFuture Events will be happy to listen to\nyou and suggest event ideas you\nhaven\'t considered.',
+        'Have questions or need guidance? Our team at eduGuardian is here to support you every step of the way — from choosing the right program to enrollment, visa assistance, and beyond. Whether you\'re a student, parent, or recruitment partner, feel free to reach out to us for quick, reliable, and friendly support. We’d love to hear from you!',
         style: TextStyle(
-          fontSize: 16,
-          color: Colors.white.withOpacity(0.9),
-          height: 1.5,
-        ),
+            fontSize: 16, color: kBlack.withOpacity(0.9), height: 1.5),
       ),
       const SizedBox(height: 40),
       _buildContactItem(
-        icon: Icons.email_outlined,
-        text: 'info@futureevents.com',
-      ),
+          icon: Icons.email_outlined, text: 'admission@myeduguardian.com'),
       const SizedBox(height: 16),
-      _buildContactItem(icon: Icons.phone_outlined, text: '+44007 5734 434 588')
+      _buildContactItem(icon: Icons.phone_outlined, text: '+971568849699')
     ]);
   }
 
-  Widget _buildContactItem({required IconData icon, required String text}) {
-    return Row(children: [
-      Icon(
-        icon,
-        color: Colors.white,
-        size: 20,
-      ),
-      const SizedBox(width: 12),
-      Text(text,
-          style: TextStyle(color: Colors.white.withOpacity(0.9), fontSize: 16))
-    ]);
-  }
+  Widget _buildContactItem({required IconData icon, required String text}) =>
+      Row(children: [
+        Icon(
+          icon,
+          color: kBlack,
+          size: 20,
+        ),
+        const SizedBox(width: 12),
+        Text(text,
+            style: TextStyle(color: kBlack.withOpacity(0.9), fontSize: 16))
+      ]);
 
   Widget _buildFormCard() {
     return Container(
         decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(16),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.1),
-              blurRadius: 20,
-              offset: const Offset(0, 10),
-            ),
-          ],
-        ),
+            color: kWhite,
+            borderRadius: BorderRadius.circular(16),
+            boxShadow: [
+              BoxShadow(
+                  color: Colors.black.withOpacity(0.1),
+                  blurRadius: 20,
+                  offset: const Offset(0, 10))
+            ]),
         child: Padding(
             padding: const EdgeInsets.all(32),
             child: Form(
@@ -152,34 +148,15 @@ class _ContactFormScreenState extends State<ContactFormScreen> {
                             color: Colors.grey.withOpacity(0.1),
                             shape: BoxShape.circle,
                           ),
-                          child: Stack(
-                            children: [
-                              Positioned(
-                                right: 10,
-                                top: 10,
-                                child: Container(
-                                  width: 40,
-                                  height: 40,
-                                  decoration: BoxDecoration(
-                                    color: Colors.grey.withOpacity(0.05),
-                                    shape: BoxShape.circle,
-                                  ),
-                                ),
+                          child: Container(
+                              width: 150,
+                              height: 80,
+                              decoration: BoxDecoration(
+                                color: Colors.white.withOpacity(0.2),
+                                borderRadius: BorderRadius.circular(15),
                               ),
-                              Positioned(
-                                right: 25,
-                                top: 25,
-                                child: Container(
-                                  width: 20,
-                                  height: 20,
-                                  decoration: BoxDecoration(
-                                    color: Colors.grey.withOpacity(0.03),
-                                    shape: BoxShape.circle,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
+                              child: Image.asset(eduGuardianLogoWithText,
+                                  fit: BoxFit.contain)),
                         ),
                       ),
                       const SizedBox(height: 20),
@@ -297,7 +274,7 @@ class _ContactFormScreenState extends State<ContactFormScreen> {
                                   onPressed: _submitForm,
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor: const Color(0xFF6B46C1),
-                                    foregroundColor: Colors.white,
+                                    foregroundColor: kWhite,
                                     padding: const EdgeInsets.symmetric(
                                         vertical: 16),
                                     shape: RoundedRectangleBorder(
@@ -327,10 +304,7 @@ class _ContactFormScreenState extends State<ContactFormScreen> {
         Text(
           label,
           style: const TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.w500,
-            color: Color(0xFF374151),
-          ),
+              fontSize: 14, fontWeight: FontWeight.w500, color: kPurple),
         ),
         const SizedBox(height: 8),
         TextFormField(
@@ -360,7 +334,7 @@ class _ContactFormScreenState extends State<ContactFormScreen> {
               vertical: maxLines > 1 ? 16 : 12,
             ),
             filled: true,
-            fillColor: Colors.white,
+            fillColor: kWhite,
           ),
           validator: (value) {
             if (value == null || value.isEmpty) {
