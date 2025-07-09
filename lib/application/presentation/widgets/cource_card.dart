@@ -73,10 +73,15 @@ class _CourceCardState extends State<CourceCard>
                   children: [
                     // Background Image
                     Positioned.fill(
-                      child: Image.network(
-                        widget.course.imagePath,
-                        fit: BoxFit.cover,
-                      ),
+                      child: widget.course.imagePath.contains('asset')
+                          ? Image.asset(
+                              widget.course.imagePath,
+                              fit: BoxFit.cover,
+                            )
+                          : Image.network(
+                              widget.course.imagePath,
+                              fit: BoxFit.cover,
+                            ),
                     ),
                     // Animated Gradient Overlay
                     AnimatedBuilder(

@@ -58,6 +58,10 @@ class _Level4CourseDetailViewState extends State<Level4CourseDetailView>
                   slivers: [
                     SliverList.list(children: [
                       DesktopView(
+                          isNetWorkImage:
+                              !(controller.levelFOurCourseDetail.value.image ??
+                                      "")
+                                  .contains('asset'),
                           image: controller.levelFOurCourseDetail.value.image ??
                               "",
                           text: controller
@@ -112,17 +116,17 @@ class _Level4CourseDetailViewState extends State<Level4CourseDetailView>
               ? Row(
                   children: [
                     Expanded(
-                        child: _buildStatItem(
-                            'Credits', '${controller.levelFOurCourseDetail.value.totalCredits}')),
+                        child: _buildStatItem('Credits',
+                            '${controller.levelFOurCourseDetail.value.totalCredits}')),
                     Expanded(
-                        child: _buildStatItem(
-                            'Units', '${controller.levelFOurCourseDetail.value.mandatoryUnits}')),
+                        child: _buildStatItem('Units',
+                            '${controller.levelFOurCourseDetail.value.mandatoryUnits}')),
                     Expanded(
-                        child: _buildStatItem(
-                            'GLH', '${controller.levelFOurCourseDetail.value.guidedLearningHours}')),
+                        child: _buildStatItem('GLH',
+                            '${controller.levelFOurCourseDetail.value.guidedLearningHours}')),
                     Expanded(
-                        child: _buildStatItem(
-                            'TQT', '${controller.levelFOurCourseDetail.value.totalQualificationTime}')),
+                        child: _buildStatItem('TQT',
+                            '${controller.levelFOurCourseDetail.value.totalQualificationTime}')),
                   ],
                 )
               : GridView.count(
@@ -133,14 +137,14 @@ class _Level4CourseDetailViewState extends State<Level4CourseDetailView>
                   mainAxisSpacing: 8,
                   crossAxisSpacing: 8,
                   children: [
-                      _buildStatItem(
-                          'Credits', '${controller.levelFOurCourseDetail.value.totalCredits}'),
-                      _buildStatItem(
-                          'Units', '${controller.levelFOurCourseDetail.value.mandatoryUnits}'),
-                      _buildStatItem(
-                          'GLH', '${controller.levelFOurCourseDetail.value.guidedLearningHours}'),
-                      _buildStatItem(
-                          'TQT', '${controller.levelFOurCourseDetail.value.totalQualificationTime}')
+                      _buildStatItem('Credits',
+                          '${controller.levelFOurCourseDetail.value.totalCredits}'),
+                      _buildStatItem('Units',
+                          '${controller.levelFOurCourseDetail.value.mandatoryUnits}'),
+                      _buildStatItem('GLH',
+                          '${controller.levelFOurCourseDetail.value.guidedLearningHours}'),
+                      _buildStatItem('TQT',
+                          '${controller.levelFOurCourseDetail.value.totalQualificationTime}')
                     ]);
         }));
   }
@@ -433,7 +437,8 @@ class _Level4CourseDetailViewState extends State<Level4CourseDetailView>
             crossAxisSpacing: 8,
             mainAxisSpacing: 8,
           ),
-          itemCount: controller.levelFOurCourseDetail.value.careerOpportunities?.length,
+          itemCount: controller
+              .levelFOurCourseDetail.value.careerOpportunities?.length,
           itemBuilder: (context, index) {
             return Container(
               padding: const EdgeInsets.all(12),
@@ -452,7 +457,9 @@ class _Level4CourseDetailViewState extends State<Level4CourseDetailView>
                   const SizedBox(width: 8),
                   Expanded(
                     child: Text(
-                      controller.levelFOurCourseDetail.value.careerOpportunities?[index] ?? '',
+                      controller.levelFOurCourseDetail.value
+                              .careerOpportunities?[index] ??
+                          '',
                       style: const TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w500,
@@ -471,7 +478,8 @@ class _Level4CourseDetailViewState extends State<Level4CourseDetailView>
 
   Widget _buildProgressionList(CourseController controller) {
     return Column(
-      children: (controller.levelFOurCourseDetail.value.entryRequirements ?? []).map((pathway) {
+      children: (controller.levelFOurCourseDetail.value.entryRequirements ?? [])
+          .map((pathway) {
         return Container(
           margin: const EdgeInsets.only(bottom: 8),
           padding: const EdgeInsets.all(12),
@@ -512,7 +520,9 @@ class _Level4CourseDetailViewState extends State<Level4CourseDetailView>
           _buildSectionTitle('Entry Requirements'),
           Column(
               children:
-                  (controller.levelFOurCourseDetail.value.entryRequirements ?? []).map((requirement) {
+                  (controller.levelFOurCourseDetail.value.entryRequirements ??
+                          [])
+                      .map((requirement) {
             return Container(
                 margin: const EdgeInsets.only(bottom: 8),
                 padding: const EdgeInsets.all(12),
@@ -567,7 +577,9 @@ class _Level4CourseDetailViewState extends State<Level4CourseDetailView>
                     ),
                     const SizedBox(width: 12),
                     Text(
-                      controller.levelFOurCourseDetail.value.assessmentMethod?.type ?? "",
+                      controller.levelFOurCourseDetail.value.assessmentMethod
+                              ?.type ??
+                          "",
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
@@ -578,7 +590,9 @@ class _Level4CourseDetailViewState extends State<Level4CourseDetailView>
                 ),
                 const SizedBox(height: 12),
                 Text(
-                  controller.levelFOurCourseDetail.value.assessmentMethod?.description ?? '',
+                  controller.levelFOurCourseDetail.value.assessmentMethod
+                          ?.description ??
+                      '',
                   style: const TextStyle(
                     fontSize: 14,
                     height: 1.5,
@@ -591,8 +605,10 @@ class _Level4CourseDetailViewState extends State<Level4CourseDetailView>
           const SizedBox(height: 16),
           _buildSectionTitle('Assessment Methods'),
           Column(
-            children:
-                (controller.levelFOurCourseDetail.value.assessmentMethod?.methods ?? []).map((method) {
+            children: (controller.levelFOurCourseDetail.value.assessmentMethod
+                        ?.methods ??
+                    [])
+                .map((method) {
               return Container(
                 margin: const EdgeInsets.only(bottom: 8),
                 padding: const EdgeInsets.all(12),
@@ -661,7 +677,9 @@ class _Level4CourseDetailViewState extends State<Level4CourseDetailView>
                   const SizedBox(width: 8),
                   Expanded(
                     child: Text(
-                      controller.levelFOurCourseDetail.value.keySkills?[index] ?? '',
+                      controller
+                              .levelFOurCourseDetail.value.keySkills?[index] ??
+                          '',
                       style: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w500,
