@@ -47,6 +47,16 @@ class CompanyFooterSection extends StatelessWidget {
                   fontWeight: FontWeight.w600,
                   color: kWhite,
                   height: 1.3))),
+      kHeight10,
+      _buildContactItem(
+          icon: Icons.location_on_outlined,
+          child: const Text(
+              '300 Beach Road, The Concourse #20-01/02/07\nSingapore 199555',
+              style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w600,
+                  color: kWhite,
+                  height: 1.3))),
       kHeight30,
 
       // Phone
